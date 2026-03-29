@@ -1,0 +1,45 @@
+\chapter{Introduction}
+
+\section{Goal}
+
+This document is a reference atlas for notions of learning that appear across learning theory and statistics. The project goal is not merely to list definitions, but to record the exact logical relationships between them:
+
+\begin{itemize}
+\item what implies what
+\item what is equivalent to what
+\item where the converse fails
+\item which arrows are only known with computational assumptions
+\item which cells remain open
+\end{itemize}
+
+The long-run scope includes PAC learning, online learning, active learning, statistical query learning, consistency notions, unbiasedness, and related statistical guarantees. The first implemented chapter studies the cleanest core case: binary distribution-free PAC learning.
+
+\section{How To Read The Atlas}
+
+Each learning notion should eventually be recorded in a common template:
+
+\begin{itemize}
+\item formal definition
+\item resources being bounded
+\item proper vs improper status
+\item canonical equivalent formulations
+\item outgoing implications
+\item incoming implications
+\item separations, barriers, or hardness results
+\item open questions
+\end{itemize}
+
+The emphasis is on theorem-level clarity. When a statement only holds with extra structure, that structure should appear in the headline of the result rather than being buried in prose.
+
+\section{Document Outline}
+
+The intended report structure is:
+
+\begin{itemize}
+\item \textbf{PAC learning}: realizable vs agnostic, proper vs improper, statistical vs computational equivalences.
+\item \textbf{Statistical notions}: consistency, unbiasedness, admissibility, risk convergence, and related guarantees.
+\item \textbf{Cross-model connections}: implication tables and translation lemmas between learning models.
+\item \textbf{Open gaps ledger}: unresolved arrows, suspected separations, and missing citations.
+\end{itemize}
+
+The current draft implements the PAC chapter and leaves the remaining chapters as structured placeholders.
