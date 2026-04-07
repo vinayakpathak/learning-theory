@@ -31,6 +31,18 @@ Use concise, source-grounded prose. Prefer short paragraphs over long blocks.
 
 Avoid speculative theorem claims. When stating a result, cite a primary source and distinguish proved statements from open questions or conditional hardness.
 
+## Proof Writing Style
+
+Prefer a top-down proof style.
+
+- State the main goal precisely before giving any proof details.
+- Break the proof into explicit subgoals or lemmas, and explain why proving them will establish the main claim.
+- For reductions, first specify the source instance and the target instance. In learning-theory reductions, this usually means naming the hypothesis class and the distribution or labeling rule before analyzing them.
+- Only after the setup and proof plan are clear should you explain how each subgoal is proved.
+- When possible, separate `construction`, `why the construction works`, and `conclusion` into distinct paragraphs or lemmas.
+
+The target audience is mathematically mature but not specialist. Write so that a strong third-year undergraduate can reconstruct the omitted steps from the sketch.
+
 ## Testing Guidelines
 
 There is no separate automated test suite yet.
