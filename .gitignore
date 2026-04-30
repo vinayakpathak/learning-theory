@@ -13,3 +13,7 @@
 *.synctex.gz
 *.toc
 build/
+lean/.lake/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/

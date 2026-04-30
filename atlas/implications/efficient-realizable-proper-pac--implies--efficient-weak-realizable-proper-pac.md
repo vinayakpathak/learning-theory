@@ -1,0 +1,31 @@
+---
+type: implication
+id: efficient-realizable-proper-pac__implies__efficient-weak-realizable-proper-pac
+source: efficient-realizable-proper-pac
+target: efficient-weak-realizable-proper-pac
+source_note: "[[efficient-realizable-proper-pac|Efficient Realizable Proper PAC Learning]]"
+target_note: "[[efficient-weak-realizable-proper-pac|Efficient Weak Realizable Proper PAC Learning]]"
+domain: binary-classification
+model: pac
+status: "true"
+evidence: trivial
+assumptions: []
+witnesses: []
+refs: []
+summary: "This follows by weakening one or more requirements: agnostic to realizable, proper to improper, or strong to weak."
+tags:
+  - atlas/implication
+  - learning/binary-classification
+---
+
+# Efficient Realizable Proper PAC Learning $\Rightarrow$ Efficient Weak Realizable Proper PAC Learning
+
+## Verdict
+
+`true`.
+
+This follows by weakening one or more requirements: agnostic to realizable, proper to improper, or strong to weak.
+
+## Proof
+
+The target notion only relaxes requirements already met by the source learner. On realizable distributions the agnostic optimum is zero, proper hypotheses are allowed in the improper model, and a strong learner can be run with a fixed weak accuracy parameter. The same efficient learner therefore witnesses the target node.
