@@ -44,6 +44,12 @@ This is the strong version of the notion: the learner must achieve every request
 
 `partial`: finite VC dimension characterizes the corresponding sample-complexity notion in binary distribution-free PAC learning. The computational version depends on representation and algorithmic access, and no general structural characterization is recorded here.
 
+## Boundary Examples
+
+Positive boundary examples include classes that exploit either realizability or impropriety. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies this node because it is efficiently agnostically learnable with improper hypotheses, but it fails efficient proper realizable learning unless $\mathrm{NP}\nsubseteq\mathrm{RP}$. [[halfspaces|Halfspaces]] satisfy this node and fail efficient agnostic improper learning under worst-case lattice assumptions.
+
+No sharper negative example is currently recorded for this node. Weak realizable improper learning boosts to this node, and the possible separation from marginal-nonuniform realizable improper learning is tracked as an open [[marginal-uniformization-open|marginal uniformization]] question. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even this improper realizable requirement.
+
 ## References
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)

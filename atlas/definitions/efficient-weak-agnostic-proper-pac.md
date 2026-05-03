@@ -44,6 +44,12 @@ where $\beta<1/2$ is a fixed additive weak-agnostic tolerance. This is the Ben-D
 
 `partial`: this note records the computational weak-learning notion used by the atlas. The realizable weak-to-strong conversion is available through boosting when the final output may be improper; proper final-output and agnostic weak-to-strong questions are tracked by implication notes rather than folded into the definition.
 
+## Boundary Examples
+
+The main positive boundary example is [[fixed-k-term-DNF|Fixed-$k$-Term DNF]]. It satisfies the weak proper agnostic notion used by the atlas, while strong proper learning for the same family would contradict the cited hardness results unless $\mathrm{RP}=\mathrm{NP}$.
+
+The main negative boundary example is [[halfspaces|Halfspaces]]. They are efficiently realizably properly learnable, but Tiegel's hardness result rules out weak agnostic learning even with improper hypotheses under worst-case lattice assumptions, and therefore also rules out this proper weak agnostic node.
+
 ## References
 
 - [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)

@@ -42,6 +42,12 @@ Here $\gamma$ is an inverse-polynomial advantage over random guessing. The learn
 
 `partial`: this note records the computational weak-learning notion used by the atlas. The realizable weak-to-strong conversion is available through boosting when the final output may be improper; proper final-output and agnostic weak-to-strong questions are tracked by implication notes rather than folded into the definition.
 
+## Boundary Examples
+
+Positive boundary examples include classes that satisfy this weak realizable improper node but fail stronger neighboring requirements. [[halfspaces|Halfspaces]] satisfy even efficient realizable proper learning, but fail weak agnostic improper learning under worst-case lattice assumptions. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies this node through improper agnostic learning but fails proper realizable learning unless $\mathrm{NP}\nsubseteq\mathrm{RP}$.
+
+No sharper negative example is currently recorded for this node. It is the weakest distribution-free realizable improper node, and the possible gap from marginal-nonuniform weak realizable improper learning is tracked as an open [[marginal-uniformization-open|marginal uniformization]] question. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even this weak requirement.
+
 ## References
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)

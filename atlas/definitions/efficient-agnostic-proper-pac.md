@@ -48,6 +48,12 @@ This is the strong version of the notion: the learner must achieve every request
 
 `partial`: finite VC dimension characterizes the corresponding sample-complexity notion in binary distribution-free PAC learning. For the computational version, polynomial-time empirical risk minimization is a useful sufficient condition, but not a general characterization.
 
+## Boundary Examples
+
+Boundary examples are relative to the witness notes currently recorded in the atlas. Since this is the strongest node, the positive side is not an upward separation: [[polynomial-time-erm-classes|Polynomial-Time ERM Classes]] are the baseline examples satisfying this notion.
+
+On the negative side, several classes sit just below one of this node's requirements. [[conjunctions|Conjunctions]] satisfy efficient realizable proper PAC learning but fail proper agnostic learning unless $\mathrm{RP}=\mathrm{NP}$. [[fixed-k-term-DNF|Fixed-$k$-Term DNF]] satisfies the weak proper nodes but fails strong proper learning under the same assumption. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies efficient agnostic improper learning but fails even proper realizable learning unless $\mathrm{NP}\nsubseteq\mathrm{RP}$.
+
 ## References
 
 - [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)

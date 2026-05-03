@@ -48,6 +48,12 @@ This is the strong version of the notion: the learner must achieve every request
 
 `partial`: finite VC dimension characterizes the corresponding sample-complexity notion in binary distribution-free PAC learning. The computational version depends on representation, algorithmic access, and the benchmark/output classes, and no general structural characterization is recorded here.
 
+## Boundary Examples
+
+Positive boundary examples show what the improper output allowance buys. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] is efficiently agnostically learnable by an improper lookup-style learner, while any efficient proper realizable learner for the same class would put 3-SAT in randomized polynomial time with one-sided error.
+
+Negative boundary examples show where agnosticism is already too much. [[halfspaces|Halfspaces]] are efficiently realizably properly learnable, but Tiegel's hardness result rules out efficient agnostic improper learning under worst-case lattice assumptions.
+
 ## References
 
 - [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)

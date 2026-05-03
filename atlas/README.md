@@ -26,6 +26,8 @@ Definition notes are graph nodes. They use `type: definition` and must have a st
 
 Definition notes may also carry queryable axes such as `realizability`, `properness`, `strength`, and `distribution`. In the binary PAC dashboard, existing nodes without `weak` in their id are the strong learning notions. Marginal-nonuniform nodes use `distribution: marginal-nonuniform` and allow the polynomial PAC bounds to depend on the instance marginal distribution.
 
+Definition notes should include a `## Boundary Examples` section when useful. Use it to record classes that are known to satisfy the node while failing a stronger neighboring requirement, and classes that fail the node while satisfying a weaker neighboring requirement. If the closest such edge is open, say so explicitly and use only a clearly labeled nonboundary fallback example.
+
 Implication notes are graph edges. They use `type: implication`, a `source` id, a `target` id, and a quoted `status`. The complete set of ordered implication notes remains the Obsidian-facing cache for the graph.
 
 Each implication may also carry generated organization metadata:

@@ -44,6 +44,12 @@ This is the strong version of the notion: the learner must achieve every request
 
 `partial`: finite VC dimension characterizes the corresponding sample-complexity notion in binary distribution-free PAC learning. The computational version depends on representation and algorithmic access, and no general structural characterization is recorded here.
 
+## Boundary Examples
+
+Positive boundary examples include classes that are properly learnable in the realizable model but become hard when one strengthens the requirement. [[conjunctions|Conjunctions]] satisfy this node, but proper agnostic learning is hard unless $\mathrm{RP}=\mathrm{NP}$. [[halfspaces|Halfspaces]] also satisfy this node and, under worst-case lattice assumptions, fail even improper agnostic learning.
+
+Negative boundary examples isolate the cost of properness or strong accuracy. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] is efficiently agnostically improperly learnable but fails efficient proper realizable learning unless $\mathrm{NP}\nsubseteq\mathrm{RP}$. [[fixed-k-term-DNF|Fixed-$k$-Term DNF]] is weakly properly learnable but fails strong proper realizable learning unless $\mathrm{RP}=\mathrm{NP}$.
+
 ## References
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)

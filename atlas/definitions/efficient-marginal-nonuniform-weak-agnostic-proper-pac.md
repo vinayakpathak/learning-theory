@@ -52,6 +52,12 @@ Benedek and Itai studied learnability with respect to fixed distributions, and B
 
 `partial`: this note records the computational marginal-nonuniform version used by the atlas. No representation-sensitive characterization is asserted here.
 
+## Boundary Examples
+
+The main positive boundary example inherited from the distribution-free weak proper world is [[fixed-k-term-DNF|Fixed-$k$-Term DNF]]. It satisfies the weak proper agnostic node and therefore this marginal-nonuniform relaxation, while strong proper learning is conditionally hard in the distribution-free setting. The corresponding marginal weak-to-strong question is recorded as [[agnostic-boosting-open|open]], so this should not be read as a marginal strong-learning separation.
+
+No sharper negative example is currently recorded for this exact node. The halfspace hardness used elsewhere does not settle the atlas's marginal-nonuniform weak agnostic target. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even this relaxed proper weak agnostic requirement.
+
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)

@@ -44,6 +44,12 @@ where $\beta<1/2$ is a fixed additive weak-agnostic tolerance. The learner is ef
 
 `partial`: this note records the computational weak-learning notion used by the atlas. The realizable weak-to-strong conversion is available through boosting when the final output may be improper; proper final-output and agnostic weak-to-strong questions are tracked by implication notes rather than folded into the definition.
 
+## Boundary Examples
+
+Positive boundary examples again show the value of allowing improper hypotheses. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies the stronger agnostic improper node, hence this weak node, while proper realizable learning for it is conditionally hard.
+
+Negative boundary examples show that even weak agnostic learning can be too strong. [[halfspaces|Halfspaces]] satisfy efficient realizable proper PAC learning but fail weak agnostic improper learning under worst-case lattice assumptions. The weak-to-strong agnostic direction from this node is still tracked separately as [[agnostic-boosting-open|open]].
+
 ## References
 
 - [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)

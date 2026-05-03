@@ -60,6 +60,12 @@ This atlas note adds the computational requirement that the learner's running ti
 
 `partial`: the information-theoretic marginal-nonuniform sample-complexity setting has modern characterizations in terms of distribution-sensitive rates. This note records the computational analogue needed for the implication graph, and no representation-sensitive characterization is asserted here.
 
+## Boundary Examples
+
+Positive boundary examples include distribution-free examples that already exploit weaker axes. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies this node through improper agnostic learning but fails proper realizable learning in the distribution-free sense unless $\mathrm{NP}\nsubseteq\mathrm{RP}$. [[halfspaces|Halfspaces]] satisfy this node and fail the marginal-nonuniform strong agnostic nodes under worst-case lattice assumptions.
+
+No sharper negative example is currently recorded for this node. In particular, the reverse move from marginal-nonuniform realizable learning to distribution-free realizable learning is an open [[marginal-uniformization-open|uniformization]] question. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even this marginal-nonuniform realizable improper requirement.
+
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)

@@ -52,6 +52,12 @@ Benedek and Itai studied learnability with respect to fixed distributions, and B
 
 `partial`: this note records the computational marginal-nonuniform version used by the atlas. No representation-sensitive characterization is asserted here.
 
+## Boundary Examples
+
+Positive boundary examples are inherited from stronger improper agnostic learning. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies efficient agnostic improper learning and therefore this node, while proper realizable learning is conditionally hard. No witness in the atlas currently separates this marginal-nonuniform weak node from its distribution-free analogue or from the corresponding strong marginal agnostic node.
+
+No sharper negative example is currently recorded for this exact node. Known distribution-free agnostic hardness does not automatically rule out the marginal-dependent polynomial bounds allowed here; that obstruction is tracked in [[marginal-agnostic-hardness-open|Marginal-Nonuniform Agnostic Hardness Open]]. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even this weak improper agnostic requirement.
+
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)

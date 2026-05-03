@@ -56,6 +56,12 @@ Benedek and Itai studied learnability with respect to fixed distributions, and B
 
 `partial`: this note records the computational marginal-nonuniform version used by the atlas. No representation-sensitive characterization is asserted here.
 
+## Boundary Examples
+
+Positive boundary examples include the distribution-free improper examples. [[clause-satisfaction-lookup-class|The Clause-Satisfaction Lookup Class]] satisfies efficient agnostic improper learning and therefore this node, while proper realizable learning is conditionally hard. No atlas witness is currently known that separates this marginal-nonuniform node from its distribution-free counterpart; that reverse direction is tracked as [[marginal-uniformization-open|open]].
+
+The main negative boundary example is [[halfspaces|Halfspaces]]. They satisfy efficient realizable proper learning, but Tiegel's distribution-specific hardness rules out marginal-nonuniform strong agnostic improper learning under worst-case lattice assumptions.
+
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)

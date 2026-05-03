@@ -56,6 +56,12 @@ Benedek and Itai studied learnability with respect to fixed distributions, and B
 
 `partial`: this note records the computational marginal-nonuniform version used by the atlas. No representation-sensitive characterization is asserted here.
 
+## Boundary Examples
+
+The baseline positive examples are inherited from the distribution-free strongest node: [[polynomial-time-erm-classes|Polynomial-Time ERM Classes]] satisfy efficient agnostic proper PAC learning and therefore also satisfy this marginal-nonuniform relaxation. A genuine example that is marginal-nonuniform agnostic proper but not distribution-free agnostic proper is not recorded here; that is part of the open [[marginal-uniformization-open|marginal uniformization]] landscape.
+
+The main negative boundary example is [[halfspaces|Halfspaces]]. They are efficiently realizably properly learnable, but Tiegel's standard-Gaussian hardness result rules out the marginal-nonuniform strong agnostic targets under worst-case lattice assumptions.
+
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)

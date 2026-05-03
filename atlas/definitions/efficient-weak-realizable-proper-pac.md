@@ -42,6 +42,12 @@ Here $\gamma$ is an inverse-polynomial advantage over random guessing, fixed by 
 
 `partial`: this note records the computational weak-learning notion used by the atlas. The realizable weak-to-strong conversion is available through boosting when the final output may be improper; proper final-output and agnostic weak-to-strong questions are tracked by implication notes rather than folded into the definition.
 
+## Boundary Examples
+
+The main positive boundary example is [[fixed-k-term-DNF|Fixed-$k$-Term DNF]]. It is weakly properly learnable, but strong proper realizable learning is hard unless $\mathrm{RP}=\mathrm{NP}$, so it sits close to the weak-versus-strong proper boundary.
+
+No sharper negative example is currently recorded for this exact node. The pure weak properization question, from weak realizable improper learning to weak realizable proper learning, is still [[properization-open|open]]. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even this weak realizable proper requirement.
+
 ## References
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)
