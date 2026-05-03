@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "Agnostic proper learning implies realizable proper learning, and proper learning is a special case of improper learning."
+family: monotone-relaxation
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: agnostic-to-realizable
+  properness: proper-to-improper
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

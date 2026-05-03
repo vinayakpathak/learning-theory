@@ -1,0 +1,71 @@
+---
+type: registry
+id: binary-classification-axes
+title: Binary Classification Axis Registry
+domain: binary-classification
+model: pac
+id_prefix: efficient
+id_suffix: pac
+title_prefix: Efficient
+title_suffix: PAC Learning
+axes:
+  - id: distribution
+    frontmatter_field: distribution
+    label: Distribution
+    monotone_relaxation:
+      from: distribution-free
+      to: marginal-nonuniform
+    values:
+      - id: distribution-free
+        slug_token: null
+        title_token: null
+        relaxation_rank: 0
+      - id: marginal-nonuniform
+        slug_token: marginal-nonuniform
+        title_token: Marginal-Nonuniform
+        relaxation_rank: 1
+  - id: strength
+    frontmatter_field: strength
+    label: Strength
+    monotone_relaxation:
+      from: strong
+      to: weak
+    values:
+      - id: strong
+        slug_token: null
+        title_token: null
+        relaxation_rank: 0
+      - id: weak
+        slug_token: weak
+        title_token: Weak
+        relaxation_rank: 1
+  - id: realizability
+    frontmatter_field: realizability
+    label: Realizability
+    monotone_relaxation:
+      from: agnostic
+      to: realizable
+    values:
+      - id: agnostic
+        slug_token: agnostic
+        title_token: Agnostic
+        relaxation_rank: 0
+      - id: realizable
+        slug_token: realizable
+        title_token: Realizable
+        relaxation_rank: 1
+  - id: properness
+    frontmatter_field: properness
+    label: Properness
+    monotone_relaxation:
+      from: proper
+      to: improper
+    values:
+      - id: proper
+        slug_token: proper
+        title_token: Proper
+        relaxation_rank: 0
+      - id: improper
+        slug_token: improper
+        title_token: Improper
+        relaxation_rank: 1

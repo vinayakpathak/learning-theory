@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "A proper distribution-free realizable learner is also an improper marginal-nonuniform realizable learner."
+family: monotone-relaxation
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: same
+  realizability: same
+  properness: proper-to-improper
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

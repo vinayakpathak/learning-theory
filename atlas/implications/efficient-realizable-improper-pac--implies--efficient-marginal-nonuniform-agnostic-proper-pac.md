@@ -18,6 +18,14 @@ ref_keys:
 refs:
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
 summary: "Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic proper target under worst-case lattice assumptions."
+family: halfspace-agnostic-hardness
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: same
+  realizability: realizable-to-agnostic
+  properness: improper-to-proper
+argument_note: "[[halfspace-agnostic-hardness|Halfspace Agnostic Hardness]]"
+witness_note: "[[halfspaces|Halfspaces]]"
 tags:
   - atlas/implication
   - learning/binary-classification

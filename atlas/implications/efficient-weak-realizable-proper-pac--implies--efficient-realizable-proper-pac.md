@@ -22,6 +22,14 @@ refs:
   - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
   - "[Haussler et al. 1990](https://www.cis.upenn.edu/~mkearns/papers/models.pdf)"
 summary: "Fixed-k-term DNF is weakly properly learnable, but strong proper realizable learning is hard unless RP = NP."
+family: fixed-k-term-dnf-proper-boosting-separation
+axis_delta:
+  distribution: same
+  strength: weak-to-strong
+  realizability: same
+  properness: same
+argument_note: "[[fixed-k-term-dnf-proper-boosting-separation|Fixed-k-Term DNF Proper Boosting Separation]]"
+witness_note: "[[fixed-k-term-DNF|Fixed-k-Term DNF]]"
 tags:
   - atlas/implication
   - learning/binary-classification

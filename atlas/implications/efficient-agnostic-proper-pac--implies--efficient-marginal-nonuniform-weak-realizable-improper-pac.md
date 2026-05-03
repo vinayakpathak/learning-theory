@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "The target only relaxes requirements already met by the source learner."
+family: monotone-relaxation
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: strong-to-weak
+  realizability: agnostic-to-realizable
+  properness: proper-to-improper
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

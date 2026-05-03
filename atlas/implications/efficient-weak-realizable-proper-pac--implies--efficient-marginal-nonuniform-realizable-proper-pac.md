@@ -18,6 +18,13 @@ refs:
   - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
 summary: "Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target."
+family: marginal-boosting-open
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: weak-to-strong
+  realizability: same
+  properness: same
+argument_note: "[[marginal-boosting-open|Marginal-Nonuniform Boosting Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

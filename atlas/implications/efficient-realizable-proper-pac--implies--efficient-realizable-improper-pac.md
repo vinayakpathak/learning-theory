@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "A proper learner is also an improper learner if the output class is allowed to contain the benchmark class."
+family: monotone-relaxation
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: same
+  properness: proper-to-improper
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "A distribution-free strong agnostic improper learner restricts to realizable data and remains valid when the polynomial bound is allowed to depend on the marginal."
+family: monotone-relaxation
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: same
+  realizability: agnostic-to-realizable
+  properness: same
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

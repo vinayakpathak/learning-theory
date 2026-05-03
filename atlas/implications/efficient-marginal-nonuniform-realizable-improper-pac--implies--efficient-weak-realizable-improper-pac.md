@@ -18,6 +18,13 @@ refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
 summary: "Open: the target needs a distribution-free polynomial weak learner, while the source only gives strong learning with marginal-dependent polynomial bounds."
+family: marginal-uniformization-open
+axis_delta:
+  distribution: marginal-nonuniform-to-distribution-free
+  strength: strong-to-weak
+  realizability: same
+  properness: same
+argument_note: "[[marginal-uniformization-open|Marginal Uniformization Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

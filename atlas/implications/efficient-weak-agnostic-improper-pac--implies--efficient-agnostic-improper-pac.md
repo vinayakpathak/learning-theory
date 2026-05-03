@@ -24,6 +24,13 @@ refs:
   - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
 summary: "Still open under the atlas fixed-additive weak agnostic convention; standard agnostic boosting uses stronger oracle conditions than this edge assumes."
+family: agnostic-boosting-open
+axis_delta:
+  distribution: same
+  strength: weak-to-strong
+  realizability: same
+  properness: same
+argument_note: "[[agnostic-boosting-open|Agnostic Boosting Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

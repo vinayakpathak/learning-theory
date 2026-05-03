@@ -20,6 +20,13 @@ refs:
   - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
   - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
 summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
+family: properization-open
+axis_delta:
+  distribution: same
+  strength: strong-to-weak
+  realizability: realizable-to-agnostic
+  properness: improper-to-proper
+argument_note: "[[properization-open|Properization Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

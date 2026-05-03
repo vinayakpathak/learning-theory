@@ -24,6 +24,13 @@ refs:
   - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
 summary: "Still open: this is weak agnostic properization, and the known halfspace lower bound fails the source while fixed-k DNF satisfies both sides."
+family: properization-open
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: same
+  properness: improper-to-proper
+argument_note: "[[properization-open|Properization Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

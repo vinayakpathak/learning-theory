@@ -18,6 +18,13 @@ refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
 summary: "Open: the source allows marginal-dependent polynomial bounds, while the target requires one distribution-free polynomial bound."
+family: properization-open
+axis_delta:
+  distribution: marginal-nonuniform-to-distribution-free
+  strength: strong-to-weak
+  realizability: same
+  properness: improper-to-proper
+argument_note: "[[properization-open|Properization Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

@@ -20,6 +20,13 @@ refs:
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
 summary: "Open: known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds."
+family: marginal-agnostic-hardness-open
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: realizable-to-agnostic
+  properness: same
+argument_note: "[[marginal-agnostic-hardness-open|Marginal-Nonuniform Agnostic Hardness Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

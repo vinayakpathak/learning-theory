@@ -16,6 +16,13 @@ ref_keys:
 refs:
   - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
 summary: "Schapire boosting converts weak realizable learning into strong realizable improper learning; weak agnostic learning specializes to weak realizable learning on realizable distributions."
+family: realizable-boosting
+axis_delta:
+  distribution: same
+  strength: weak-to-strong
+  realizability: same
+  properness: proper-to-improper
+argument_note: "[[realizable-boosting|Realizable Boosting]]"
 tags:
   - atlas/implication
   - learning/binary-classification

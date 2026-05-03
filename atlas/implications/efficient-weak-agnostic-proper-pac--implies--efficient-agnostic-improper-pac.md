@@ -26,6 +26,13 @@ refs:
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
 summary: "Open as an efficient PAC implication: recent agnostic boosting resolves the statistical/oracle version, but not the representation-uniform polynomial-time version recorded here."
+family: agnostic-boosting-open
+axis_delta:
+  distribution: same
+  strength: weak-to-strong
+  realizability: same
+  properness: proper-to-improper
+argument_note: "[[agnostic-boosting-open|Agnostic Boosting Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

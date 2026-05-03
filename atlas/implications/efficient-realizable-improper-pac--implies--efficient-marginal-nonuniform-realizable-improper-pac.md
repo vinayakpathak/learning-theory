@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "The target is the same realizable improper guarantee with the distribution-free polynomial bound relaxed to a marginal-dependent one."
+family: monotone-relaxation
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: same
+  realizability: same
+  properness: same
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

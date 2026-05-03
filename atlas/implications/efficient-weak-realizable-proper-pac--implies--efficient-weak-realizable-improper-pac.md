@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "This follows by weakening one or more requirements: agnostic to realizable, proper to improper, or strong to weak."
+family: monotone-relaxation
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: same
+  properness: proper-to-improper
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

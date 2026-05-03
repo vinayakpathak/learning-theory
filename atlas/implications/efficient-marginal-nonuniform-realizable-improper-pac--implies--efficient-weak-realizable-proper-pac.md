@@ -20,6 +20,13 @@ refs:
   - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
   - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
 summary: "Open: this asks for both a uniform weak learner and a proper hypothesis, starting from a marginal-nonuniform improper strong learner."
+family: properization-open
+axis_delta:
+  distribution: marginal-nonuniform-to-distribution-free
+  strength: strong-to-weak
+  realizability: same
+  properness: improper-to-proper
+argument_note: "[[properization-open|Properization Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

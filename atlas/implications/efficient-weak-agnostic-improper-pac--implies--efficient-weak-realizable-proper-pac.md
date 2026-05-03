@@ -20,6 +20,13 @@ refs:
   - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
   - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
 summary: "Still open: restricting to realizable distributions gives weak improper learning, but no general weak properization theorem is recorded."
+family: properization-open
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: agnostic-to-realizable
+  properness: improper-to-proper
+argument_note: "[[properization-open|Properization Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

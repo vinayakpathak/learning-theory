@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "Proper strong agnostic learning is stronger than the marginal-nonuniform realizable improper target."
+family: monotone-relaxation
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: same
+  realizability: agnostic-to-realizable
+  properness: proper-to-improper
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification

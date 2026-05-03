@@ -16,6 +16,13 @@ ref_keys:
 refs:
   - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
 summary: "Weak agnostic proper learning specializes to weak realizable learning, and Schapire boosting gives the improper strong realizable target."
+family: realizable-boosting
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: weak-to-strong
+  realizability: agnostic-to-realizable
+  properness: proper-to-improper
+argument_note: "[[realizable-boosting|Realizable Boosting]]"
 tags:
   - atlas/implication
   - learning/binary-classification

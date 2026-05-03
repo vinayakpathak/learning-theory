@@ -16,6 +16,13 @@ ref_keys:
 refs:
   - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
 summary: "Schapire boosting converts weak realizable improper learning into strong realizable improper learning, which is stronger than the marginal-nonuniform target."
+family: realizable-boosting
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: weak-to-strong
+  realizability: same
+  properness: same
+argument_note: "[[realizable-boosting|Realizable Boosting]]"
 tags:
   - atlas/implication
   - learning/binary-classification

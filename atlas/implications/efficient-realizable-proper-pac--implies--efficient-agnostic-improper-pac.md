@@ -18,6 +18,14 @@ ref_keys:
 refs:
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
 summary: "Halfspaces are efficiently realizably properly learnable, but distribution-free improper agnostic learning of halfspaces is hard under worst-case lattice assumptions."
+family: halfspace-agnostic-hardness
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: realizable-to-agnostic
+  properness: proper-to-improper
+argument_note: "[[halfspace-agnostic-hardness|Halfspace Agnostic Hardness]]"
+witness_note: "[[halfspaces|Halfspaces]]"
 tags:
   - atlas/implication
   - learning/binary-classification

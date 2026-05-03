@@ -1,0 +1,34 @@
+---
+type: argument
+id: properization-open
+title: Properization Open
+domain: binary-classification
+model: pac
+status: "open"
+evidence: unknown
+ref_keys:
+  - schapire1990
+  - pitt1988
+  - khot2008dnf
+refs:
+  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
+  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
+  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.78)"
+tags:
+  - atlas/argument
+  - learning/binary-classification
+---
+
+# Properization Open
+
+## Verdict
+
+`open`.
+
+This family records edges where the source allows an improper learner but the target requires a proper learner, and no generic properization theorem is known in the atlas model. Specific classes can separate proper from improper learning, but those separations do not automatically settle every axis combination.
+
+## References
+
+- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
+- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
+- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.78)

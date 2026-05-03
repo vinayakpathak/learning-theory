@@ -20,6 +20,14 @@ refs:
   - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
   - "[Kearns et al. 1994](https://doi.org/10.1023/A:1022615600103)"
 summary: "Conjunctions are efficiently properly learnable in the realizable PAC model, but proper agnostic learning is hard unless RP = NP."
+family: conjunction-agnostic-hardness
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: realizable-to-agnostic
+  properness: same
+argument_note: "[[conjunction-agnostic-hardness|Conjunction Agnostic Hardness]]"
+witness_note: "[[conjunctions|Conjunctions]]"
 tags:
   - atlas/implication
   - learning/binary-classification

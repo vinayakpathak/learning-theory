@@ -1,0 +1,168 @@
+---
+type: registry
+id: binary-classification-edge-families
+title: Binary Classification Edge Family Registry
+domain: binary-classification
+model: pac
+allowed_status_evidence:
+  "true":
+    - trivial
+    - theorem
+    - conditional-theorem
+  "false":
+    - counterexample
+    - conditional-counterexample
+  "open":
+    - unknown
+families:
+  - id: monotone-relaxation
+    title: Monotone Relaxation
+    status: "true"
+    evidence: trivial
+    argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
+    summary: "The target only relaxes axis requirements already met by the source."
+    match:
+      status: "true"
+      evidence: trivial
+      monotone_relaxation: true
+  - id: realizable-boosting
+    title: Realizable Boosting
+    status: "true"
+    evidence: theorem
+    argument_note: "[[realizable-boosting|Realizable Boosting]]"
+    summary: "Schapire boosting converts weak realizable learning into strong improper realizable learning."
+    match:
+      status: "true"
+      evidence: theorem
+      ref_keys_all:
+        - schapire1990
+  - id: halfspace-agnostic-hardness
+    title: Halfspace Agnostic Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    argument_note: "[[halfspace-agnostic-hardness|Halfspace Agnostic Hardness]]"
+    witness_note: "[[halfspaces|Halfspaces]]"
+    summary: "Halfspaces give agnostic hardness separations under worst-case lattice assumptions."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - halfspaces
+  - id: clause-satisfaction-proper-hardness
+    title: Clause-Satisfaction Proper Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    argument_note: "[[clause-satisfaction-proper-hardness|Clause-Satisfaction Proper Hardness]]"
+    witness_note: "[[clause-satisfaction-lookup-class|Clause-Satisfaction Lookup Class]]"
+    summary: "The lookup class separates improper learning from proper learning under NP not subset RP."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - clause-satisfaction-lookup-class
+  - id: fixed-k-term-dnf-proper-boosting-separation
+    title: Fixed-k-Term DNF Proper Boosting Separation
+    status: "false"
+    evidence: conditional-counterexample
+    argument_note: "[[fixed-k-term-dnf-proper-boosting-separation|Fixed-k-Term DNF Proper Boosting Separation]]"
+    witness_note: "[[fixed-k-term-DNF|Fixed-k-Term DNF]]"
+    summary: "Fixed-k-term DNF separates weak proper learning from strong proper learning under RP != NP."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - fixed-k-term-DNF
+  - id: conjunction-agnostic-hardness
+    title: Conjunction Agnostic Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    argument_note: "[[conjunction-agnostic-hardness|Conjunction Agnostic Hardness]]"
+    witness_note: "[[conjunctions|Conjunctions]]"
+    summary: "Conjunctions separate realizable proper learning from agnostic proper learning under RP != NP."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - conjunctions
+  - id: properization-open
+    title: Properization Open
+    status: "open"
+    evidence: unknown
+    argument_note: "[[properization-open|Properization Open]]"
+    summary: "The source is improper and the target is proper, with no known generic properization."
+    match:
+      status: "open"
+      evidence: unknown
+      source_axis:
+        properness: improper
+      target_axis:
+        properness: proper
+  - id: agnostic-boosting-open
+    title: Agnostic Boosting Open
+    status: "open"
+    evidence: unknown
+    argument_note: "[[agnostic-boosting-open|Agnostic Boosting Open]]"
+    summary: "Fixed-additive weak agnostic learning is not known to imply strong agnostic learning in this atlas model."
+    match:
+      status: "open"
+      evidence: unknown
+      ref_keys_any:
+        - bendavid2001
+        - kalai2008agnosticboosting
+        - gavinsky2003
+        - ghai2025agnosticboosting
+        - dacunha2026agnosticboosting
+      not:
+        source_axis:
+          properness: improper
+        target_axis:
+          properness: proper
+  - id: marginal-boosting-open
+    title: Marginal-Nonuniform Boosting Open
+    status: "open"
+    evidence: unknown
+    argument_note: "[[marginal-boosting-open|Marginal-Nonuniform Boosting Open]]"
+    summary: "Boosting a marginal-nonuniform weak learner need not preserve a single marginal-dependent polynomial bound."
+    match:
+      status: "open"
+      evidence: unknown
+      ref_keys_all:
+        - schapire1990
+        - benedek1991fixed
+      not:
+        source_axis:
+          properness: improper
+        target_axis:
+          properness: proper
+  - id: marginal-agnostic-hardness-open
+    title: Marginal-Nonuniform Agnostic Hardness Open
+    status: "open"
+    evidence: unknown
+    argument_note: "[[marginal-agnostic-hardness-open|Marginal-Nonuniform Agnostic Hardness Open]]"
+    summary: "Known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds."
+    match:
+      status: "open"
+      evidence: unknown
+      ref_keys_all:
+        - benedek1991fixed
+        - hanneke2025marginalnonuniform
+        - tiegel2023
+  - id: marginal-uniformization-open
+    title: Marginal Uniformization Open
+    status: "open"
+    evidence: unknown
+    argument_note: "[[marginal-uniformization-open|Marginal Uniformization Open]]"
+    summary: "The source allows marginal-dependent polynomial bounds while the target requires one distribution-free polynomial."
+    match:
+      status: "open"
+      evidence: unknown
+      ref_keys_all:
+        - benedek1991fixed
+        - hanneke2025marginalnonuniform
+      ref_keys_none:
+        - tiegel2023
+      not:
+        source_axis:
+          properness: improper
+        target_axis:
+          properness: proper

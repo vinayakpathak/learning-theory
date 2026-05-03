@@ -18,6 +18,13 @@ refs:
   - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
 summary: "Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target."
+family: agnostic-boosting-open
+axis_delta:
+  distribution: distribution-free-to-marginal-nonuniform
+  strength: weak-to-strong
+  realizability: same
+  properness: same
+argument_note: "[[agnostic-boosting-open|Agnostic Boosting Open]]"
 tags:
   - atlas/implication
   - learning/binary-classification

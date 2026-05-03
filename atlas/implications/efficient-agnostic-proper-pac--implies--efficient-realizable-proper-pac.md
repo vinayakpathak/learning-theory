@@ -13,6 +13,13 @@ assumptions: []
 witnesses: []
 refs: []
 summary: "An agnostic proper learner specializes to a realizable proper learner when the optimum benchmark error is zero."
+family: monotone-relaxation
+axis_delta:
+  distribution: same
+  strength: same
+  realizability: agnostic-to-realizable
+  properness: same
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
 tags:
   - atlas/implication
   - learning/binary-classification
