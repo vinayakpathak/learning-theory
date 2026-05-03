@@ -20,6 +20,7 @@ refs:
 summary: "Open: the source has a marginal-dependent polynomial bound, while the target requires one uniform polynomial over all marginals."
 family: marginal-uniformization-open
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: same
   realizability: same

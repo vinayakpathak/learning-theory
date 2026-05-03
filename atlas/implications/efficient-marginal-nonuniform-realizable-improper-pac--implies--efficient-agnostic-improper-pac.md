@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces satisfy the marginal-nonuniform realizable source, but improper agnostic learning of halfspaces is hard under worst-case lattice assumptions."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: same
   realizability: realizable-to-agnostic

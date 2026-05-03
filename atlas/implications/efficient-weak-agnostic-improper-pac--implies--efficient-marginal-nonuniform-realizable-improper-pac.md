@@ -18,6 +18,7 @@ refs:
 summary: "On realizable distributions the weak agnostic learner becomes a weak realizable learner, and Schapire boosting gives strong realizable improper learning before weakening to marginal-nonuniform bounds."
 family: realizable-boosting
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: weak-to-strong
   realizability: agnostic-to-realizable

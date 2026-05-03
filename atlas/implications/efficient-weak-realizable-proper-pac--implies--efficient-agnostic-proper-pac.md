@@ -22,6 +22,7 @@ refs:
 summary: "Conjunctions are weakly realizably properly learnable, but strong proper agnostic learning is hard unless RP = NP."
 family: conjunction-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: realizable-to-agnostic

@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces satisfy the source, but fail the distribution-free agnostic target under worst-case lattice assumptions."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: strong-to-weak
   realizability: realizable-to-agnostic

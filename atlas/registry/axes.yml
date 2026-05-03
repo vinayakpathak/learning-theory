@@ -4,11 +4,26 @@ id: binary-classification-axes
 title: Binary Classification Axis Registry
 domain: binary-classification
 model: pac
-id_prefix: efficient
+id_prefix: null
 id_suffix: pac
-title_prefix: Efficient
+title_prefix: null
 title_suffix: PAC Learning
 axes:
+  - id: resource
+    frontmatter_field: resource
+    label: Resource
+    monotone_relaxation:
+      from: computationally-efficient
+      to: sample-efficient
+    values:
+      - id: computationally-efficient
+        slug_token: efficient
+        title_token: Efficient
+        relaxation_rank: 0
+      - id: sample-efficient
+        slug_token: sample-efficient
+        title_token: Sample-Efficient
+        relaxation_rank: 1
   - id: distribution
     frontmatter_field: distribution
     label: Distribution

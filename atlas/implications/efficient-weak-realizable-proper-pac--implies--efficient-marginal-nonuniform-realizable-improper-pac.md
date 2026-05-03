@@ -18,6 +18,7 @@ refs:
 summary: "Weak realizable proper learning can be boosted to strong realizable improper learning, then weakened to the marginal-nonuniform target."
 family: realizable-boosting
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: weak-to-strong
   realizability: same

@@ -25,7 +25,7 @@ tags:
 
 `open`.
 
-This family records edges where the source allows an improper learner but the target requires a proper learner, and no generic properization theorem is known in the atlas model. Specific classes can separate proper from improper learning, but those separations do not automatically settle every axis combination.
+This family records computationally efficient edges where the source allows an improper learner but the target requires a proper learner, and no generic polynomial-time properization theorem is known in the atlas model. In the sample-efficient layer, unbounded empirical risk minimization removes this as a computational obstruction; those edges are handled by [[sample-complexity-equivalence|Sample-Complexity Equivalence]] unless marginal uniformization is also at issue.
 
 ## References
 

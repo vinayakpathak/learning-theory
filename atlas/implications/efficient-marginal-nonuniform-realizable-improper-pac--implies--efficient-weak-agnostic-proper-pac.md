@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces satisfy the source, but fail weak agnostic learning even with improper hypotheses, so they also fail the proper target."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: strong-to-weak
   realizability: realizable-to-agnostic

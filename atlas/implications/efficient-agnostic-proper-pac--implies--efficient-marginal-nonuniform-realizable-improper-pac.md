@@ -15,6 +15,7 @@ refs: []
 summary: "Proper strong agnostic learning is stronger than the marginal-nonuniform realizable improper target."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: agnostic-to-realizable

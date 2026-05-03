@@ -15,6 +15,7 @@ refs: []
 summary: "This follows by weakening one or more requirements: agnostic to realizable, proper to improper, or strong to weak."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: agnostic-to-realizable

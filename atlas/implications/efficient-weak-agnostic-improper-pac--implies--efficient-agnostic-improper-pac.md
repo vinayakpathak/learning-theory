@@ -26,6 +26,7 @@ refs:
 summary: "Still open under the atlas fixed-additive weak agnostic convention; standard agnostic boosting uses stronger oracle conditions than this edge assumes."
 family: agnostic-boosting-open
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same

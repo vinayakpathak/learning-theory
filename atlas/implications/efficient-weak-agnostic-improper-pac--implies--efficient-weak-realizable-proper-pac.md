@@ -22,6 +22,7 @@ refs:
 summary: "Still open: restricting to realizable distributions gives weak improper learning, but no general weak properization theorem is recorded."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: agnostic-to-realizable

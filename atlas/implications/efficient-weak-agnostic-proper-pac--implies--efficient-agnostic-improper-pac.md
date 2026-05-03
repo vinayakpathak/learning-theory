@@ -28,6 +28,7 @@ refs:
 summary: "Open as an efficient PAC implication: recent agnostic boosting resolves the statistical/oracle version, but not the representation-uniform polynomial-time version recorded here."
 family: agnostic-boosting-open
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same

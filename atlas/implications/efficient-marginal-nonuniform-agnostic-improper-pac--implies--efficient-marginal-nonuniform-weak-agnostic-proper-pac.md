@@ -22,6 +22,7 @@ refs:
 summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: strong-to-weak
   realizability: same

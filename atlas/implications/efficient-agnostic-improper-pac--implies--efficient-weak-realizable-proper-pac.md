@@ -22,6 +22,7 @@ refs:
 summary: "Still open: after restricting to realizable data, the unresolved step is weak properization from an improper learner."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: strong-to-weak
   realizability: agnostic-to-realizable

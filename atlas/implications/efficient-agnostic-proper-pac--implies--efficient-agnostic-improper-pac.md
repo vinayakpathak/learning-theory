@@ -15,6 +15,7 @@ refs: []
 summary: "A proper agnostic learner is also an improper agnostic learner if the output class is allowed to contain the benchmark class."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: same

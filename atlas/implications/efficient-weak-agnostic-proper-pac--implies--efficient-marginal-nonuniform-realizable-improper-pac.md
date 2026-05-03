@@ -18,6 +18,7 @@ refs:
 summary: "Weak agnostic proper learning specializes to weak realizable learning, and Schapire boosting gives the improper strong realizable target."
 family: realizable-boosting
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: weak-to-strong
   realizability: agnostic-to-realizable

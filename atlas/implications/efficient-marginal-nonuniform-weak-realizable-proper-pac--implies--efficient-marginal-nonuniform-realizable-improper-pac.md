@@ -20,6 +20,7 @@ refs:
 summary: "Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target."
 family: marginal-boosting-open
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same

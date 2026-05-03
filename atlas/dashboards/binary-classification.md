@@ -10,7 +10,7 @@ tags:
 
 # Binary Classification Dashboard
 
-This dashboard treats learning notions as nodes and implications as directed edges. It tracks efficient binary PAC notions from the report notes, including realizable/agnostic, proper/improper, strong/weak, and distribution-free versus marginal-nonuniform axes.
+This dashboard treats learning notions as nodes and implications as directed edges. It tracks binary PAC notions from the report notes, including computationally efficient versus sample-efficient, realizable/agnostic, proper/improper, strong/weak, and distribution-free versus marginal-nonuniform axes.
 
 Dataview must be enabled in Obsidian for the tables below to render.
 
@@ -131,10 +131,10 @@ SORT length(rows) DESC
 ## Definitions
 
 ```dataview
-TABLE title AS "Definition", model AS "Model", distribution AS "Distribution", realizability AS "Realizability", properness AS "Properness", strength AS "Strength", resource AS "Resource", characterization_status AS "Characterization", characterization AS "Characterization Note"
+TABLE title AS "Definition", model AS "Model", resource AS "Resource", distribution AS "Distribution", realizability AS "Realizability", properness AS "Properness", strength AS "Strength", characterization_status AS "Characterization", characterization AS "Characterization Note"
 FROM "atlas/definitions"
 WHERE type = "definition" AND domain = "binary-classification"
-SORT model ASC, distribution ASC, strength ASC, realizability DESC, properness DESC
+SORT model ASC, resource ASC, distribution ASC, strength ASC, realizability DESC, properness DESC
 ```
 
 ## Characterization Status
@@ -160,7 +160,7 @@ SORT family ASC, source ASC, target ASC
 ```dataviewjs
 const defs = dv.pages('"atlas/definitions"')
   .where(p => p.type === "definition" && p.domain === "binary-classification")
-  .sort(p => `${p.distribution === "distribution-free" ? "0" : "1"}-${p.strength === "strong" ? "0" : "1"}-${p.realizability}-${p.properness}-${p.title}`)
+  .sort(p => `${p.resource === "computationally-efficient" ? "0" : "1"}-${p.distribution === "distribution-free" ? "0" : "1"}-${p.strength === "strong" ? "0" : "1"}-${p.realizability}-${p.properness}-${p.title}`)
   .array();
 
 const edges = dv.pages('"atlas/implications"')

@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces are efficiently realizably properly learnable, but distribution-free improper agnostic learning of halfspaces is hard under worst-case lattice assumptions."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: realizable-to-agnostic

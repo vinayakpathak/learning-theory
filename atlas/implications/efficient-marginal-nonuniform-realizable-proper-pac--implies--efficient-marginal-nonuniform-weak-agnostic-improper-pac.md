@@ -22,6 +22,7 @@ refs:
 summary: "Open: known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds."
 family: marginal-agnostic-hardness-open
 axis_delta:
+  resource: same
   distribution: same
   strength: strong-to-weak
   realizability: realizable-to-agnostic

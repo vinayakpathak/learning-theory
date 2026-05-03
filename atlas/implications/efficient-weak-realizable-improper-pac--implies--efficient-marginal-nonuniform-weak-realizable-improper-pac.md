@@ -15,6 +15,7 @@ refs: []
 summary: "The target only relaxes requirements already met by the source learner."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: same

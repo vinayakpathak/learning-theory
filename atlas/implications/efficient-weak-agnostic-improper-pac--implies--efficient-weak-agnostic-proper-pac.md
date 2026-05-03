@@ -26,6 +26,7 @@ refs:
 summary: "Still open: this is weak agnostic properization, and the known halfspace lower bound fails the source while fixed-k DNF satisfies both sides."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: same

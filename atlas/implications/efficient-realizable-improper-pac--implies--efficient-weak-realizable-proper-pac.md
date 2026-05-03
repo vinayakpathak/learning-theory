@@ -22,6 +22,7 @@ refs:
 summary: "Still open: Schapire boosting gives improper strong learning from weak learning, but does not give a general weak proper learner from a strong improper learner."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: strong-to-weak
   realizability: same

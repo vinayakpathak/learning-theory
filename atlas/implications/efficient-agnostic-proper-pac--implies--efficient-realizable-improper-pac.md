@@ -15,6 +15,7 @@ refs: []
 summary: "Agnostic proper learning implies realizable proper learning, and proper learning is a special case of improper learning."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: agnostic-to-realizable

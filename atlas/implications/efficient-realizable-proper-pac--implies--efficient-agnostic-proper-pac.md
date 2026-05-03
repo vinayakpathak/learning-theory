@@ -22,6 +22,7 @@ refs:
 summary: "Conjunctions are efficiently properly learnable in the realizable PAC model, but proper agnostic learning is hard unless RP = NP."
 family: conjunction-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: realizable-to-agnostic

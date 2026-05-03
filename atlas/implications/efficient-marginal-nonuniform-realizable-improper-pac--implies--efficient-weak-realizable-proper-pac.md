@@ -22,6 +22,7 @@ refs:
 summary: "Open: this asks for both a uniform weak learner and a proper hypothesis, starting from a marginal-nonuniform improper strong learner."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: strong-to-weak
   realizability: same

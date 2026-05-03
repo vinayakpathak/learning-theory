@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces are efficiently realizably properly learnable, but Tiegel rules out weak agnostic learning even with arbitrary binary hypotheses under worst-case lattice hardness."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: strong-to-weak
   realizability: realizable-to-agnostic

@@ -7,7 +7,7 @@ model: pac
 realizability: agnostic
 properness: improper
 strength: weak
-resource: computational
+resource: computationally-efficient
 distribution: distribution-free
 loss: zero-one
 output_constraint: improper

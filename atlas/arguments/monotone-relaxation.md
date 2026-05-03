@@ -17,8 +17,9 @@ tags:
 
 `true`, trivially.
 
-The four atlas axes have a monotone direction:
+The five atlas axes have a monotone direction:
 
+- computationally efficient learning implies sample-efficient learning,
 - agnostic learning implies realizable learning,
 - proper learning implies improper learning,
 - strong learning implies weak learning,

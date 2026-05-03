@@ -24,6 +24,7 @@ refs:
 summary: "Fixed-k-term DNF is weakly properly learnable, but strong proper realizable learning is hard unless RP = NP."
 family: fixed-k-term-dnf-proper-boosting-separation
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same

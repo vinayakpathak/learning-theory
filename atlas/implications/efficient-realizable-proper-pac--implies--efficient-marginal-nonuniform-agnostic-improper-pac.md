@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: realizable-to-agnostic

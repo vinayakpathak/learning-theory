@@ -22,6 +22,7 @@ refs:
 summary: "The clause-satisfaction lookup class is efficiently agnostically improperly learnable, while proper agnostic learning would imply the forbidden proper realizable learner."
 family: clause-satisfaction-proper-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: realizable-to-agnostic

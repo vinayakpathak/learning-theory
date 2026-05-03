@@ -25,6 +25,31 @@ families:
       status: "true"
       evidence: trivial
       monotone_relaxation: true
+  - id: sample-complexity-equivalence
+    title: Sample-Complexity Equivalence
+    status: "true"
+    evidence: theorem
+    argument_note: "[[sample-complexity-equivalence|Sample-Complexity Equivalence]]"
+    summary: "Once runtime is ignored, the standard sample-complexity characterizations let ERM/boosting move among the binary PAC variants at the same distribution-uniformity level."
+    match:
+      status: "true"
+      evidence: theorem
+      target_axis:
+        resource: sample-efficient
+      ref_keys_all:
+        - blumer1989
+  - id: sample-to-computational-hardness
+    title: Sample-to-Computational Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    argument_note: "[[sample-to-computational-hardness|Sample-to-Computational Hardness]]"
+    witness_note: "[[pseudorandom-function-classes|Pseudorandom Function Classes]]"
+    summary: "Cryptographic concept classes have small sample complexity but cannot be efficiently weakly learned under standard assumptions."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - pseudorandom-function-classes
   - id: realizable-boosting
     title: Realizable Boosting
     status: "true"
@@ -94,8 +119,10 @@ families:
       status: "open"
       evidence: unknown
       source_axis:
+        resource: computationally-efficient
         properness: improper
       target_axis:
+        resource: computationally-efficient
         properness: proper
   - id: agnostic-boosting-open
     title: Agnostic Boosting Open
@@ -162,7 +189,10 @@ families:
       ref_keys_none:
         - tiegel2023
       not:
-        source_axis:
-          properness: improper
-        target_axis:
-          properness: proper
+        all:
+          - source_axis:
+              resource: computationally-efficient
+              properness: improper
+          - target_axis:
+              resource: computationally-efficient
+              properness: proper

@@ -1,0 +1,37 @@
+---
+type: implication
+id: efficient-realizable-proper-pac__implies__sample-efficient-weak-realizable-proper-pac
+source: efficient-realizable-proper-pac
+target: sample-efficient-weak-realizable-proper-pac
+source_note: "[[efficient-realizable-proper-pac|Efficient Realizable Proper PAC Learning]]"
+target_note: "[[sample-efficient-weak-realizable-proper-pac|Sample-Efficient Weak Realizable Proper PAC Learning]]"
+domain: binary-classification
+model: pac
+status: "true"
+evidence: trivial
+assumptions: []
+witnesses: []
+refs: []
+summary: "The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; strength: strong-to-weak)."
+family: monotone-relaxation
+axis_delta:
+  resource: computationally-efficient-to-sample-efficient
+  distribution: same
+  strength: strong-to-weak
+  realizability: same
+  properness: same
+argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
+tags:
+  - atlas/implication
+  - learning/binary-classification
+---
+
+# Efficient Realizable Proper PAC Learning $\Rightarrow$ Sample-Efficient Weak Realizable Proper PAC Learning
+
+## Verdict
+
+`true`, trivially.
+
+The same learner witnesses the target notion, because the target only relaxes requirements already imposed by the source.
+
+

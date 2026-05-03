@@ -22,6 +22,7 @@ refs:
 summary: "The clause-satisfaction lookup class is efficiently agnostically improperly learnable, but any efficient proper realizable learner would put 3-SAT in RP."
 family: clause-satisfaction-proper-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: agnostic-to-realizable

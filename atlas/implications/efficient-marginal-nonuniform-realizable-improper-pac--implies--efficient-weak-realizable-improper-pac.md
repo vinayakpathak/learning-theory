@@ -20,6 +20,7 @@ refs:
 summary: "Open: the target needs a distribution-free polynomial weak learner, while the source only gives strong learning with marginal-dependent polynomial bounds."
 family: marginal-uniformization-open
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: strong-to-weak
   realizability: same

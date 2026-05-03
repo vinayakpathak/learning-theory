@@ -15,6 +15,7 @@ refs: []
 summary: "A proper distribution-free realizable learner is also an improper marginal-nonuniform realizable learner."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: same

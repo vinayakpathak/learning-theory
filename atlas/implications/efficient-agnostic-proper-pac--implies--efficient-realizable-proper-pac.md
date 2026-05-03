@@ -15,6 +15,7 @@ refs: []
 summary: "An agnostic proper learner specializes to a realizable proper learner when the optimum benchmark error is zero."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: agnostic-to-realizable

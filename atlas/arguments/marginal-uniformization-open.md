@@ -23,7 +23,7 @@ tags:
 
 `open`.
 
-This family records edges from marginal-nonuniform nodes to distribution-free nodes. The source may use a polynomial bound depending on the marginal distribution, while the target asks for one polynomial bound uniform over all marginals.
+This family records edges from marginal-nonuniform nodes to distribution-free nodes. The source may use a polynomial bound depending on the marginal distribution, while the target asks for one polynomial bound uniform over all marginals. The obstruction applies in both the computationally efficient and sample-efficient layers.
 
 ## References
 

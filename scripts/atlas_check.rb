@@ -77,7 +77,7 @@ def expected_node_id(combo, axes_registry, axis_ids, axis_slug_tokens)
     tokens << token if token
   end
   tokens << axes_registry['id_suffix']
-  tokens.join('-')
+  tokens.compact.join('-')
 end
 
 def expected_node_title(combo, axes_registry, axis_ids, axis_title_tokens)
@@ -87,7 +87,7 @@ def expected_node_title(combo, axes_registry, axis_ids, axis_title_tokens)
     tokens << token if token
   end
   tokens << axes_registry['title_suffix']
-  tokens.join(' ')
+  tokens.compact.join(' ')
 end
 
 def axis_snapshot(fm, axis_ids, axis_fields)

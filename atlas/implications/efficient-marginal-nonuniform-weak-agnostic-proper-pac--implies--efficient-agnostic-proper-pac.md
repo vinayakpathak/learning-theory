@@ -24,6 +24,7 @@ refs:
 summary: "Fixed-k-term DNF satisfies the source, but fails the distribution-free strong proper target unless RP = NP."
 family: fixed-k-term-dnf-proper-boosting-separation
 axis_delta:
+  resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: weak-to-strong
   realizability: same

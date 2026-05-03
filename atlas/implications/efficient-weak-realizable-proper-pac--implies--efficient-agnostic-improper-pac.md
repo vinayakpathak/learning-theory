@@ -20,6 +20,7 @@ refs:
 summary: "Halfspaces are weakly realizably properly learnable, but strong improper agnostic learning is hard under worst-case lattice assumptions."
 family: halfspace-agnostic-hardness
 axis_delta:
+  resource: same
   distribution: same
   strength: weak-to-strong
   realizability: realizable-to-agnostic

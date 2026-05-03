@@ -7,7 +7,7 @@ model: pac
 realizability: realizable
 properness: proper
 strength: strong
-resource: computational
+resource: computationally-efficient
 distribution: distribution-free
 loss: zero-one
 output_constraint: proper

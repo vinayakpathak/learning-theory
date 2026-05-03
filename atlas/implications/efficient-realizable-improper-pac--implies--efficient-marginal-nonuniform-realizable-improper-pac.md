@@ -15,6 +15,7 @@ refs: []
 summary: "The target is the same realizable improper guarantee with the distribution-free polynomial bound relaxed to a marginal-dependent one."
 family: monotone-relaxation
 axis_delta:
+  resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: same

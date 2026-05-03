@@ -22,6 +22,7 @@ refs:
 summary: "Still open: this is the pure weak realizable properization problem."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: same
   realizability: same

@@ -26,6 +26,7 @@ refs:
 summary: "Still open: this asks for weak agnostic properization from a strong agnostic improper learner."
 family: properization-open
 axis_delta:
+  resource: same
   distribution: same
   strength: strong-to-weak
   realizability: same
