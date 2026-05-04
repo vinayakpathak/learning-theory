@@ -93,6 +93,7 @@ Keep frontmatter values plain and query-friendly. Put rendered mathematical nota
 Install and enable the Dataview plugin to render the dashboard tables. The main dashboard is:
 
 - [[dashboards/binary-classification|Binary Classification Dashboard]]
+- [[dashboards/all-edges|All Edges Dashboard]]
 - [[dashboards/open-edges|Open Edges Dashboard]]
 
 ## Validation

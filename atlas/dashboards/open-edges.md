@@ -6,7 +6,7 @@ domain: binary-classification
 filter_resource: samples
 filter_distribution: distribution-free
 filter_strength:
-filter_realizability:
+filter_realizability: agnostic
 filter_properness:
 tags:
   - atlas/dashboard

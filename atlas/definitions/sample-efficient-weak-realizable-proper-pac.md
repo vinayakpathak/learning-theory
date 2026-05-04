@@ -18,9 +18,13 @@ characterization: "Finite VC dimension characterizes the corresponding binary di
 characterization_ref_keys:
   - valiant1984
   - blumer1989
+  - schapire1990
+  - freund1995boosting
 characterization_refs:
   - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
   - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
+  - "[Freund 1995](https://doi.org/10.1006/inco.1995.1136)"
 tags:
   - atlas/definition
   - learning/binary-classification
@@ -42,6 +46,8 @@ Here $\gamma$ is an inverse-polynomial advantage over random guessing, fixed by 
 
 The learner is sample-efficient when the number of samples is bounded by one polynomial in the relevant representation size, the inverse weak advantage parameter, and $\log(1/\delta)$. No polynomial running-time requirement is imposed; the learner may use unbounded computation, such as exhaustive empirical risk minimization.
 
+This weak notion sits on the boosting boundary: classical weak-to-strong boosting turns such an advantage into arbitrary accuracy when the final vote may be improper, while the sample-only atlas uses finite-sample characterizations to recover strong guarantees with unrestricted computation.
+
 ## Characterization Status
 
 `known`: Finite VC dimension characterizes the corresponding binary distribution-free sample-complexity notion; runtime is unrestricted.
@@ -56,6 +62,8 @@ Negative examples are classes with no finite-sample control. [[unrestricted-labe
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)
 - [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
+- [Freund 1995](https://doi.org/10.1006/inco.1995.1136)
 
 ## Outgoing Implications
 

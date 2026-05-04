@@ -18,9 +18,13 @@ characterization: "Finite VC dimension characterizes the corresponding binary di
 characterization_ref_keys:
   - valiant1984
   - blumer1989
+  - bendavid2001
+  - kalai2008agnosticboosting
 characterization_refs:
   - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
   - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
+  - "[Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)"
 tags:
   - atlas/definition
   - learning/binary-classification
@@ -44,6 +48,8 @@ where $\beta<1/2$ is a fixed additive weak-agnostic tolerance.
 
 The learner is sample-efficient when the number of samples is bounded by one polynomial in the relevant representation size, the inverse weak advantage parameter, and $\log(1/\delta)$. No polynomial running-time requirement is imposed; the learner may use unbounded computation, such as exhaustive empirical risk minimization.
 
+This is the Ben-David--Long--Mansour style additive weak agnostic notion. Agnostic boosting studies how to turn weak agnostic access into strong excess-error guarantees; in the sample-only atlas, the conversion is justified through finite-sample characterizations and unrestricted ERM rather than a polynomial-time black-box booster.
+
 ## Characterization Status
 
 `known`: Finite VC dimension characterizes the corresponding binary distribution-free sample-complexity notion; runtime is unrestricted.
@@ -58,6 +64,8 @@ Negative examples are classes with no finite-sample control. [[unrestricted-labe
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)
 - [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
+- [Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)
 
 ## Outgoing Implications
 

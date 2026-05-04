@@ -21,12 +21,16 @@ characterization_ref_keys:
   - benedek1991fixed
   - bendavid1995parameterization
   - hanneke2025marginalnonuniform
+  - schapire1990
+  - freund1995boosting
 characterization_refs:
   - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
   - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
   - "[Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
+  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
+  - "[Freund 1995](https://doi.org/10.1006/inco.1995.1136)"
 tags:
   - atlas/definition
   - learning/binary-classification
@@ -48,6 +52,8 @@ Here $\gamma$ is an inverse-polynomial advantage over random guessing, fixed by 
 
 For every marginal $P$, there is a polynomial $p_P$ bounding the number of samples as a function of the relevant representation size, the inverse weak advantage parameter, and $\log(1/\delta)$. The polynomial may depend on $P$, but not on the target concept, conditional labeling rule, requested accuracy, or confidence parameter. No polynomial running-time requirement is imposed.
 
+This weak notion sits on the boosting boundary: classical weak-to-strong boosting turns such an advantage into arbitrary accuracy when the final vote may be improper, while the sample-only atlas uses finite-sample characterizations to recover strong guarantees with unrestricted computation.
+
 ## Characterization Status
 
 `partial`: This is the marginal-nonuniform sample-complexity analogue: one learner works for all marginals, but the polynomial sample bound may depend on the marginal distribution.
@@ -65,6 +71,8 @@ The computational boundary remains visible through [[pseudorandom-function-class
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
 - [Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)
 - [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
+- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
+- [Freund 1995](https://doi.org/10.1006/inco.1995.1136)
 
 ## Outgoing Implications
 

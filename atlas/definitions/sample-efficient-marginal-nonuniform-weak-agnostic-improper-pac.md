@@ -21,12 +21,16 @@ characterization_ref_keys:
   - benedek1991fixed
   - bendavid1995parameterization
   - hanneke2025marginalnonuniform
+  - bendavid2001
+  - kalai2008agnosticboosting
 characterization_refs:
   - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
   - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
   - "[Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
+  - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
+  - "[Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)"
 tags:
   - atlas/definition
   - learning/binary-classification
@@ -50,6 +54,8 @@ where $\beta<1/2$ is a fixed additive weak-agnostic tolerance.
 
 For every marginal $P$, there is a polynomial $p_P$ bounding the number of samples as a function of the relevant representation size, the inverse weak advantage parameter, and $\log(1/\delta)$. The polynomial may depend on $P$, but not on the target concept, conditional labeling rule, requested accuracy, or confidence parameter. No polynomial running-time requirement is imposed.
 
+This is the Ben-David--Long--Mansour style additive weak agnostic notion. Agnostic boosting studies how to turn weak agnostic access into strong excess-error guarantees; in the sample-only atlas, the conversion is justified through finite-sample characterizations and unrestricted ERM rather than a polynomial-time black-box booster.
+
 ## Characterization Status
 
 `partial`: This is the marginal-nonuniform sample-complexity analogue: one learner works for all marginals, but the polynomial sample bound may depend on the marginal distribution.
@@ -67,6 +73,8 @@ The computational boundary remains visible through [[pseudorandom-function-class
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
 - [Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)
 - [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
+- [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
+- [Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)
 
 ## Outgoing Implications
 

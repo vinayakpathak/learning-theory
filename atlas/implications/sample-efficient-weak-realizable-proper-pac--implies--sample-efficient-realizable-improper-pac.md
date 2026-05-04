@@ -14,10 +14,12 @@ witnesses: []
 ref_keys:
   - valiant1984
   - blumer1989
+  - freund1995boosting
 refs:
   - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
   - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
-summary: "Ignoring runtime, standard sample-complexity characterizations and unbounded ERM give the target sample-efficient guarantee."
+  - "[Freund 1995](https://doi.org/10.1006/inco.1995.1136)"
+summary: "Ignoring runtime, VC/ERM sample-complexity equivalences give the strong target; boosting supplies the weak-to-strong reference point."
 family: sample-complexity-equivalence
 axis_delta:
   resource: same
@@ -41,9 +43,13 @@ tags:
 
 **Goal.** Show that the source guarantee is enough for [[sample-efficient-realizable-improper-pac|Sample-Efficient Realizable Improper PAC Learning]] once polynomial running time is not required.
 
-**Why the source gives sample control.** The source gives a polynomial sample bound at the relevant distribution-uniformity level. In the sample-only setting, the learner may use exhaustive empirical risk minimization over the benchmark class, so computational hardness of ERM is irrelevant.
+**Weak-to-strong route.** The source gives a polynomial weak sample guarantee, meaning accuracy bounded away from random guessing. Classical boosting, such as Freund's boost-by-majority, is the algorithmic weak-to-strong conversion in the realizable case. For this sample-only implication, the safer route is the finite-sample characterization: a binary class that is weakly learnable with polynomial samples has the same finite-dimensional sample control needed for strong PAC learning, and runtime is unrestricted.
 
-**Why the target follows.** For binary PAC learning, the finite-sample characterizations underlying VC theory allow realizable, agnostic, weak, strong, proper, and improper sample guarantees to be converted at the same distribution-uniformity level. If the target is marginal-nonuniform, a distribution-free sample bound is also valid marginal-by-marginal.
+**Realizable conversion.** On realizable labeled distributions, the weak source already gives accuracy below $1/2$. The finite-sample characterization then upgrades this to the usual strong realizable PAC guarantee with arbitrary requested $\varepsilon$; equivalently, this is the sample-only shadow of realizable boosting. Runtime is unrestricted, so proper targets can be handled by exhaustive ERM over $\mathcal C$, and improper targets may use the same proper output.
+
+**Distribution bookkeeping.** If the target is marginal-nonuniform, a distribution-free sample bound can be read marginal-by-marginal. If a marginal-nonuniform source must imply a distribution-free target, Hanneke, Moran, and Thiessen's trichotomy supplies the extra step: polynomial marginal-dependent weak rates force finite VC dimension, after which standard distribution-free VC bounds apply. If both source and target are marginal-nonuniform, the same fixed-marginal sample-complexity reasoning is applied with the polynomial allowed to depend on that marginal.
+
+**Why the target follows.** With finite sample control in hand, standard VC and fixed-marginal uniform-convergence bounds give the requested strong realizable or agnostic guarantee. Because runtime is unrestricted, the learner may choose an empirical risk minimizer in $\mathcal C$; that handles proper targets, and improper targets may use the same proper hypothesis.
 
 **Conclusion.** The implication is true as a sample-complexity statement. It should not be read as giving a polynomial-time algorithm.
 
@@ -51,3 +57,4 @@ tags:
 
 - [Valiant 1984](https://doi.org/10.1145/1968.1972)
 - [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Freund 1995](https://doi.org/10.1006/inco.1995.1136)
