@@ -23,7 +23,9 @@ tags:
 
 `open`.
 
-This family records edges from marginal-nonuniform nodes to distribution-free nodes. The source may use a polynomial bound depending on the marginal distribution, while the target asks for one polynomial bound uniform over all marginals. The obstruction applies in both the computationally efficient and sample-efficient layers.
+This family records computational edges from marginal-nonuniform nodes to distribution-free nodes. The source may use a polynomial running-time bound depending on the marginal distribution, while the target asks for one polynomial-time bound uniform over all marginals.
+
+The analogous sample-only polynomial-rate question is no longer recorded as open here. Hanneke, Moran, and Thiessen's marginal-nonuniform trichotomy implies that polynomial marginal-nonuniform sample rates force finite VC dimension, and standard VC theory then gives the distribution-free sample-efficient nodes.
 
 ## References
 

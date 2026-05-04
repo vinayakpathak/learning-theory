@@ -13,11 +13,13 @@ assumptions: []
 witnesses: []
 ref_keys:
   - schapire1990
+  - freund1995boosting
   - benedek1991fixed
 refs:
   - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
+  - "[Freund 1995](https://doi.org/10.1006/inco.1995.1136)"
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
-summary: "Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target."
+summary: "Open: Schapire/Freund boosting calls the weak learner on reweighted marginals, and the atlas source gives no original-marginal polynomial controlling target- and history-dependent reweightings."
 family: marginal-boosting-open
 axis_delta:
   resource: same
@@ -37,19 +39,24 @@ tags:
 
 `open`.
 
-Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target.
+Open: Schapire/Freund boosting calls the weak learner on reweighted marginals, and the atlas source gives no original-marginal polynomial controlling those target- and history-dependent reweightings.
 
 ## Proof Status
 
 **Goal.** Decide whether the weak marginal-nonuniform source can be boosted to the strong target.
 
-**Obstacle.** Standard boosting calls the weak learner on reweighted distributions. In the marginal-nonuniform model, the polynomial bound may depend on each reweighted marginal. The source does not guarantee one polynomial, depending only on the original marginal, that controls all reweighted calls needed for arbitrary final accuracy.
+**Required construction.** Starting from one weak learner $A$, we would need a strong learner $B$ such that, for every original marginal $P$, one polynomial $q_P(s,1/\varepsilon,\log(1/\delta))$ bounds all samples and running time on realizable data drawn from $P$.
 
-**Known context.** Distribution-free weak realizable learning boosts to strong improper realizable learning, and agnostic boosting has its own oracle requirements. Those theorems do not directly handle this marginal-dependent runtime convention.
+**Obstacle.** Schapire-style boosting works in the distribution-free model because the weak guarantee is uniform over every distribution created by filtering or reweighting the sample stream. In the marginal-nonuniform source, applying the weak learner to a reweighted marginal $Q_t$ only gives a polynomial $p_{Q_t}$ and advantage $\gamma_{Q_t}$ for that induced marginal. The induced $Q_t$ can depend on $P$, the target concept, earlier hypotheses, and the booster's randomness.
+
+**Missing uniformity.** To prove the edge true by boosting, one would need an additional statement saying that, for each original marginal $P$, every boosting-generated $Q_t$ has $p_{Q_t}$ and $1/\gamma_{Q_t}$ bounded by one polynomial depending only on $P$. The atlas source definition does not include such a modulus.
+
+**Near miss.** Freund's boost-by-majority theorem studies distribution-dependent weak accuracy, but it assumes quantitative control of how that accuracy behaves on the filtered distributions used by the booster. This is close in spirit, but it is stronger than the bare marginal-nonuniform promise recorded here.
 
 **Conclusion.** The edge remains open unless additional uniform control over the weak learner's marginal-dependent polynomials is assumed.
 
 ## References
 
 - [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
+- [Freund 1995](https://doi.org/10.1006/inco.1995.1136)
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)

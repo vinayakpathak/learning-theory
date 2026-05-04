@@ -56,7 +56,7 @@ For every marginal $P$, there is a polynomial $p_P$ bounding the number of sampl
 
 ## Boundary Examples
 
-Every distribution-free sample-efficient class also satisfies this marginal-nonuniform relaxation. The possible separation in the reverse direction is tracked by [[marginal-uniformization-open|Marginal Uniformization Open]], because the polynomial sample bound here may depend on the marginal distribution.
+Every distribution-free sample-efficient class also satisfies this marginal-nonuniform relaxation. Conversely, at the polynomial-rate binary sample-complexity level, Hanneke, Moran, and Thiessen's marginal-nonuniform trichotomy rules out a separation: polynomial marginal-dependent sample rates force finite VC dimension, so the corresponding distribution-free sample-efficient nodes follow by standard VC theory.
 
 The computational boundary remains visible through [[pseudorandom-function-classes|Pseudorandom Function Classes]], which are sample-efficient but not computationally efficiently weakly learnable under standard cryptographic assumptions. As an absolute nonboundary failure, [[unrestricted-labelings|Unrestricted Labelings]] fail even fixed-marginal finite-sample learnability under suitable nonatomic marginals.
 

@@ -15,11 +15,15 @@ ref_keys:
   - schapire1990
   - pitt1988
   - khot2008dnf
+  - blumer1989
+  - karp1972
 refs:
   - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
   - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
   - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Still open: this is the pure weak realizable properization problem."
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Karp 1972](https://doi.org/10.1007/978-1-4684-2001-2_9)"
+summary: "Open: no known generic properization turns an improper inverse-polynomial weak learner into a proper one; fixed-k DNF, lookup-class hardness, and Khot-Saket constant-advantage DNF hardness do not settle this weak target."
 family: properization-open
 axis_delta:
   resource: same
@@ -39,7 +43,7 @@ tags:
 
 `open`.
 
-Still open: this is the pure weak realizable properization problem.
+Open: no known generic properization turns an improper inverse-polynomial weak learner into a proper one. The closest atlas witnesses remain near misses for this weak target.
 
 ## Proof Status
 
@@ -48,6 +52,8 @@ Still open: this is the pure weak realizable properization problem.
 **Why this is not settled by boosting.** Schapire boosting converts weak hypotheses into a strong improper vote. The construction is deliberately representation-independent, so it does not preserve the final-output class $\mathcal C$.
 
 **Why the standard DNF separation does not settle it.** Fixed-$k$ term DNF is weakly properly learnable: the learner searches over constants and disjunctions of at most $k$ literals. Therefore that class separates weak proper learning from strong proper learning, but not weak improper from weak proper learning.
+
+**Why the clause-satisfaction lookup class does not settle it.** The [[clause-satisfaction-lookup-class|Clause-Satisfaction Lookup Class]] separates improper learning from strong proper realizable learning: an improper learner can memorize the polynomial-size clause domain, while a highly accurate proper learner would recover a satisfying assignment. That reduction needs enough accuracy to force all sampled clauses correct. The weak target here only asks for error below $1/2$ by an inverse-polynomial margin, so the recorded SAT reduction does not rule out weak proper learning for this class.
 
 **Second-pass check: constant-advantage DNF hardness.** Khot and Saket show that, assuming $\mathrm{NP}\not\subseteq\mathrm{RP}$, two-term DNF cannot be learned by any fixed number of DNF terms with constant advantage over random guessing. This is the closest known obstruction to weak properization for the DNF example.
 
@@ -60,3 +66,5 @@ Still open: this is the pure weak realizable properization problem.
 - [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
 - [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
 - [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Karp 1972](https://doi.org/10.1007/978-1-4684-2001-2_9)

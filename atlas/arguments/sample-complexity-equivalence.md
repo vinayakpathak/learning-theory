@@ -31,7 +31,9 @@ Once running time is ignored, empirical risk minimization over the benchmark cla
 
 For weak-to-strong directions, the sample-only setting can also use the standard finite-sample characterizations instead of asking for a computationally efficient boosting procedure. In the marginal-nonuniform setting, the same reasoning is applied at a fixed marginal, with the polynomial allowed to depend on that marginal.
 
-This argument does not settle marginal-to-distribution-free uniformization: a learner whose polynomial bound may depend on the marginal distribution need not come with one polynomial that works uniformly over all marginals. Those edges remain in [[marginal-uniformization-open|Marginal Uniformization Open]].
+The marginal-to-distribution-free step is also settled at the sample-only polynomial-rate level. Hanneke, Moran, and Thiessen's trichotomy says that binary classes with finite VC dimension have linear marginal-nonuniform rates, while classes with infinite VC dimension require arbitrarily slow marginal-nonuniform rates. Thus a polynomial marginal-nonuniform sample guarantee forces finite VC dimension, and standard VC theory gives the distribution-free sample-efficient target.
+
+This argument does not settle computational marginal-to-distribution-free uniformization. A learner whose running-time polynomial may depend on the marginal distribution need not come with one polynomial-time bound that works uniformly over all marginals. Those computational edges remain in [[marginal-uniformization-open|Marginal Uniformization Open]].
 
 ## References
 

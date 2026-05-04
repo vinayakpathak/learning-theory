@@ -30,7 +30,7 @@ families:
     status: "true"
     evidence: theorem
     argument_note: "[[sample-complexity-equivalence|Sample-Complexity Equivalence]]"
-    summary: "Once runtime is ignored, the standard sample-complexity characterizations let ERM/boosting move among the binary PAC variants at the same distribution-uniformity level."
+    summary: "Once runtime is ignored, VC sample-complexity characterizations and the marginal-nonuniform trichotomy collapse the binary sample-efficient PAC variants."
     match:
       status: "true"
       evidence: theorem
@@ -179,10 +179,12 @@ families:
     status: "open"
     evidence: unknown
     argument_note: "[[marginal-uniformization-open|Marginal Uniformization Open]]"
-    summary: "The source allows marginal-dependent polynomial bounds while the target requires one distribution-free polynomial."
+    summary: "The source allows marginal-dependent polynomial running-time bounds while the target requires one distribution-free polynomial-time learner."
     match:
       status: "open"
       evidence: unknown
+      target_axis:
+        resource: computationally-efficient
       ref_keys_all:
         - benedek1991fixed
         - hanneke2025marginalnonuniform
