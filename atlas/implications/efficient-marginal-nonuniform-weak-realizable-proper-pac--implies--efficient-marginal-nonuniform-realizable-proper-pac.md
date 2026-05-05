@@ -7,25 +7,29 @@ source_note: "[[efficient-marginal-nonuniform-weak-realizable-proper-pac|Efficie
 target_note: "[[efficient-marginal-nonuniform-realizable-proper-pac|Efficient Marginal-Nonuniform Realizable Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - length-preserving one-way functions exist
+witnesses:
+  - one-way-image-coordinate-weak-handle-class
 ref_keys:
-  - schapire1990
-  - benedek1991fixed
+  - kearns1994cryptographic
+  - hastad1999prg
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
-summary: "Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target."
-family: marginal-boosting-open
+  - "[Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)"
+  - "[Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)"
+summary: "False under one-way functions: weak handles give marginal-nonuniform weak proper learning, but fixed-marginal strong proper learning would invert the one-way function."
+family: one-way-image-coordinate-weak-handle-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same
   properness: same
-argument_note: "[[marginal-boosting-open|Marginal-Nonuniform Boosting Open]]"
+argument_note: "[[one-way-image-coordinate-weak-handle-hardness|One-Way Image Coordinate Weak-Handle Hardness]]"
+witness_note: "[[one-way-image-coordinate-weak-handle-class|One-Way Image Coordinate Weak-Handle Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -35,21 +39,19 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, assuming length-preserving one-way functions exist.
 
-Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target.
+Adding proper weak handles to the one-way image-coordinate class gives marginal-nonuniform weak proper learning, but strong proper learning under the fixed coordinate marginal would invert the one-way function.
 
 ## Proof Status
 
-**Goal.** Decide whether the weak marginal-nonuniform source can be boosted to the strong target.
+Use the [[one-way-image-coordinate-weak-handle-class|one-way image-coordinate weak-handle class]]. It consists of the image-coordinate seed concepts, the two constants, and every singleton-positive-atom concept.
 
-**Obstacle.** Standard boosting calls the weak learner on reweighted distributions. In the marginal-nonuniform model, the polynomial bound may depend on each reweighted marginal. The source does not guarantee one polynomial, depending only on the original marginal, that controls all reweighted calls needed for arbitrary final accuracy.
+**Weak source.** For a length-$n$ image-coordinate target, let $M$ be the positive mass. The all-zero concept has error $M$, the all-one concept has error $1-M$, and a singleton on a heaviest positive atom has error at most $M(1-1/n)$. The best of these handles has error at most $1/2-\Omega(1/n)$. Samples and validation find such a handle in polynomial time. The constant and singleton targets are weakly learnable by the same strategy.
 
-**Known context.** Distribution-free weak realizable learning boosts to strong improper realizable learning, and agnostic boosting has its own oracle requirements. Those theorems do not directly handle this marginal-dependent runtime convention.
-
-**Conclusion.** The edge remains open unless additional uniform control over the weak learner's marginal-dependent polynomials is assumed.
+**Strong target failure.** Under the fixed coordinate marginal with length-$n$ mass $\mu_n=6/(\pi^2n^2)$, accuracy $\mu_n/(3n)$ against a length-$n$ image-coordinate target excludes all added handles and forces a seed hypothesis with the same one-way image. A strong marginal-nonuniform proper learner would therefore invert a length-preserving one-way function.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
+- [Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)
+- [Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)

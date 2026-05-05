@@ -23,7 +23,7 @@ refs:
   - "[Gavinsky 2003](https://www.jmlr.org/papers/v4/gavinsky03a.html)"
   - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
-summary: "Still open under the atlas fixed-additive weak agnostic convention; standard agnostic boosting uses stronger oracle conditions than this edge assumes."
+summary: "Still open: no known booster simultaneously uses only observable reweightings, accepts fixed-additive weak slack, and runs in representation-uniform polynomial time."
 family: agnostic-boosting-open
 axis_delta:
   resource: same
@@ -61,9 +61,11 @@ $$
 $$
 Thus the source gives a fixed-slack approximation to the best correlation in $\mathcal C$. Ben-David, Long, and Mansour, Gavinsky, Kalai, Mansour, and Verbin, and more recent work of Ghai and Singh and da Cunha et al. give agnostic boosting theorems for weak-oracle formulations designed for iterative boosting.
 
-**Why this still does not settle the edge.** These results are very close to the desired statement, but not a clean polynomial-time implication for this atlas node. Ghai and Singh assume an oracle interface tailored to their boosting procedure, not merely a single fixed-additive PAC learner. The da Cunha et al. result removes much of the statistical obstacle for broad nontrivial weak learners, but its generic running time is polynomial in the sample size only when the weak-learner parameters are fixed; it is not stated as a black-box polynomial-time reduction in the representation size and the weak learner's own polynomial bounds.
+**Why this still does not settle the edge.** These results are very close to the desired statement, but not a clean polynomial-time implication for this atlas node. Observable efficient boosters such as Ghai--Singh need weak-oracle slack that shrinks with the target excess error. The da Cunha et al. result handles fixed nontrivial slack, but its generic running time is polynomial in the sample size only when the weak-learner parameters are fixed; it is not stated as a black-box polynomial-time reduction in the representation size and the weak learner's own polynomial bounds.
 
-**Conclusion.** The implication remains open for the atlas convention. The obstacle is now mainly computational and definitional: a proof would need to show that the fixed-additive weak learner can be used with enough quantitative control to reach arbitrary excess error in polynomial time.
+**Clean-subset obstruction.** One attempted route is to replace the expensive enumeration in da Cunha et al. by direct calls to the atlas weak learner. The useful distributions in that proof are tied to a near-optimal comparator's clean subset, which is not observable from arbitrary agnostic samples. Known observable reweighting or relabeling variants do not simultaneously tolerate the atlas fixed-additive slack and achieve arbitrary $\operatorname{opt}+\varepsilon$.
+
+**Conclusion.** The implication remains open for the atlas convention. The obstacle is now mainly computational and definitional: a proof would need to show that the fixed-additive weak learner can be used through observable distributions with enough quantitative control to reach arbitrary excess error in polynomial time.
 
 ## References
 

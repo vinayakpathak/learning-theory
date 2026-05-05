@@ -73,6 +73,8 @@ after choosing the sample size large enough. So, if the weak learner is treated 
 
 **Counterexample route checked.** Halfspaces would be the natural target-hard candidate, because Tiegel rules out even improper agnostic learning of halfspaces under worst-case lattice assumptions. But Tiegel's result also rules out the weak agnostic source for halfspaces: no efficient algorithm can output any binary hypothesis with nontrivial advantage even when the optimum halfspace error is tiny. Thus halfspaces cannot witness this implication's failure.
 
+**Depth-4 obstruction.** A focused search found sample-complexity and oracle lower bounds for agnostic boosting, but not a lower bound proving that the $m_0$ or dual-VC dependence in current algorithms must appear in the exponent. Thus the obstruction looks like a missing fully polynomial boosting theorem, not a known impossibility.
+
 **Conclusion.** The best current classification is: true for the statistical/oracle or fixed-parameter boosting formulation, still open for the efficient PAC implication as stated here. To mark the edge true, one would need a boosting algorithm with polynomial dependence on the representation size and the weak learner's own polynomial bounds. To mark it false, one would need a class with efficient fixed-additive weak agnostic proper learning but hard strong agnostic improper learning.
 
 ## References

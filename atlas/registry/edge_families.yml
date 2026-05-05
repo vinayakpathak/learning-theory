@@ -14,11 +14,16 @@ allowed_status_evidence:
     - conditional-counterexample
   "open":
     - unknown
+allowed_result_origins:
+  - known
+  - new
+  - unclear
 families:
   - id: monotone-relaxation
     title: Monotone Relaxation
     status: "true"
     evidence: trivial
+    result_origin: "known"
     argument_note: "[[monotone-relaxation|Monotone Relaxation]]"
     summary: "The target only relaxes axis requirements already met by the source."
     match:
@@ -29,6 +34,7 @@ families:
     title: Sample-Complexity Equivalence
     status: "true"
     evidence: theorem
+    result_origin: "known"
     argument_note: "[[sample-complexity-equivalence|Sample-Complexity Equivalence]]"
     summary: "Once runtime is ignored, VC sample-complexity characterizations and the marginal-nonuniform trichotomy collapse the binary sample-efficient PAC variants."
     match:
@@ -42,6 +48,7 @@ families:
     title: Sample-to-Computational Hardness
     status: "false"
     evidence: conditional-counterexample
+    result_origin: "known"
     argument_note: "[[sample-to-computational-hardness|Sample-to-Computational Hardness]]"
     witness_note: "[[pseudorandom-function-classes|Pseudorandom Function Classes]]"
     summary: "Cryptographic concept classes have small sample complexity but cannot be efficiently weakly learned under standard assumptions."
@@ -54,6 +61,7 @@ families:
     title: Realizable Boosting
     status: "true"
     evidence: theorem
+    result_origin: "known"
     argument_note: "[[realizable-boosting|Realizable Boosting]]"
     summary: "Schapire boosting converts weak realizable learning into strong improper realizable learning."
     match:
@@ -61,10 +69,30 @@ families:
       evidence: theorem
       ref_keys_all:
         - schapire1990
+  - id: low-noise-weak-agnostic-robustification
+    title: Low-Noise Weak Agnostic Robustification
+    status: "true"
+    evidence: theorem
+    result_origin: "unclear"
+    argument_note: "[[low-noise-weak-agnostic-robustification|Low-Noise Weak Agnostic Robustification]]"
+    summary: "Distribution-free realizable learning gives marginal-nonuniform weak agnostic improper learning with an inverse-polynomial gap."
+    match:
+      status: "true"
+      evidence: theorem
+      source_axis:
+        resource: computationally-efficient
+        realizability: realizable
+      target_axis:
+        resource: computationally-efficient
+        distribution: marginal-nonuniform
+        realizability: agnostic
+        properness: improper
+        strength: weak
   - id: halfspace-agnostic-hardness
     title: Halfspace Agnostic Hardness
     status: "false"
     evidence: conditional-counterexample
+    result_origin: "known"
     argument_note: "[[halfspace-agnostic-hardness|Halfspace Agnostic Hardness]]"
     witness_note: "[[halfspaces|Halfspaces]]"
     summary: "Halfspaces give agnostic hardness separations under worst-case lattice assumptions."
@@ -77,6 +105,7 @@ families:
     title: Clause-Satisfaction Proper Hardness
     status: "false"
     evidence: conditional-counterexample
+    result_origin: "unclear"
     argument_note: "[[clause-satisfaction-proper-hardness|Clause-Satisfaction Proper Hardness]]"
     witness_note: "[[clause-satisfaction-lookup-class|Clause-Satisfaction Lookup Class]]"
     summary: "The lookup class separates improper learning from proper learning under NP not subset RP."
@@ -89,6 +118,7 @@ families:
     title: Fixed-k-Term DNF Proper Boosting Separation
     status: "false"
     evidence: conditional-counterexample
+    result_origin: "known"
     argument_note: "[[fixed-k-term-dnf-proper-boosting-separation|Fixed-k-Term DNF Proper Boosting Separation]]"
     witness_note: "[[fixed-k-term-DNF|Fixed-k-Term DNF]]"
     summary: "Fixed-k-term DNF separates weak proper learning from strong proper learning under RP != NP."
@@ -97,10 +127,50 @@ families:
       evidence: conditional-counterexample
       witnesses_all:
         - fixed-k-term-DNF
+  - id: pcp-active-slice-weak-proper-hardness
+    title: PCP Active-Slice Weak Proper Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    result_origin: "unclear"
+    argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
+    witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
+    summary: "A PCP active-slice lookup class is weakly improperly learnable, but weak proper learning would put NP in RP."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - pcp-active-slice-lookup-class
+  - id: one-way-image-coordinate-proper-hardness
+    title: One-Way Image Coordinate Proper Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    result_origin: "unclear"
+    argument_note: "[[one-way-image-coordinate-proper-hardness|One-Way Image Coordinate Proper Hardness]]"
+    witness_note: "[[one-way-image-coordinate-class|One-Way Image Coordinate Class]]"
+    summary: "One-way image-coordinate concepts are learnable improperly, but fixed-marginal proper learning would invert a one-way function."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - one-way-image-coordinate-class
+  - id: one-way-image-coordinate-weak-handle-hardness
+    title: One-Way Image Coordinate Weak-Handle Hardness
+    status: "false"
+    evidence: conditional-counterexample
+    result_origin: "unclear"
+    argument_note: "[[one-way-image-coordinate-weak-handle-hardness|One-Way Image Coordinate Weak-Handle Hardness]]"
+    witness_note: "[[one-way-image-coordinate-weak-handle-class|One-Way Image Coordinate Weak-Handle Class]]"
+    summary: "Weak proper handles give marginal-nonuniform weak learning, but strong proper learning would invert a one-way function."
+    match:
+      status: "false"
+      evidence: conditional-counterexample
+      witnesses_all:
+        - one-way-image-coordinate-weak-handle-class
   - id: conjunction-agnostic-hardness
     title: Conjunction Agnostic Hardness
     status: "false"
     evidence: conditional-counterexample
+    result_origin: "known"
     argument_note: "[[conjunction-agnostic-hardness|Conjunction Agnostic Hardness]]"
     witness_note: "[[conjunctions|Conjunctions]]"
     summary: "Conjunctions separate realizable proper learning from agnostic proper learning under RP != NP."
@@ -174,6 +244,19 @@ families:
         - benedek1991fixed
         - hanneke2025marginalnonuniform
         - tiegel2023
+  - id: full-support-marginal-uniformization
+    title: Full-Support Marginal Uniformization
+    status: "true"
+    evidence: theorem
+    result_origin: "unclear"
+    argument_note: "[[full-support-marginal-uniformization|Full-Support Marginal Uniformization]]"
+    summary: "A full-support reference marginal converts a single marginal-nonuniform learner's pathwise resource bound into one distribution-free polynomial bound."
+    match:
+      status: "true"
+      evidence: theorem
+      ref_keys_all:
+        - bendavid1995parameterization
+        - hanneke2025marginalnonuniform
   - id: marginal-uniformization-open
     title: Marginal Uniformization Open
     status: "open"

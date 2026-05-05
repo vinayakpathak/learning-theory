@@ -7,31 +7,31 @@ source_note: "[[efficient-weak-agnostic-improper-pac|Efficient Weak Agnostic Imp
 target_note: "[[efficient-weak-agnostic-proper-pac|Efficient Weak Agnostic Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - pcp-active-slice-lookup-class
 ref_keys:
   - bendavid2001
-  - tiegel2023
-  - khot2008dnf
-  - ghai2025agnosticboosting
-  - dacunha2026agnosticboosting
+  - hastad2005query
+  - karp1972
 refs:
   - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
-  - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-  - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
-  - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
-summary: "Still open: this is weak agnostic properization, and the known halfspace lower bound fails the source while fixed-k DNF satisfies both sides."
-family: properization-open
+  - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
+  - "[Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)"
+summary: "False under NP not subset RP: the PCP active-slice lookup class is weak agnostic improperly learnable, but weak agnostic proper learning would decide an NP-complete language."
+family: pcp-active-slice-weak-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: same
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
+witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -41,28 +41,20 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Still open: this is weak agnostic properization, and the known halfspace lower bound fails the source while fixed-k DNF satisfies both sides.
+The PCP active-slice lookup class is weak agnostic learnable by an improper one-slice lookup-table learner, but weak agnostic proper learning would decide an NP-complete language.
 
 ## Proof Status
 
-**Goal.** Decide whether every weak agnostic improper learner can be made proper while keeping a fixed additive weak excess-error guarantee.
+Use the PCP active-slice lookup class from [[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]. Proper hypotheses encode an instance/proof pair and are nonzero only on that instance's verifier-randomness slice.
 
-**Why the available lower bounds do not refute it.** Tiegel's halfspace theorem rules out weak agnostic improper learning itself, so halfspaces do not satisfy the source. Fixed-$k$ term DNF satisfies the target by a weak agnostic proper learner, so it also cannot separate the two nodes.
+**Why the source holds.** Enlarge the improper hypothesis space to all one-slice lookup tables, plus the all-zero hypothesis. The active slice has polynomial size because the PCP uses logarithmic randomness, and the slice name has polynomial encoding length. Hence this finite improper class has polynomial logarithmic size. Empirical risk minimization over it is polynomial time: only slices appearing in the sample can improve over the all-zero hypothesis, and the best table on a sampled slice is obtained by majority vote on sampled random strings. Since every proper hypothesis is one such lookup table, this gives efficient agnostic improper learning, and therefore weak agnostic improper learning.
 
-**Second-pass check: boosting and DNF hardness.** Agnostic boosting results such as Ghai and Singh and da Cunha et al. combine suitable weak hypotheses into stronger improper predictors, so they do not address the properization step. Khot and Saket give a much closer lower-bound near miss: proper fixed-term DNF cannot weakly learn two-term DNF with constant advantage under $\mathrm{NP}\not\subseteq\mathrm{RP}$.
-
-**Why this still does not settle the edge.** The Khot-Saket lower bound is a constant-advantage statement, while the atlas weak-realizable convention permits inverse-polynomial advantage and the weak-agnostic convention uses fixed additive excess error. It also does not produce a class satisfying the weak agnostic improper source and failing exactly this weak agnostic proper target.
-
-**What would settle it.** A proof would need a general computational projection from a weak improper hypothesis to a weak proper one. A counterexample would need a class where some outside hypothesis family gives fixed additive weak agnostic performance, but finding a comparably good member of $\mathcal C$ is hard.
-
-**Conclusion.** This edge remains open.
+**Why the target fails.** On input an NP instance $\varphi$, sample uniformly from the active slice $\{(\varphi,r)\}$ and label every example by $1$. If $\varphi$ is satisfiable, perfect completeness gives a proof whose proper hypothesis has error $0$, so a weak agnostic proper learner returns a proper hypothesis accepted on more than half of verifier random strings. If $\varphi$ is unsatisfiable, PCP soundness keeps every proper hypothesis below $1/2$ acceptance on that slice. Since the active slice is polynomial size, the reduction can estimate or enumerate acceptance and decide the NP-complete language with one-sided randomized error.
 
 ## References
 
 - [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
-- [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
-- [Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)
-- [da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)
+- [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
+- [Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)

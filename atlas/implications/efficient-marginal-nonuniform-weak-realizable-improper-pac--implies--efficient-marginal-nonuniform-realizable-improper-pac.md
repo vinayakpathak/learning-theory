@@ -49,11 +49,13 @@ Open: Schapire/Freund boosting calls the weak learner on reweighted marginals, a
 
 **Obstacle.** Schapire-style boosting works in the distribution-free model because the weak guarantee is uniform over every distribution created by filtering or reweighting the sample stream. In the marginal-nonuniform source, applying the weak learner to a reweighted marginal $Q_t$ only gives a polynomial $p_{Q_t}$ and advantage $\gamma_{Q_t}$ for that induced marginal. The induced $Q_t$ can depend on $P$, the target concept, earlier hypotheses, and the booster's randomness.
 
-**Missing uniformity.** To prove the edge true by boosting, one would need an additional statement saying that, for each original marginal $P$, every boosting-generated $Q_t$ has $p_{Q_t}$ and $1/\gamma_{Q_t}$ bounded by one polynomial depending only on $P$. The atlas source definition does not include such a modulus.
+**Missing uniformity.** To prove the edge true by boosting, one would need an additional statement saying that, for each original marginal $P$, every boosting-generated $Q_t$ has $p_{Q_t}$ and $1/\gamma_{Q_t}$ bounded by one polynomial depending only on $P$. The atlas source definition does not include such a filter-stable or KL-stable modulus.
 
 **Near miss.** Freund's boost-by-majority theorem studies distribution-dependent weak accuracy, but it assumes quantitative control of how that accuracy behaves on the filtered distributions used by the booster. This is close in spirit, but it is stronger than the bare marginal-nonuniform promise recorded here.
 
-**Conclusion.** The edge remains open unless additional uniform control over the weak learner's marginal-dependent polynomials is assumed.
+**Counterexample route checked.** Oracle-style diagonal sketches can make filtered marginals hostile to a fixed booster, but this does not give an atlas-valid false edge: a separation must rule out every possible strong learner while still proving the source for every marginal.
+
+**Conclusion.** The edge remains open unless additional uniform control over the weak learner's marginal-dependent polynomials is assumed, or a non-black-box separation is found.
 
 ## References
 

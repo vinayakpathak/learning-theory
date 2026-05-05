@@ -7,27 +7,29 @@ source_note: "[[efficient-marginal-nonuniform-realizable-improper-pac|Efficient 
 target_note: "[[efficient-marginal-nonuniform-realizable-proper-pac|Efficient Marginal-Nonuniform Realizable Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - length-preserving one-way functions exist
+witnesses:
+  - one-way-image-coordinate-class
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - kearns1994cryptographic
+  - hastad1999prg
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
-family: properization-open
+  - "[Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)"
+  - "[Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)"
+summary: "False under one-way functions: image-coordinate concepts are marginal-nonuniformly learnable improperly, but fixed-marginal proper learning would invert the one-way function."
+family: one-way-image-coordinate-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: same
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[one-way-image-coordinate-proper-hardness|One-Way Image Coordinate Proper Hardness]]"
+witness_note: "[[one-way-image-coordinate-class|One-Way Image Coordinate Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,22 +39,19 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, assuming length-preserving one-way functions exist.
 
-Open: this asks for properization from an improper marginal-nonuniform learner.
+The one-way image-coordinate class is easy to predict improperly but hard to learn properly under one fixed marginal.
 
 ## Proof Status
 
-**Goal.** Decide whether an improper marginal-nonuniform learner can be converted into a proper learner for the target node.
+Use the [[one-way-image-coordinate-class|one-way image-coordinate class]]. For a seed $s\in\{0,1\}^n$, the concept labels a coordinate point $(1^n,i,b)$ positively exactly when $b=f(s)_i$.
 
-**Obstacle.** The source may output hypotheses outside $\mathcal C$. The target asks for a member of $\mathcal C$, and neither distribution dependence nor standard boosting provides a general projection back into the concept class.
+**Why the source holds.** The distribution-free improper memorization learner from [[one-way-image-coordinate-proper-hardness|One-Way Image Coordinate Proper Hardness]] records observed positive atoms and predicts $0$ elsewhere. This is stronger than the marginal-nonuniform improper source.
 
-**Known examples.** Fixed-$k$ term DNF separates strong improper from strong proper learning in the distribution-free realizable model, but that hardness uses varying distributions and does not automatically refute a marginal-nonuniform proper target. Khot and Saket's constant-advantage DNF lower bound is also only a near miss for the inverse-polynomial weak convention used here.
-
-**Conclusion.** The edge remains open as a marginal-nonuniform properization question.
+**Why the target fails.** Under the fixed marginal with mass $\mu_n=6/(\pi^2n^2)$ on the length-$n$ coordinate block, any proper hypothesis with error at most $\mu_n/(3n)$ against a length-$n$ target must output a seed $t$ with $f(t)=f(s)$. A marginal-nonuniform proper learner for this fixed marginal would therefore invert $f$ in polynomial time.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)
+- [Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)

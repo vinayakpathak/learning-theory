@@ -361,7 +361,7 @@ topbar.className = "atlas-edge-topbar";
 
 searchInput = document.createElement("input");
 searchInput.type = "search";
-searchInput.placeholder = "Search source, target, family, evidence, summary";
+searchInput.placeholder = "Search source, target, family, evidence, origin, summary";
 searchInput.value = state.search;
 searchInput.addEventListener("input", () => {
   state.search = searchInput.value;
@@ -508,6 +508,7 @@ function filteredEdges() {
         edge.status,
         edge.family,
         edge.evidence,
+        edge.result_origin,
         textOf(edge.assumptions),
         edge.summary
       ].join(" "));
@@ -554,7 +555,7 @@ function renderResults() {
 
   const head = document.createElement("thead");
   const headRow = document.createElement("tr");
-  for (const header of ["Source", "Target", "Status", "Family", "Evidence", "Assumptions", "Summary", "Edge"]) {
+  for (const header of ["Source", "Target", "Status", "Family", "Evidence", "Result Origin", "Assumptions", "Summary", "Edge"]) {
     const cell = document.createElement("th");
     cell.textContent = header;
     headRow.appendChild(cell);
@@ -570,6 +571,7 @@ function renderResults() {
     appendCell(row, statusChip(edge.status));
     appendCell(row, edge.family);
     appendCell(row, edge.evidence);
+    appendCell(row, edge.result_origin);
     appendCell(row, textOf(edge.assumptions));
     appendCell(row, edge.summary);
     appendCell(row, makeLink(edge.file.path, "note"));

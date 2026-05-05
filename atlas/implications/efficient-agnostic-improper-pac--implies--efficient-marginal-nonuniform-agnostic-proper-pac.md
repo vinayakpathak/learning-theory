@@ -7,27 +7,29 @@ source_note: "[[efficient-agnostic-improper-pac|Efficient Agnostic Improper PAC 
 target_note: "[[efficient-marginal-nonuniform-agnostic-proper-pac|Efficient Marginal-Nonuniform Agnostic Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - clause-satisfaction-lookup-class
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - blumer1989
+  - karp1972
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
-family: properization-open
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)"
+summary: "False under NP not subset RP: the clause-satisfaction lookup class is agnostically learnable improperly, but fixed-marginal proper agnostic learning would decide 3-SAT."
+family: clause-satisfaction-proper-hardness
 axis_delta:
   resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[clause-satisfaction-proper-hardness|Clause-Satisfaction Proper Hardness]]"
+witness_note: "[[clause-satisfaction-lookup-class|Clause-Satisfaction Lookup Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,22 +39,24 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Open: this asks for properization from an improper marginal-nonuniform learner.
+The clause-satisfaction lookup class is efficiently agnostically improperly learnable, but a marginal-nonuniform agnostic proper learner under the fixed uniform-clause marginal would decide 3-SAT.
 
 ## Proof Status
 
-**Goal.** Decide whether an improper marginal-nonuniform learner can be converted into a proper learner for the target node.
+Use the clause-satisfaction lookup class from [[clause-satisfaction-proper-hardness|Clause-Satisfaction Proper Hardness]]. On the source side, arbitrary lookup tables over the polynomial-size clause universe give efficient distribution-free agnostic improper learning.
 
-**Obstacle.** The source may output hypotheses outside $\mathcal C$. The target asks for a member of $\mathcal C$, and neither distribution dependence nor standard boosting provides a general projection back into the concept class.
-
-**Known examples.** Fixed-$k$ term DNF separates strong improper from strong proper learning in the distribution-free realizable model, but that hardness uses varying distributions and does not automatically refute a marginal-nonuniform proper target. Khot and Saket's constant-advantage DNF lower bound is also only a near miss for the inverse-polynomial weak convention used here.
-
-**Conclusion.** The edge remains open as a marginal-nonuniform properization question.
+For the target lower bound, fix the marginal $P_n$ uniform over all 3-CNF clauses on $n$ variables. Given a formula $\varphi$ with clause set $F$, label clauses in $F$ by $1$ and label clauses outside $F$ by independent fair coins. For every assignment hypothesis $h_a$,
+$$
+\operatorname{err}(h_a)
+=
+\frac{|\{C\in F:h_a(C)=0\}|}{|X_n|}
++\frac{|X_n|-|F|}{2|X_n|}.
+$$
+The fair-noise term is the same for every assignment. Thus satisfiable and unsatisfiable formulas differ by at least $1/|X_n|$ in the optimum proper error. Running a marginal-nonuniform agnostic proper learner for this one fixed marginal to accuracy $1/(3|X_n|)$ and checking the returned assignment would decide 3-SAT with one-sided randomized error.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)

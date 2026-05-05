@@ -65,18 +65,20 @@ for (const edge of edges) {
 }
 
 dv.table(
-  ["Family", "Status", "Edges", "Evidence", "Argument"],
+  ["Family", "Status", "Edges", "Evidence", "Result Origin", "Argument"],
   Array.from(grouped.entries())
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([family, familyEdges]) => {
       const argument = argumentsById.get(family);
       const statuses = [...new Set(familyEdges.map(e => e.status))].join(", ");
       const evidence = [...new Set(familyEdges.map(e => e.evidence))].join(", ");
+      const origins = [...new Set(familyEdges.map(e => e.result_origin).filter(Boolean))].join(", ");
       return [
         argument ? argument.file.link : family,
         statuses,
         familyEdges.length,
         evidence,
+        origins,
         familyEdges[0].argument_note
       ];
     })
@@ -149,7 +151,7 @@ SORT characterization_status ASC, title ASC
 ## All Implications
 
 ```dataview
-TABLE source_note AS "Source", target_note AS "Target", status AS "Status", family AS "Family", evidence AS "Evidence", assumptions AS "Assumptions", witness_note AS "Witness", argument_note AS "Argument", summary AS "Summary"
+TABLE source_note AS "Source", target_note AS "Target", status AS "Status", family AS "Family", evidence AS "Evidence", result_origin AS "Result Origin", assumptions AS "Assumptions", witness_note AS "Witness", argument_note AS "Argument", summary AS "Summary"
 FROM "atlas/implications"
 WHERE type = "implication" AND domain = "binary-classification"
 SORT family ASC, source ASC, target ASC
@@ -194,7 +196,7 @@ dv.table(
 ## Known True Implications
 
 ```dataview
-TABLE source_note AS "Source", target_note AS "Target", family AS "Family", evidence AS "Evidence", argument_note AS "Argument", summary AS "Summary"
+TABLE source_note AS "Source", target_note AS "Target", family AS "Family", evidence AS "Evidence", result_origin AS "Result Origin", argument_note AS "Argument", summary AS "Summary"
 FROM "atlas/implications"
 WHERE type = "implication" AND domain = "binary-classification" AND status = "true"
 SORT family ASC, source ASC, target ASC
@@ -203,7 +205,7 @@ SORT family ASC, source ASC, target ASC
 ## Known False Implications
 
 ```dataview
-TABLE source_note AS "Source", target_note AS "Target", family AS "Family", evidence AS "Evidence", assumptions AS "Assumptions", witness_note AS "Witness", argument_note AS "Argument", refs AS "Refs", summary AS "Summary"
+TABLE source_note AS "Source", target_note AS "Target", family AS "Family", evidence AS "Evidence", result_origin AS "Result Origin", assumptions AS "Assumptions", witness_note AS "Witness", argument_note AS "Argument", refs AS "Refs", summary AS "Summary"
 FROM "atlas/implications"
 WHERE type = "implication" AND domain = "binary-classification" AND status = "false"
 SORT family ASC, assumptions ASC, source ASC, target ASC
@@ -223,7 +225,7 @@ SORT family ASC, source ASC, target ASC
 Change the `source` and `target` values below to inspect a particular ordered implication.
 
 ```dataview
-TABLE source_note AS "Source", target_note AS "Target", status AS "Status", evidence AS "Evidence", assumptions AS "Assumptions", witnesses AS "Witnesses", refs AS "Refs", summary AS "Summary"
+TABLE source_note AS "Source", target_note AS "Target", status AS "Status", evidence AS "Evidence", result_origin AS "Result Origin", assumptions AS "Assumptions", witnesses AS "Witnesses", refs AS "Refs", summary AS "Summary"
 FROM "atlas/implications"
 WHERE type = "implication"
   AND source = "efficient-realizable-proper-pac"

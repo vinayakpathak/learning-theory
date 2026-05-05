@@ -7,31 +7,29 @@ source_note: "[[efficient-weak-realizable-improper-pac|Efficient Weak Realizable
 target_note: "[[efficient-weak-realizable-proper-pac|Efficient Weak Realizable Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - pcp-active-slice-lookup-class
+witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
-  - blumer1989
+  - hastad2005query
   - karp1972
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
   - "[Karp 1972](https://doi.org/10.1007/978-1-4684-2001-2_9)"
-summary: "Open: no known generic properization turns an improper inverse-polynomial weak learner into a proper one; fixed-k DNF, lookup-class hardness, and Khot-Saket constant-advantage DNF hardness do not settle this weak target."
-family: properization-open
+summary: "The PCP active-slice lookup class is weakly improperly learnable, but weak proper learning would put NP in RP."
+family: pcp-active-slice-weak-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: same
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -41,30 +39,21 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Open: no known generic properization turns an improper inverse-polynomial weak learner into a proper one. The closest atlas witnesses remain near misses for this weak target.
+The [[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]] is efficiently weakly learnable by an improper memorization learner, but weak proper learning would decide an NP-complete language with one-sided randomized error.
 
 ## Proof Status
 
-**Goal.** Decide whether weak realizable improper learning implies weak realizable proper learning.
+**Goal.** Separate weak improper realizable learning from weak proper realizable learning.
 
-**Why this is not settled by boosting.** Schapire boosting converts weak hypotheses into a strong improper vote. The construction is deliberately representation-independent, so it does not preserve the final-output class $\mathcal C$.
+**Witness construction.** Use a perfect-completeness PCP with logarithmic randomness and soundness $s<1/2$. A proper concept is indexed by an NP instance $\varphi$ and a proof $\pi$; on input $(\psi,r)$ it runs the verifier on $(\varphi,\pi,r)$ if $\psi=\varphi$, and outputs $0$ otherwise.
 
-**Why the standard DNF separation does not settle it.** Fixed-$k$ term DNF is weakly properly learnable: the learner searches over constants and disjunctions of at most $k$ literals. Therefore that class separates weak proper learning from strong proper learning, but not weak improper from weak proper learning.
+**Why the source holds.** For each target, the only possible positive examples live in the active slice for one instance $\varphi$, which has polynomial size. An improper learner memorizes positive sample points from this slice and predicts $0$ elsewhere, giving even strong realizable improper learning.
 
-**Why the clause-satisfaction lookup class does not settle it.** The [[clause-satisfaction-lookup-class|Clause-Satisfaction Lookup Class]] separates improper learning from strong proper realizable learning: an improper learner can memorize the polynomial-size clause domain, while a highly accurate proper learner would recover a satisfying assignment. That reduction needs enough accuracy to force all sampled clauses correct. The weak target here only asks for error below $1/2$ by an inverse-polynomial margin, so the recorded SAT reduction does not rule out weak proper learning for this class.
-
-**Second-pass check: constant-advantage DNF hardness.** Khot and Saket show that, assuming $\mathrm{NP}\not\subseteq\mathrm{RP}$, two-term DNF cannot be learned by any fixed number of DNF terms with constant advantage over random guessing. This is the closest known obstruction to weak properization for the DNF example.
-
-**Why it is only a near miss.** The atlas weak-realizable node allows inverse-polynomial advantage. Khot and Saket rule out $1/2+\epsilon$ accuracy for a constant $\epsilon$, but they do not rule out $1/2+1/\operatorname{poly}(n)$ accuracy. Since the DNF weak learner used here only needs inverse-polynomial advantage, their result does not produce a counterexample to this edge.
-
-**Conclusion.** This remains the cleanest open properization edge in the realizable weak setting.
+**Why the target fails.** Given an instance $\varphi$, sample uniformly from its active slice and label every point by $1$. If $\varphi$ is satisfiable, perfect completeness makes the distribution realizable by a proper concept, so a weak proper learner must return a proof accepted on more than half the verifier random strings. If $\varphi$ is unsatisfiable, every proper hypothesis has acceptance at most $s<1/2$. Since the active slice is polynomial, the acceptance probability can be estimated or enumerated, yielding an RP algorithm for an NP-complete language.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
-- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
 - [Karp 1972](https://doi.org/10.1007/978-1-4684-2001-2_9)

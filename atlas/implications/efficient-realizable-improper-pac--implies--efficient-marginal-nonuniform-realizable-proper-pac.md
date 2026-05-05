@@ -7,27 +7,29 @@ source_note: "[[efficient-realizable-improper-pac|Efficient Realizable Improper 
 target_note: "[[efficient-marginal-nonuniform-realizable-proper-pac|Efficient Marginal-Nonuniform Realizable Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - length-preserving one-way functions exist
+witnesses:
+  - one-way-image-coordinate-class
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - kearns1994cryptographic
+  - hastad1999prg
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
-family: properization-open
+  - "[Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)"
+  - "[Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)"
+summary: "False under one-way functions: image-coordinate concepts are easy to predict improperly, but fixed-marginal proper learning would invert the one-way function."
+family: one-way-image-coordinate-proper-hardness
 axis_delta:
   resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[one-way-image-coordinate-proper-hardness|One-Way Image Coordinate Proper Hardness]]"
+witness_note: "[[one-way-image-coordinate-class|One-Way Image Coordinate Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,22 +39,32 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, assuming length-preserving one-way functions exist.
 
-Open: this asks for properization from an improper marginal-nonuniform learner.
+Image-coordinate concepts are easy to learn by improper memorization, but proper learning under one fixed marginal would recover a preimage of a one-way image.
 
 ## Proof Status
 
-**Goal.** Decide whether an improper marginal-nonuniform learner can be converted into a proper learner for the target node.
+**Witness.** Let $f:\{0,1\}^n\to\{0,1\}^n$ be a length-preserving one-way function. The instance domain contains triples $(1^k,i,b)$ with $i\in[k]$ and $b\in\{0,1\}$. A seed $s\in\{0,1\}^n$ represents the concept
+$$
+c_s(1^k,i,b)=1
+\quad\Longleftrightarrow\quad
+k=n \text{ and } b=f(s)_i .
+$$
 
-**Obstacle.** The source may output hypotheses outside $\mathcal C$. The target asks for a member of $\mathcal C$, and neither distribution dependence nor standard boosting provides a general projection back into the concept class.
+**Why the source holds.** For a length-$n$ target, there are only $n$ positive atoms. An improper learner records every positive atom seen in the sample and predicts $0$ elsewhere. With
+$$
+O\left(\frac{n}{\varepsilon}\log\frac{n}{\delta}\right)
+$$
+examples, every positive atom of mass at least $\varepsilon/n$ is observed with probability at least $1-\delta$, and the unseen positive mass is at most $\varepsilon$. This gives efficient distribution-free improper realizable PAC learning.
 
-**Known examples.** Fixed-$k$ term DNF separates strong improper from strong proper learning in the distribution-free realizable model, but that hardness uses varying distributions and does not automatically refute a marginal-nonuniform proper target. Khot and Saket's constant-advantage DNF lower bound is also only a near miss for the inverse-polynomial weak convention used here.
+**Why the target fails.** Fix the marginal $P$ that chooses $k$ with mass $\mu_k=6/(\pi^2k^2)$, then chooses $i\in[k]$ and $b\in\{0,1\}$ uniformly. For a target seed $s$ of length $n$, set $\varepsilon_n=\mu_n/(3n)$, so $1/\varepsilon_n$ is polynomial in $n$.
 
-**Conclusion.** The edge remains open as a marginal-nonuniform properization question.
+If a proper hypothesis $c_t$ has $P$-error at most $\varepsilon_n$ against $c_s$, then $|t|=n$ and $f(t)=f(s)$. The wrong length makes error $\mu_n/2$, while one wrong image bit contributes error at least $\mu_n/n$.
+
+Given a one-way challenge $y=f(s)$, simulate examples from the fixed marginal $P$ and label $(1^k,i,b)$ as positive exactly when $k=n$ and $b=y_i$. A marginal-nonuniform proper learner run at accuracy $\varepsilon_n$ would output a seed $t$ with $f(t)=y$ in polynomial time, contradicting one-wayness.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)
+- [Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)

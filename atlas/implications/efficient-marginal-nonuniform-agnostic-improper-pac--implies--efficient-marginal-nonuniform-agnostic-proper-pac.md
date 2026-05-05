@@ -7,27 +7,29 @@ source_note: "[[efficient-marginal-nonuniform-agnostic-improper-pac|Efficient Ma
 target_note: "[[efficient-marginal-nonuniform-agnostic-proper-pac|Efficient Marginal-Nonuniform Agnostic Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - clause-satisfaction-lookup-class
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - blumer1989
+  - karp1972
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
-family: properization-open
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)"
+summary: "False under NP not subset RP: a fixed-uniform-marginal clause lookup class is agnostically learnable improperly, but proper learning would decide 3-SAT."
+family: clause-satisfaction-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: same
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[clause-satisfaction-proper-hardness|Clause-Satisfaction Proper Hardness]]"
+witness_note: "[[clause-satisfaction-lookup-class|Clause-Satisfaction Lookup Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,22 +39,30 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Open: this asks for properization from an improper marginal-nonuniform learner.
+The clause-satisfaction lookup class is agnostically learnable by an improper lookup-table learner, but a marginal-nonuniform proper agnostic learner under one fixed clause marginal would decide 3-SAT.
 
 ## Proof Status
 
-**Goal.** Decide whether an improper marginal-nonuniform learner can be converted into a proper learner for the target node.
+**Source.** For each $n$, let $X_n$ be the set of all 3-CNF clauses over variables $x_1,\ldots,x_n$. Proper hypotheses are assignments $a\in\{0,1\}^n$, represented by
+$$
+h_a(C)=1 \quad\Longleftrightarrow\quad a \text{ satisfies } C.
+$$
+An improper learner may output an arbitrary lookup table on $X_n$. Since $|X_n|=O(n^3)$, empirical majority labels over clauses give efficient distribution-free agnostic improper learning, hence the marginal-nonuniform improper source.
 
-**Obstacle.** The source may output hypotheses outside $\mathcal C$. The target asks for a member of $\mathcal C$, and neither distribution dependence nor standard boosting provides a general projection back into the concept class.
+**Fixed marginal.** Let $P_n$ be uniform on $X_n$. Given a 3-CNF formula $\varphi$ with clause set $F\subseteq X_n$, define a joint distribution with marginal $P_n$ by labeling clauses in $F$ as $1$ and labeling clauses outside $F$ by an independent fair coin. For every assignment $a$,
+$$
+\operatorname{err}(h_a)
+=
+\frac{|\{C\in F:h_a(C)=0\}|}{|X_n|}
++\frac{|X_n|-|F|}{2|X_n|}.
+$$
+The non-formula region contributes the same fair-noise term for every proper hypothesis.
 
-**Known examples.** Fixed-$k$ term DNF separates strong improper from strong proper learning in the distribution-free realizable model, but that hardness uses varying distributions and does not automatically refute a marginal-nonuniform proper target. Khot and Saket's constant-advantage DNF lower bound is also only a near miss for the inverse-polynomial weak convention used here.
-
-**Conclusion.** The edge remains open as a marginal-nonuniform properization question.
+If $\varphi$ is satisfiable, some assignment attains the fair-noise baseline. If $\varphi$ is unsatisfiable, every assignment falsifies at least one formula clause, so the optimum proper error is larger by at least $1/|X_n|$. A marginal-nonuniform proper agnostic learner for the fixed marginal $P_n$, run with accuracy $1/(3|X_n|)$, would return a satisfying assignment in the satisfiable case. Checking the returned assignment gives a one-sided randomized polynomial-time algorithm for 3-SAT, contradicting $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)

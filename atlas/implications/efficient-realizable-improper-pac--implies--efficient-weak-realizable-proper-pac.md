@@ -7,27 +7,29 @@ source_note: "[[efficient-realizable-improper-pac|Efficient Realizable Improper 
 target_note: "[[efficient-weak-realizable-proper-pac|Efficient Weak Realizable Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - pcp-active-slice-lookup-class
+witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - hastad2005query
+  - karp1972
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Still open: Schapire boosting gives improper strong learning from weak learning, but does not give a general weak proper learner from a strong improper learner."
-family: properization-open
+  - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
+  - "[Karp 1972](https://doi.org/10.1007/978-1-4684-2001-2_9)"
+summary: "The PCP active-slice lookup class is strongly improperly learnable, but weak proper learning would put NP in RP."
+family: pcp-active-slice-weak-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: strong-to-weak
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,26 +39,21 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Still open: Schapire boosting gives improper strong learning from weak learning, but does not give a general weak proper learner from a strong improper learner.
+The [[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]] is strongly learnable by an improper memorization learner, but weak proper learning would decide an NP-complete language with one-sided randomized error.
 
 ## Proof Status
 
-**Goal.** Decide whether every efficiently realizably improperly learnable class is at least weakly realizably properly learnable.
+**Goal.** Separate strong improper realizable learning from weak proper realizable learning.
 
-**What is known.** Schapire's theorem goes in the other direction once a weak learner exists: weak realizable learning can be boosted to strong realizable learning, with an improper vote as the final hypothesis. It does not extract a proper weak hypothesis from an arbitrary strong improper learner.
+**Witness construction.** Use a perfect-completeness PCP with logarithmic randomness and soundness $s<1/2$. A proper concept is indexed by an NP instance $\varphi$ and a proof $\pi$; on input $(\psi,r)$ it runs the verifier on $(\varphi,\pi,r)$ if $\psi=\varphi$, and outputs $0$ otherwise.
 
-**Why fixed-$k$ term DNF is not enough.** Fixed-$k$ term DNF separates strong improper from strong proper learning, but Schapire gives a weak proper learner for exactly this class. So it does not refute the weak proper target.
+**Why the source holds.** For each target, the only possible positive examples live in the active slice for one instance $\varphi$, which has polynomial size. An improper learner memorizes positive sample points from this slice and predicts $0$ elsewhere, giving distribution-free strong realizable improper learning.
 
-**Second-pass check: constant-advantage DNF hardness.** Khot and Saket prove that, under the standard assumption $\mathrm{NP}\not\subseteq\mathrm{RP}$, two-term DNF cannot be PAC learned by any fixed number of DNF terms to accuracy $1/2+\epsilon$ for constant $\epsilon>0$. This is close to a counterexample to weak properization.
-
-**Why it is only a near miss.** The target node uses Schapire's inverse-polynomial weak advantage convention, not a constant-advantage convention. Khot and Saket's lower bound does not rule out an advantage such as $1/\operatorname{poly}(n)$, and the fixed-$k$ DNF argument recorded in the atlas gives exactly that kind of weak proper learner. So their theorem warns that a stronger weak node could behave differently, but it does not settle this edge as written.
-
-**Conclusion.** The edge remains open. A counterexample would need a class with an efficient improper realizable learner but no efficient way to find even a slightly-better-than-random member of $\mathcal C$ on realizable distributions.
+**Why the target fails.** Given an instance $\varphi$, sample uniformly from its active slice and label every point by $1$. If $\varphi$ is satisfiable, perfect completeness makes the distribution realizable by a proper concept, so a weak proper learner must return a proof accepted on more than half the verifier random strings. If $\varphi$ is unsatisfiable, every proper hypothesis has acceptance at most $s<1/2$. Estimating this acceptance would put the NP-complete language in RP.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
+- [Karp 1972](https://doi.org/10.1007/978-1-4684-2001-2_9)

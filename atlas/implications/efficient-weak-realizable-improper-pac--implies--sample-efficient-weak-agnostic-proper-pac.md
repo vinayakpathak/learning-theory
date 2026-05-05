@@ -9,6 +9,7 @@ domain: binary-classification
 model: pac
 status: "true"
 evidence: theorem
+result_origin: "known"
 assumptions: []
 witnesses: []
 ref_keys:

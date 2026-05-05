@@ -29,6 +29,8 @@ This family records edges where boosting would have to preserve one polynomial b
 
 The obstruction is not merely that the final boosted hypothesis is improper. Schapire-style and boost-by-majority procedures call the weak learner on filtered or reweighted example distributions. Freund's boost-by-majority analysis includes distribution-dependent weak accuracy as a near miss, but it still needs quantitative control over how the weak guarantee behaves on those induced distributions. The atlas marginal-nonuniform nodes only promise a polynomial for each marginal separately, so they do not supply one original-marginal polynomial controlling every reweighted marginal generated during boosting.
 
+The depth-limited search sharpened this into an envelope problem. A positive theorem would follow from a KL-stable or bounded-density-stable family of induced marginals whose weak-learner polynomials are all dominated by one polynomial depending only on the original marginal. The current source definition has no such local-uniformity assumption. Conversely, oracle-style diagonal examples that assign unrelated polynomials to reweighted marginals are not atlas counterexamples until they are realized by one concrete concept class and one uniform learner satisfying the source for every marginal.
+
 ## References
 
 - [Schapire 1990](https://doi.org/10.1023/A:1022648800760)

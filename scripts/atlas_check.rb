@@ -147,6 +147,7 @@ end
 families = Array(families_registry['families'])
 families_by_id = families.to_h { |family| [family['id'], family] }
 allowed_status_evidence = families_registry.fetch('allowed_status_evidence', {})
+allowed_result_origins = Array(families_registry['allowed_result_origins'] || %w[known new unclear])
 
 combinations = axis_combinations(axis_ids, axis_value_ids)
 expected_nodes = combinations.to_h do |combo|
@@ -217,6 +218,16 @@ expected_nodes.keys.each do |source_id|
       error("#{rel(edge['_path'])}: evidence #{edge['evidence'].inspect} is not allowed for status #{edge['status'].inspect}")
     end
 
+    if edge['status'] == 'open'
+      if edge.key?('result_origin') && edge['result_origin']
+        error("#{rel(edge['_path'])}: result_origin should be omitted for open edges")
+      end
+    elsif !edge.key?('result_origin')
+      error("#{rel(edge['_path'])}: result_origin is required for non-open edges")
+    elsif !allowed_result_origins.include?(edge['result_origin'])
+      error("#{rel(edge['_path'])}: result_origin #{edge['result_origin'].inspect} is not allowed")
+    end
+
     source_axes = expected_nodes.fetch(source_id).fetch('axes')
     target_axes = expected_nodes.fetch(target_id).fetch('axes')
     delta = axis_delta(source_axes, target_axes, axis_ids)
@@ -242,6 +253,16 @@ expected_nodes.keys.each do |source_id|
 
     if edge['argument_note'] != family['argument_note']
       error("#{rel(edge['_path'])}: argument_note should be #{family['argument_note'].inspect}, got #{edge['argument_note'].inspect}")
+    end
+
+    if edge['status'] == 'open'
+      if family.key?('result_origin') && family['result_origin']
+        error("#{rel(File.join(ATLAS, 'registry', 'edge_families.yml'))}: open family #{family['id']} should omit result_origin")
+      end
+    elsif family['result_origin'].nil?
+      error("#{rel(File.join(ATLAS, 'registry', 'edge_families.yml'))}: family #{family['id']} needs result_origin for non-open edges")
+    elsif edge['result_origin'] != family['result_origin']
+      error("#{rel(edge['_path'])}: result_origin should be #{family['result_origin'].inspect}, got #{edge['result_origin'].inspect}")
     end
 
     expected_witness_note = family['witness_note']

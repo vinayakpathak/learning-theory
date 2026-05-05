@@ -12,14 +12,18 @@ evidence: unknown
 assumptions: []
 witnesses: []
 ref_keys:
-  - schapire1990
-  - pitt1988
+  - bendavid2001
+  - feldman2010distributionspecific
+  - hastad2005query
   - khot2008dnf
+  - tiegel2023
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
+  - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
+  - "[Feldman 2010](https://arxiv.org/abs/0909.2927)"
+  - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
   - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Open: this asks for properization from an improper marginal-nonuniform learner."
+  - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
+summary: "Open: no efficient marginal fixed properization is known, and fixed-marginal hardness attempts lose the weak gap through active-mass or shared-coordinate dilution."
 family: properization-open
 axis_delta:
   resource: same
@@ -39,20 +43,22 @@ tags:
 
 `open`.
 
-Open: this asks for properization from an improper marginal-nonuniform learner.
+This is a marginal-nonuniform weak agnostic properization problem. The source gives a uniform learner whose output may lie outside $\mathcal C$ and whose error is at most $\operatorname{OPT}_{\mathcal C}+\beta_P(s)$ for a marginal-dependent $\beta_P(s)<1/2$. The target asks for a member of $\mathcal C$ with a comparable weak guarantee.
 
 ## Proof Status
 
-**Goal.** Decide whether an improper marginal-nonuniform learner can be converted into a proper learner for the target node.
+**Positive route obstruction.** Uniform convergence can justify the existence of good proper hypotheses on a sample, but it does not provide a polynomial-time approximate proper ERM or projection procedure. Boosting-style arguments also do not solve the problem, since the combined predictor is generally an improper aggregate.
 
-**Obstacle.** The source may output hypotheses outside $\mathcal C$. The target asks for a member of $\mathcal C$, and neither distribution dependence nor standard boosting provides a general projection back into the concept class.
+**Negative route obstruction.** Known properness-hardness witnesses do not currently survive the marginal-nonuniform weak setting. Clause-satisfaction and PCP active-slice reductions usually put the hard instance in the marginal; then the target may use an instance-dependent marginal polynomial. Packing many hard slices into one fixed marginal makes each slice too small for a weak guarantee whose advantage may be only inverse-polynomial.
 
-**Known examples.** Fixed-$k$ term DNF separates strong improper from strong proper learning in the distribution-free realizable model, but that hardness uses varying distributions and does not automatically refute a marginal-nonuniform proper target. Khot and Saket's constant-advantage DNF lower bound is also only a near miss for the inverse-polynomial weak convention used here.
+Shared-coordinate code or pseudorandom-generator variants keep the marginal fixed and preserve easy improper lookup learning, but proper hardness requires a correlation scale roughly of the form $\alpha_P(s)^2N\gg\log|\mathcal C_s|$, where $\alpha_P(s)=1/2-\beta_P(s)$. The atlas definition permits $\alpha_P(s)$ to be too small relative to any polynomially visible coordinate block.
 
-**Conclusion.** The edge remains open as a marginal-nonuniform properization question.
+**Conclusion.** The edge remains open. A proof would need a general efficient properization principle under each fixed marginal. A separation would need a fixed-marginal proper-only hardness construction with an easy improper weak agnostic learner and a weak-gap scale strong enough to overcome the active-mass or shared-coordinate correlation obstruction.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
+- [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
+- [Feldman 2010](https://arxiv.org/abs/0909.2927)
+- [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
 - [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)

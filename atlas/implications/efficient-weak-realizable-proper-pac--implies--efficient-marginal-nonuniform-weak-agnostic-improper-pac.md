@@ -7,27 +7,26 @@ source_note: "[[efficient-weak-realizable-proper-pac|Efficient Weak Realizable P
 target_note: "[[efficient-marginal-nonuniform-weak-agnostic-improper-pac|Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
+status: "true"
+evidence: theorem
+result_origin: "unclear"
 assumptions: []
 witnesses: []
 ref_keys:
-  - benedek1991fixed
-  - hanneke2025marginalnonuniform
-  - tiegel2023
+  - valiant1984
+  - blumer1989
 refs:
-  - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
-  - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
-  - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
-summary: "Open: known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds."
-family: marginal-agnostic-hardness-open
+  - "[Valiant 1984](https://doi.org/10.1145/1968.1972)"
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+summary: "A distribution-free weak realizable proper learner can be robustified into an improper weak agnostic learner with an inverse-polynomial marginal-nonuniform gap."
+family: low-noise-weak-agnostic-robustification
 axis_delta:
   resource: same
   distribution: distribution-free-to-marginal-nonuniform
   strength: same
   realizability: realizable-to-agnostic
   properness: proper-to-improper
-argument_note: "[[marginal-agnostic-hardness-open|Marginal-Nonuniform Agnostic Hardness Open]]"
+argument_note: "[[low-noise-weak-agnostic-robustification|Low-Noise Weak Agnostic Robustification]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,22 +36,21 @@ tags:
 
 ## Verdict
 
-`open`.
+`true`.
 
-Open: known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds.
+The distribution-free weak realizable proper source can be robustified into the marginal-nonuniform weak agnostic improper target.
 
 ## Proof Status
 
-**Goal.** Decide whether a realizable marginal-nonuniform learner implies the agnostic marginal-nonuniform target.
+**Goal.** Build a weak agnostic learner from a distribution-free weak realizable learner.
 
-**Obstacle.** A realizable learner only has to compete with zero noise. The agnostic target must compete with the best concept under arbitrary label noise, uniformly over all conditional label distributions sharing the same marginal.
+**Construction.** Run the weak realizable learner on many small fresh batches and validate its outputs together with the two constants. The target is improper, so the robustified learner may output either a proper hypothesis from the source learner or a constant classifier.
 
-**Why known hardness is insufficient.** Distribution-free agnostic hardness results, such as Tiegel's halfspace lower bound, use hard families of distributions. They refute distribution-free targets, but they do not automatically refute a model whose polynomial may depend on the marginal distribution.
+If $\operatorname{OPT}_{\mathcal C}$ is not tiny, a constant classifier suffices for the weak agnostic guarantee. If $\operatorname{OPT}_{\mathcal C}$ is below the chosen inverse-polynomial gap, then a small batch is clean relative to a best concept with inverse-polynomial probability. The source learner applies to the clean conditional marginal because its guarantee is distribution-free; total-variation stability transfers the weak advantage back to the original agnostic distribution.
 
-**Conclusion.** The edge remains open for the marginal-nonuniform target.
+**Conclusion.** Polynomial repetition and validation give the target learner.
 
 ## References
 
-- [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
-- [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
-- [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)
+- [Valiant 1984](https://doi.org/10.1145/1968.1972)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)

@@ -7,25 +7,28 @@ source_note: "[[efficient-marginal-nonuniform-realizable-improper-pac|Efficient 
 target_note: "[[efficient-realizable-improper-pac|Efficient Realizable Improper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
+status: "true"
+evidence: theorem
+result_origin: "unclear"
 assumptions: []
 witnesses: []
 ref_keys:
   - benedek1991fixed
+  - bendavid1995parameterization
   - hanneke2025marginalnonuniform
 refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
+  - "[Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
-summary: "Open: the source has a marginal-dependent polynomial bound, while the target requires one uniform polynomial over all marginals."
-family: marginal-uniformization-open
+summary: "True under the atlas worst-case efficiency convention: a full-support reference marginal gives one transcript-wise resource polynomial, while source accuracy already holds for every marginal."
+family: full-support-marginal-uniformization
 axis_delta:
   resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: same
   realizability: same
   properness: same
-argument_note: "[[marginal-uniformization-open|Marginal Uniformization Open]]"
+argument_note: "[[full-support-marginal-uniformization|Full-Support Marginal Uniformization]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -35,21 +38,18 @@ tags:
 
 ## Verdict
 
-`open`.
-
-Open: the source has a marginal-dependent polynomial bound, while the target requires one uniform polynomial over all marginals.
+`true`, by full-support marginal uniformization.
 
 ## Proof Status
 
-**Goal.** Decide whether marginal-dependent polynomial sample and time bounds can always be replaced by one distribution-free polynomial bound.
+Let $A$ be the single learner promised by the marginal-nonuniform source. Choose a reference marginal $P^\star$ with full support on every finitely encoded instance in each representation-size slice. The source gives a polynomial $p_{P^\star}$ bounding $A$'s sample use and running time under this marginal.
 
-**What is known statistically.** Fixed-distribution and marginal-nonuniform learnability were introduced to study exactly this kind of distribution-sensitive sample behavior. Recent marginal-nonuniform work characterizes possible sample-rate behavior, but those results are information-theoretic and do not by themselves give a representation-sensitive computational uniformization theorem.
+Because $P^\star$ has full support, every finite labeled transcript that can occur under any marginal has positive probability under $P^\star$ for a suitable target concept. Under the atlas worst-case/pathwise resource convention, $A$ cannot exceed $p_{P^\star}$ on any such transcript. Therefore $p_{P^\star}$ is one distribution-free resource bound for $A$.
 
-**Why the usual separations do not settle it.** Halfspaces do not refute this edge because they are already distribution-free realizably learnable. Fixed-$k$ term DNF also does not refute it because it is distribution-free realizably improperly learnable.
-
-**Conclusion.** The edge remains open in this computational atlas. A proof would need a uniformization theorem for the marginal-dependent polynomial runtime/sample bounds; a counterexample would need a class whose realizable learner is polynomial for each fixed marginal but admits no distribution-free polynomial bound.
+Accuracy is not transferred from $P^\star$. For any actual marginal $P$ and target concept $c\in\mathcal C$, apply the source guarantee directly to $P$. The same learner $A$, with the uniform resource bound above, is an efficient distribution-free realizable improper learner.
 
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
+- [Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)
 - [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)

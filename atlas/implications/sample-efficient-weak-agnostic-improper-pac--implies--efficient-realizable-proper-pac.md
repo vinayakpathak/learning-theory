@@ -9,6 +9,7 @@ domain: binary-classification
 model: pac
 status: "false"
 evidence: conditional-counterexample
+result_origin: "known"
 assumptions:
   - standard cryptographic assumptions
 witnesses:

@@ -28,7 +28,9 @@ tags:
 
 `false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-The clause-satisfaction lookup class is efficiently agnostically learnable by an improper lookup-table learner. Proper hypotheses encode assignments, so a sufficiently accurate proper realizable learner would yield a randomized polynomial-time one-sided algorithm for 3-SAT.
+The clause-satisfaction lookup class is efficiently agnostically learnable by an improper lookup-table learner. Proper hypotheses encode assignments, so a sufficiently accurate proper learner would yield a randomized polynomial-time one-sided algorithm for 3-SAT.
+
+For marginal-nonuniform agnostic proper targets, the hard marginal can be fixed in advance: use the uniform marginal over all clauses on $n$ variables and encode the input formula only in the conditional labels. Formula clauses receive label $1$, while non-formula clauses receive fair-coin labels. The fair-noise region contributes exactly $1/2$ error for every assignment, leaving an inverse-polynomial gap on the formula clauses.
 
 ## References
 

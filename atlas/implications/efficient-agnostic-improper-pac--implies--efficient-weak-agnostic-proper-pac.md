@@ -7,31 +7,33 @@ source_note: "[[efficient-agnostic-improper-pac|Efficient Agnostic Improper PAC 
 target_note: "[[efficient-weak-agnostic-proper-pac|Efficient Weak Agnostic Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - pcp-active-slice-lookup-class
 ref_keys:
   - bendavid2001
-  - kalai2008agnosticboosting
-  - khot2008dnf
-  - ghai2025agnosticboosting
-  - dacunha2026agnosticboosting
+  - blumer1989
+  - hastad2005query
+  - karp1972
 refs:
   - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
-  - "[Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-  - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
-  - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
-summary: "Still open: this asks for weak agnostic properization from a strong agnostic improper learner."
-family: properization-open
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
+  - "[Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)"
+summary: "False under NP not subset RP: the PCP active-slice lookup class is agnostically learnable improperly, but weak agnostic proper learning would decide an NP-complete language."
+family: pcp-active-slice-weak-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: strong-to-weak
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
+witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -41,26 +43,19 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Still open: this asks for weak agnostic properization from a strong agnostic improper learner.
+The PCP active-slice lookup class is efficiently agnostically learnable improperly, but weak agnostic proper learning would decide an NP-complete language.
 
 ## Proof Status
 
-**Goal.** Decide whether a strong agnostic improper learner can always be converted into a weak agnostic proper learner.
+Use the PCP active-slice lookup class from [[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]. The class is efficiently agnostically learnable improperly by ERM over one-slice lookup tables. The logarithmic-randomness PCP makes each active slice polynomial size, and only sampled slices need be considered during ERM.
 
-**What is easy.** The source learner already gives a weak agnostic guarantee if improper final hypotheses are allowed: run it with any constant accuracy parameter. The only missing requirement is that the final hypothesis lie in $\mathcal C$.
-
-**Why boosting references do not settle it.** Agnostic boosting theorems explain how to combine suitable weak agnostic hypotheses into stronger improper predictors, or use weak-oracle notions tailored to boosting. They do not give a general way to replace an arbitrary accurate improper predictor by a member of $\mathcal C$.
-
-**Second-pass check: two near misses.** Recent agnostic boosting results, including Ghai and Singh and da Cunha et al., address weak-to-strong aggregation, but their final hypotheses are generally improper ensembles; they do not project a strong improper hypothesis back into $\mathcal C$. On the lower-bound side, Khot and Saket show constant-advantage hardness for proper weak DNF learning, but the atlas weak-agnostic node allows a fixed additive excess-error tolerance and the known DNF source conditions do not give an agnostic improper learner for this edge.
-
-**Conclusion.** This remains a weak agnostic properization question. A proof would need a computationally efficient projection back into $\mathcal C$; a counterexample would need an agnostically improperly learnable class whose proper hypotheses are hard even to find with fixed weak additive excess error.
+If a weak agnostic proper learner existed, run it on the all-positive uniform distribution over the active verifier-randomness slice of an input instance $\varphi$. Perfect completeness gives zero proper error on satisfiable instances, so the weak learner returns a proof accepted on more than half the random strings. Soundness keeps every proper hypothesis below one-half acceptance on unsatisfiable instances. Since the active slice is polynomial size, the returned proper hypothesis's acceptance can be checked exactly, giving a one-sided randomized polynomial-time algorithm for an NP-complete language.
 
 ## References
 
 - [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
-- [Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
-- [Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)
-- [da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
+- [Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)
