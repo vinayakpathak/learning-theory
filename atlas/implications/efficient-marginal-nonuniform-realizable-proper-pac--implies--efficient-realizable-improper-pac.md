@@ -7,25 +7,28 @@ source_note: "[[efficient-marginal-nonuniform-realizable-proper-pac|Efficient Ma
 target_note: "[[efficient-realizable-improper-pac|Efficient Realizable Improper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
+status: "true"
+evidence: theorem
+result_origin: "unclear"
 assumptions: []
 witnesses: []
 ref_keys:
   - benedek1991fixed
+  - bendavid1995parameterization
   - hanneke2025marginalnonuniform
 refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
+  - "[Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
-summary: "Open: the source allows marginal-dependent polynomial bounds, while the target requires one distribution-free polynomial bound."
-family: marginal-uniformization-open
+summary: "True under the atlas worst-case efficiency convention: a full-support reference marginal gives one transcript-wise resource polynomial, source realizable proper accuracy already holds for every marginal, and proper output is valid for the improper target."
+family: full-support-marginal-uniformization
 axis_delta:
   resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: same
   realizability: same
   properness: proper-to-improper
-argument_note: "[[marginal-uniformization-open|Marginal Uniformization Open]]"
+argument_note: "[[full-support-marginal-uniformization|Full-Support Marginal Uniformization]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -35,21 +38,30 @@ tags:
 
 ## Verdict
 
-`open`.
+`true`, by full-support marginal uniformization plus monotone relaxation from proper to improper output.
 
-Open: the source allows marginal-dependent polynomial bounds, while the target requires one distribution-free polynomial bound.
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the target concept, $\varepsilon$, or $\delta$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
+
+The theorem asserts that every class satisfying the source guarantee also satisfies the target guarantee.
 
 ## Proof Status
 
-**Goal.** Decide whether a marginal-dependent polynomial guarantee can be made distribution-free.
+Let $A$ be the single learner promised by the marginal-nonuniform source. Choose a reference marginal $P^\star$ with full support on every finitely encoded instance in each representation-size slice. The source gives a polynomial $p_{P^\star}$ bounding $A$'s sample use and running time under this marginal.
 
-**Obstacle.** The source permits a different polynomial $p_P$ for each marginal $P$. The target requires one polynomial bound that works uniformly over all marginals. The definition gives no quantitative control over how the polynomial changes with $P$.
+Because $P^\star$ has full support, every finite labeled transcript that can occur under any marginal and realizable target concept has positive probability under $P^\star$ for the same target concept on the finitely many sampled instances. Under the atlas worst-case/pathwise resource convention, $A$ cannot exceed $p_{P^\star}$ on any such transcript. Therefore $p_{P^\star}$ is one distribution-free resource bound for $A$.
 
-**Known context.** Fixed-distribution and marginal-nonuniform learning were introduced to study exactly this relaxation of uniform PAC bounds. The known characterizations are primarily information-theoretic and do not yield a representation-sensitive computational uniformization theorem for this edge.
+Accuracy is not transferred from $P^\star$. For any actual marginal $P$ and target concept $c\in\mathcal C$, apply the source guarantee directly to $P$. The source already gives strong realizable accuracy and outputs $h\in\mathcal C$. Since the improper target allows outputs at least as broad as $\mathcal C$, the same learner $A$ is an efficient distribution-free realizable improper learner.
 
-**Conclusion.** The edge remains open in this atlas. A proof would need a uniformization theorem; a counterexample would need a class with polynomial learning for each fixed marginal but no distribution-free polynomial learner for the target notion.
+The only caveat is definitional: this proof uses the atlas convention that efficient sample use and running time are worst-case/pathwise finite-transcript bounds, not merely expected or high-probability resource bounds under each marginal.
 
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
+- [Ben-David et al. 1995](https://doi.org/10.1006/inco.1995.1094)
 - [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)

@@ -7,58 +7,72 @@ source_note: "[[efficient-marginal-nonuniform-weak-realizable-improper-pac|Effic
 target_note: "[[efficient-marginal-nonuniform-realizable-improper-pac|Efficient Marginal-Nonuniform Realizable Improper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
+status: "true"
+evidence: theorem
 assumptions: []
 witnesses: []
 ref_keys:
-  - schapire1990
-  - freund1995boosting
-  - benedek1991fixed
+- benedek1991fixed
+- hanneke2025marginalnonuniform
+- schapire1990
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Freund 1995](https://doi.org/10.1006/inco.1995.1136)"
-  - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
-summary: "Open: Schapire/Freund boosting calls the weak learner on reweighted marginals, and the atlas source gives no original-marginal polynomial controlling target- and history-dependent reweightings."
-family: marginal-boosting-open
+- "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
+- "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
+- "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
+summary: Spike-tilt uniformization first gives distribution-free weak realizable improper learning; Schapire boosting gives distribution-free strong realizable improper learning, which is stronger than the marginal-nonuniform realizable improper target.
+family: realizable-boosting
 axis_delta:
   resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same
   properness: same
-argument_note: "[[marginal-boosting-open|Marginal-Nonuniform Boosting Open]]"
+argument_note: "[[realizable-boosting|Realizable Boosting]]"
 tags:
-  - atlas/implication
-  - learning/binary-classification
+- atlas/implication
+- learning/binary-classification
+result_origin: known
 ---
-
 # Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Realizable Improper PAC Learning
 
 ## Verdict
 
-`open`.
+`true`.
 
-Open: Schapire/Freund boosting calls the weak learner on reweighted marginals, and the atlas source gives no original-marginal polynomial controlling those target- and history-dependent reweightings.
+The marginal-nonuniform weak source first uniformizes to distribution-free weak realizable improper learning, then boosts to distribution-free strong realizable improper learning; the target is weaker.
 
-## Proof Status
+## Theorem Statement
 
-**Goal.** Decide whether the weak marginal-nonuniform source can be boosted to the strong target.
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
 
-**Required construction.** Starting from one weak learner $A$, we would need a strong learner $B$ such that, for every original marginal $P$, one polynomial $q_P(s,1/\varepsilon,\log(1/\delta))$ bounds all samples and running time on realizable data drawn from $P$.
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le 1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)>0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the target concept or $\delta$.
 
-**Obstacle.** Schapire-style boosting works in the distribution-free model because the weak guarantee is uniform over every distribution created by filtering or reweighting the sample stream. In the marginal-nonuniform source, applying the weak learner to a reweighted marginal $Q_t$ only gives a polynomial $p_{Q_t}$ and advantage $\gamma_{Q_t}$ for that induced marginal. The induced $Q_t$ can depend on $P$, the target concept, earlier hypotheses, and the booster's randomness.
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the target concept, $\varepsilon$, or $\delta$.
 
-**Missing uniformity.** To prove the edge true by boosting, one would need an additional statement saying that, for each original marginal $P$, every boosting-generated $Q_t$ has $p_{Q_t}$ and $1/\gamma_{Q_t}$ bounded by one polynomial depending only on $P$. The atlas source definition does not include such a filter-stable or KL-stable modulus.
+The theorem asserts that every class satisfying the source guarantee also satisfies the target guarantee.
 
-**Near miss.** Freund's boost-by-majority theorem studies distribution-dependent weak accuracy, but it assumes quantitative control of how that accuracy behaves on the filtered distributions used by the booster. This is close in spirit, but it is stronger than the bare marginal-nonuniform promise recorded here.
+## Proof Sketch
 
-**Counterexample route checked.** Oracle-style diagonal sketches can make filtered marginals hostile to a fixed booster, but this does not give an atlas-valid false edge: a separation must rule out every possible strong learner while still proving the source for every marginal.
+**Goal.** Derive Efficient Marginal-Nonuniform Realizable Improper PAC Learning from Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning.
 
-**Conclusion.** The edge remains open unless additional uniform control over the weak learner's marginal-dependent polynomials is assumed, or a non-black-box separation is found.
+**Full-support resource uniformization.** Fix constant confidence, say $\delta_0=1/100$. Since the source is one uniform learner and atlas efficiency is pathwise over finite sample transcripts, a full-support reference marginal gives one polynomial pathwise sample/runtime bound $m(s)$ for this constant-confidence weak call, independent of the target marginal.
+
+**Spike-tilt weak-gap uniformization.** Write labels and hypotheses as $\{\pm1\}$-valued functions and let $e_P(h)=\mathbb E_P[c(X)h(X)]$. Suppose the learner had no uniform weak edge under some marginal $P$: with constant probability it outputs deterministic hypotheses with $0<e_P(h)<O(1/m(s))$. Among those low-edge outputs, averaging finds a point $x^\star$ where a constant fraction are wrong. Form the spiked marginal
+
+$$
+Q=(1-\varepsilon)P+\varepsilon\delta_{x^\star},
+\qquad \varepsilon=\Theta(1/m(s)).
+$$
+
+The $m(s)$-sample transcript laws under $P$ and $Q$ have constant total variation distance, because a sample sees the spike with probability only $O(m(s)\varepsilon)$. But every low-edge output that is wrong at $x^\star$ has nonpositive edge under $Q$, contradicting the source guarantee for the marginal $Q$. Hence the same learner has a uniform inverse-polynomial weak edge $\Omega(1/m(s))$ under every marginal. The target is also improper, so the source outputs have the right final-output type.
+
+**Confidence amplification.** Repeating the constant-confidence weak learner and validating on a fresh sample selects, with probability at least $1-\delta$, a hypothesis retaining a $1/\operatorname{poly}(s)$ advantage. The final boosted vote may be improper, as allowed by the target.
+**Boosting and weakening the distribution requirement.** The uniform weak learner has inverse-polynomial advantage and polynomial sample/time bounds independent of the marginal. Schapire's realizable weak-to-strong boosting theorem gives distribution-free strong realizable improper learning. A distribution-free strong learner is, in particular, a marginal-nonuniform strong learner.
+
+**Conclusion.** The implication is true.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Freund 1995](https://doi.org/10.1006/inco.1995.1136)
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
+- [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
+- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)

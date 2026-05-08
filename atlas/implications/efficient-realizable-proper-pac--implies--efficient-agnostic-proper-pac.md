@@ -43,6 +43,16 @@ tags:
 
 Conjunctions are efficiently properly learnable in the realizable PAC model by the classical elimination algorithm. Kearns, Schapire, and Sellie show that properly agnostically learning conjunctions would imply a randomized polynomial-time algorithm for minimum set cover.
 
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
+
+Assuming $\mathrm{RP}\ne\mathrm{NP}$, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.
+
 ## Proof Sketch
 
 **Goal.** Refute the universal implication, assuming $\mathrm{RP}\ne\mathrm{NP}$. It is enough to exhibit a class that is efficiently realizably properly learnable but is not efficiently agnostically properly learnable under that assumption.

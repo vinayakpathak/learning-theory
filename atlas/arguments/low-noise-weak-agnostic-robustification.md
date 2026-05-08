@@ -25,6 +25,10 @@ tags:
 
 Distribution-free realizable learning gives a weak agnostic improper learner with an inverse-polynomial gap. The target's marginal-nonuniform weak agnostic node only asks for such an inverse-polynomial gap, not a fixed constant gap.
 
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class. If $\mathcal C$ has a distribution-free realizable PAC learner, either strong or weak, with polynomial sample and time bounds, then $\mathcal C$ has an improper weak agnostic PAC learner with inverse-polynomial additive advantage: for every joint distribution $\mathcal D$ over $\mathcal X\times\{0,1\}$, the learner outputs a binary hypothesis $h$ with $\operatorname{err}_{\mathcal D}(h)\le \inf_{c\in\mathcal C}\operatorname{err}_{\mathcal D}(c)+1/2-1/\operatorname{poly}(s)$. If the realizable learner has only marginal-dependent polynomial bounds, the same conclusion holds marginal-by-marginal, with the weak agnostic gap and polynomial bound allowed to depend on the instance marginal.
+
 ## Proof Sketch
 
 Let $L$ be a distribution-free realizable learner. For a weak source, let $\gamma(s)$ be its realizable advantage and let $m(s)$ be its polynomial sample bound. For a strong source, run the learner to a fixed clean accuracy and take the resulting clean advantage as a constant $\gamma$.

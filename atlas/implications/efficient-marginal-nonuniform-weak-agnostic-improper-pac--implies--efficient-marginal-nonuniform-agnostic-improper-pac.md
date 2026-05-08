@@ -7,27 +7,27 @@ source_note: "[[efficient-marginal-nonuniform-weak-agnostic-improper-pac|Efficie
 target_note: "[[efficient-marginal-nonuniform-agnostic-improper-pac|Efficient Marginal-Nonuniform Agnostic Improper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "known"
+assumptions:
+  - worst-case lattice hardness
+witnesses:
+  - halfspaces
+witness_note: "[[halfspaces|Halfspaces]]"
 ref_keys:
-  - bendavid2001
-  - feldman2010distributionspecific
-  - dacunha2026agnosticboosting
+  - tiegel2023
 refs:
-  - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
-  - "[Feldman 2010](https://arxiv.org/abs/0909.2927)"
-  - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
-summary: "Open: Feldman's distribution-specific boosting handles a stronger threshold/correlation weak learner, but the atlas source is fixed-additive."
-family: agnostic-boosting-open
+  - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
+summary: "False under worst-case lattice hardness: halfspaces satisfy the weak marginal-nonuniform agnostic improper source via low-noise robustification from efficient realizable proper learning, but Tiegel's standard-Gaussian hardness rules out the strong marginal-nonuniform agnostic improper target."
+family: halfspace-agnostic-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: weak-to-strong
   realizability: same
   properness: same
-argument_note: "[[agnostic-boosting-open|Agnostic Boosting Open]]"
+argument_note: "[[halfspace-agnostic-hardness|Halfspace Agnostic Hardness]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,24 +37,30 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under worst-case lattice hardness.
 
-Open: boosting from a marginal-nonuniform weak learner does not automatically give one marginal-dependent polynomial bound for the strong target.
+Use Boolean halfspaces. They are efficiently realizably properly PAC learnable, so [[low-noise-weak-agnostic-robustification|Low-Noise Weak Agnostic Robustification]] gives the weak marginal-nonuniform agnostic improper source. Tiegel's standard-Gaussian distribution-specific hardness rules out the strong marginal-nonuniform agnostic improper target.
+
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)>0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the conditional label distribution or $\delta$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$.
+
+Assuming the worst-case lattice hardness assumption used in Tiegel's halfspace lower bound, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.
 
 ## Proof Status
 
-**Goal.** Decide whether the weak marginal-nonuniform source can be boosted to the strong target.
+**Goal.** Separate weak marginal-nonuniform agnostic improper learning from strong marginal-nonuniform agnostic improper learning.
 
-**Obstacle.** Standard boosting calls the weak learner on reweighted distributions. In the marginal-nonuniform model, the polynomial bound may depend on each reweighted marginal. The source does not guarantee one polynomial, depending only on the original marginal, that controls all reweighted calls needed for arbitrary final accuracy.
+**Why the source holds.** Halfspaces are efficiently realizably properly PAC learnable by linear feasibility plus VC generalization. The low-noise robustification argument converts efficient realizable proper learning into efficient marginal-nonuniform weak agnostic improper learning. The resulting weak learner only needs an inverse-polynomial marginal-dependent gap, and it is allowed to be useful mainly in the low-noise regime.
 
-**Known context.** Feldman's distribution-specific agnostic boosting is a strong near miss: it modifies labels rather than the instance marginal, so it is well matched to marginal-nonuniform bookkeeping. However, it uses a threshold/correlation-style weak agnostic learner. The current atlas source gives only a fixed additive guarantee $\operatorname{opt}+\beta_P(s)$, and that fixed $\beta_P(s)$ is not tunable to the arbitrary final excess $\varepsilon$ required by the strong target.
+**Why the target fails.** Tiegel proves, under worst-case lattice hardness, distribution-specific hardness for agnostically learning halfspaces under the standard Gaussian marginal. In the atlas formulation, for every constant $\beta>0$, learning to error $\operatorname{OPT}_{\mathrm{LTF}}+\varepsilon$ under this fixed marginal requires time $d^{\widetilde{\Omega}(1/\varepsilon^{2-\beta})}$. This is not polynomial in $(d,1/\varepsilon)$ for the fixed marginal, contradicting the target node.
 
-**False witness route checked.** Known hard improper agnostic examples usually also kill the weak source. Approximation-style candidates tend to become easy for an improper learner when the relevant constraint domain is polynomial-sized.
-
-**Conclusion.** The edge remains open for the existing fixed-additive source. A separate threshold/correlation weak agnostic marginal-nonuniform node would likely have a true theorem edge to the strong agnostic improper node via Feldman's label-only boosting.
+**Conclusion.** Halfspaces satisfy the source but fail the target under worst-case lattice hardness, so the implication is conditionally false.
 
 ## References
 
-- [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
-- [Feldman 2010](https://arxiv.org/abs/0909.2927)
-- [da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)
+- [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)

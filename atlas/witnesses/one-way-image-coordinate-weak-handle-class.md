@@ -21,9 +21,9 @@ tags:
 
 ## Role
 
-This witness separates marginal-nonuniform weak proper realizable learning from marginal-nonuniform strong proper realizable learning. Start with the one-way image-coordinate class and add proper weak handles: the two constant concepts and every singleton-positive-atom concept.
+This witness separates weak proper learning from strong proper learning under a fixed marginal. Start with the one-way image-coordinate class and add proper weak handles: the two constant concepts and bounded positive-atom subset concepts inside a length block. Singleton-positive-atom handles are the inverse-polynomial special case used for weak realizable variants; bounded subset handles give the fixed-additive weak agnostic variants.
 
-The handles give a proper weak learner an inverse-polynomial edge for every target and every marginal: either a constant is already good, or a heavy positive atom can be found and output as a singleton. Under the fixed image-coordinate marginal, however, strong proper learning an image-coordinate target to inverse-polynomial accuracy still forces recovery of a seed whose image is the one-way challenge.
+The handles give a proper weak learner an edge for every target and every marginal: either a constant is already good, or a sufficiently heavy positive region can be found and output as a handle. Under the fixed image-coordinate marginal, however, strong proper learning an image-coordinate target to inverse-polynomial accuracy still forces recovery of a seed whose image is the one-way challenge; constants and bounded handles have too much error at the requested accuracy.
 
 ## References
 

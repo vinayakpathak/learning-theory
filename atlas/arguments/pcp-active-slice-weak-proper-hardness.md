@@ -30,6 +30,10 @@ tags:
 
 The PCP active-slice lookup class is efficiently learnable by an improper memorization learner, and even by an agnostic improper one-slice lookup-table ERM. An efficient weak proper learner would decide an NP-complete language with one-sided randomized error.
 
+## Theorem Statement
+
+Assuming $\mathrm{NP}\nsubseteq\mathrm{RP}$, there is a binary concept class built from a perfect-completeness PCP verifier with logarithmic randomness such that the class is efficiently distribution-free learnable by improper memorization and efficiently agnostically learnable by improper one-slice lookup-table empirical risk minimization, but it has no polynomial-time proper learner that achieves even inverse-polynomial weak advantage in the realizable PAC setting. Such a weak proper learner would distinguish satisfiable from unsatisfiable instances of an NP-complete language by learning on the active verifier-randomness slice.
+
 ## Proof Sketch
 
 Use a perfect-completeness PCP with logarithmic randomness and soundness $s<1/2$, as in Håstad and Khot. A proper concept is indexed by an NP instance $\varphi$ and a proof string $\pi$. On an example $(\psi,r)$, it outputs the verifier decision $V(\varphi,\pi,r)$ if $\psi=\varphi$, and outputs $0$ otherwise.

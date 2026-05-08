@@ -27,6 +27,10 @@ tags:
 
 For a single marginal-nonuniform learner, a full-support reference marginal turns a marginal-dependent worst-case resource polynomial into one distribution-free resource polynomial. Accuracy is not transferred from the reference marginal; it comes directly from the source guarantee for the target marginal.
 
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class and let $A$ be a single PAC learner. Suppose that for every marginal distribution $P$ over instances there is a polynomial $p_P$ such that, for every realizable or agnostic labeling distribution with instance marginal $P$, $A$ satisfies the relevant PAC error guarantee and has worst-case, pathwise sample and running-time bounded by $p_P$ on every finite encoded sample transcript. If there is a reference marginal $P^\star$ with full support on every finite encoded instance in each size slice, then $p_{P^\star}$ is a single distribution-free polynomial resource bound for $A$. The accuracy guarantee under any actual marginal $P$ is still obtained by applying the original fixed-$P$ guarantee, not by transferring accuracy from $P^\star$.
+
 ## Proof Sketch
 
 Let $A$ be the single learner promised by the marginal-nonuniform source. Choose a reference marginal $P^\star$ with full support on every finitely encoded instance in each representation-size slice. Applying the source to $P^\star$ gives a polynomial $p_{P^\star}$ bounding $A$'s sample use and running time.

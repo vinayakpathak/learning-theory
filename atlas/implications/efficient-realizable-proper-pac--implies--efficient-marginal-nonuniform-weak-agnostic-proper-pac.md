@@ -19,7 +19,7 @@ refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
-summary: "Open: known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds."
+summary: "Open: same-marginal low-noise coupling follows from the realizable proper learner, but the middle-noise branch is equivalent to an unsupplied fixed-marginal proper selector; known hardness templates leak neutral handles or move the hard instance into the marginal."
 family: marginal-agnostic-hardness-open
 axis_delta:
   resource: same
@@ -39,17 +39,53 @@ tags:
 
 `open`.
 
-Open: known distribution-free agnostic hardness reductions do not automatically rule out marginal-dependent polynomial bounds.
+Open. The low-noise branch is resolved by coupling a noisy run to a clean realizable run of the proper learner. The unresolved part is the middle-noise regime, where the target needs a same-marginal legal proper selector rather than clean decoding.
+
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)>0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the conditional label distribution or $\delta$.
+
+Open problem: Does every binary concept class satisfying the source guarantee also satisfy the target guarantee?
 
 ## Proof Status
 
-**Goal.** Decide whether a realizable marginal-nonuniform learner implies the agnostic marginal-nonuniform target.
+**Goal.** Decide whether strong realizable proper learning implies weak agnostic proper learning under each fixed marginal.
 
-**Obstacle.** A realizable learner only has to compete with zero noise. The agnostic target must compete with the best concept under arbitrary label noise, uniformly over all conditional label distributions sharing the same marginal.
+**Low-noise branch.** Let $A$ be the efficient distribution-free strong realizable proper learner. Run $A$ at clean accuracy $1/32$ and let $m_0(s)$ bound the number of inspected labels. Set
 
-**Why known hardness is insufficient.** Distribution-free agnostic hardness results, such as Tiegel's halfspace lower bound, use hard families of distributions. They refute distribution-free targets, but they do not automatically refute a model whose polynomial may depend on the marginal distribution.
+$$
+\alpha_A(s)=\min\{1/64,1/(128m_0(s))\}
+$$
 
-**Conclusion.** The edge remains open for the marginal-nonuniform target.
+and choose an inverse-polynomial $\gamma_P(s)\le\min\{1/64,\alpha_A(s)/8\}$. If $\operatorname{OPT}_{\mathcal C}(\mathcal D)<\alpha_A(s)$, couple samples from $\mathcal D$ to clean samples from a near-optimal $c^\star\in\mathcal C$ under the same marginal $P$. With constant probability no inspected label is corrupted, so the noisy transcript is a successful clean transcript and the proper output has error at most
+
+$$
+\operatorname{OPT}_{\mathcal C}(\mathcal D)+3/64.
+$$
+
+Repetition and holdout validation give a legal weak agnostic candidate. This resolves the low-noise branch.
+
+**Selector equivalence.** In the remaining regime $\eta=\operatorname{OPT}_{\mathcal C}(\mathcal D)\ge\alpha_A(s)$, the missing object is a fixed-marginal middle-noise selector: a $P$-polynomial algorithm that outputs a polynomial list of proper concepts containing some $h$ with
+
+$$
+\operatorname{err}_{\mathcal D}(h)
+\le
+\operatorname{OPT}_{\mathcal C}(\mathcal D)+\frac12-4\gamma_P(s).
+$$
+
+Combining such a list with the low-noise list and validating $O(\gamma_P^{-2}\log(B/\delta))$ candidates proves the target. Conversely, any target learner gives a singleton selector after shrinking constants. Thus this selector is theorem-equivalent to the unresolved middle-noise content of the edge. Equivalently, since $\gamma_P\le\alpha_A/8$, it would suffice in the middle-noise branch to find any proper $h$ with correlation at least $-\alpha_A(s)$ against the agnostic labels.
+
+**Why the source does not supply the selector.** The realizable proper learner is only constrained on realizable labeled distributions. Off-promise calls on arbitrary, residual, random, or filtered labels can behave adversarially without violating the source node. Used safely, the learner is only a clean promise-extension oracle: it can realize a clean trace after the trace or label corrections have been guessed. In middle noise, source-scale clean subsamples are exponentially rare, while small clean subsamples do not force global weak correlation. Fixed-marginal VC covers, compression, or trace enumeration need additional effectivity assumptions.
+
+**Why current witnesses miss.** Parity and LPN examples leak neutral wrong hypotheses. Code and planted-code guards run into Bessel/Gram barriers or balanced samplers. One-way and PRF templates either force the clean learner to recover the secret on some marginal or legalize a nonsecret weak handle. PCP and active-slice constructions either encode the hard instance in the marginal, dilute the hard slice, or leave wrong-instance handles. Finite-support set-system templates make exact optimization hard but generally have defaults, local moves, approximations, or balanced samplers inside the additive $1/2-\gamma$ window; removing those handles tends to break clean promise extension.
+
+**Missing negative primitive.** A false result would need a fixed-marginal weak signed-search construction: efficient clean proper promise extension, one fixed marginal for all hard labels, and hardness of finding any legal proper hypothesis with correlation at least $-1/\operatorname{poly}(s)$, with no constants, complements, neutral samplers, defaults, local moves, wrong-code handles, or wrong-instance handles. No standard hardness template currently provides this.
+
+**Conclusion.** The edge remains open. The realizable proper source proves same-marginal low-noise robustification, but the middle-noise proper selector is neither implied by the source definition nor refuted by known fixed-marginal counterexample templates.
 
 ## References
 

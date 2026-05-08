@@ -65,10 +65,18 @@ const statusOptions = [
   ["true", "True"]
 ];
 
+const resultOriginOptions = [
+  ["", "Any"],
+  ["known", "Known"],
+  ["unclear", "Unclear"],
+  ["new", "New"]
+];
+
 const blankAxes = () => Object.fromEntries(axisFields.map(axis => [axis, ""]));
 const defaultState = () => ({
   openOnly: false,
   status: "",
+  resultOrigin: "",
   search: "",
   both: blankAxes(),
   source: blankAxes(),
@@ -82,6 +90,7 @@ const mergeState = stored => {
     ...base,
     openOnly: Boolean(stored.openOnly),
     status: typeof stored.status === "string" ? stored.status : "",
+    resultOrigin: typeof stored.resultOrigin === "string" ? stored.resultOrigin : "",
     search: typeof stored.search === "string" ? stored.search : "",
     both: { ...base.both, ...(stored.both ?? {}) },
     source: { ...base.source, ...(stored.source ?? {}) },
@@ -138,6 +147,7 @@ result.className = "atlas-edge-results";
 const axisControls = [];
 let openOnlyInput;
 let statusSelect;
+let resultOriginSelect;
 let searchInput;
 
 const style = document.createElement("style");
@@ -154,7 +164,7 @@ style.textContent = `
 }
 .atlas-edge-topbar {
   display: grid;
-  grid-template-columns: minmax(12rem, 1fr) minmax(10rem, 0.75fr) auto;
+  grid-template-columns: minmax(12rem, 1fr) minmax(9rem, 0.55fr) minmax(9rem, 0.55fr) auto;
   gap: 0.75rem;
   align-items: end;
 }
@@ -290,6 +300,7 @@ const clearState = () => {
   const fresh = defaultState();
   state.openOnly = fresh.openOnly;
   state.status = fresh.status;
+  state.resultOrigin = fresh.resultOrigin;
   state.search = fresh.search;
   state.both = fresh.both;
   state.source = fresh.source;
@@ -300,6 +311,7 @@ const syncControls = () => {
   openOnlyInput.checked = state.openOnly;
   statusSelect.value = state.status;
   statusSelect.disabled = state.openOnly;
+  resultOriginSelect.value = state.resultOrigin;
   searchInput.value = state.search;
   for (const { scope, axis, control } of axisControls) {
     control.value = state[scope][axis] ?? "";
@@ -377,6 +389,13 @@ statusSelect.addEventListener("change", () => {
   renderResults();
 });
 
+resultOriginSelect = makeSelect(resultOriginOptions, state.resultOrigin);
+resultOriginSelect.addEventListener("change", () => {
+  state.resultOrigin = resultOriginSelect.value;
+  saveState();
+  renderResults();
+});
+
 openOnlyInput = document.createElement("input");
 openOnlyInput.type = "checkbox";
 openOnlyInput.checked = state.openOnly;
@@ -396,6 +415,7 @@ openOnlyLabel.append(openOnlyInput, openOnlyText);
 topbar.append(
   makeLabeledControl("Search", searchInput),
   makeLabeledControl("Status", statusSelect),
+  makeLabeledControl("Result Origin", resultOriginSelect),
   openOnlyLabel
 );
 
@@ -473,6 +493,7 @@ const activeFilterSummary = () => {
   const active = [];
   if (state.openOnly) active.push("open only");
   else if (state.status) active.push(`status = ${state.status}`);
+  if (state.resultOrigin) active.push(`result_origin = ${state.resultOrigin}`);
   if (state.search.trim()) active.push(`search = ${state.search.trim()}`);
 
   for (const [label, filters] of [
@@ -495,6 +516,7 @@ function filteredEdges() {
     .filter(({ edge, source, target }) => {
       if (state.openOnly && edge.status !== "open") return false;
       if (!state.openOnly && state.status && edge.status !== state.status) return false;
+      if (state.resultOrigin && edge.result_origin !== state.resultOrigin) return false;
       if (!matchesBoth(source, target)) return false;
       if (!matchesAxisSet(source, state.source)) return false;
       if (!matchesAxisSet(target, state.target)) return false;

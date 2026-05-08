@@ -69,6 +69,54 @@ families:
       evidence: theorem
       ref_keys_all:
         - schapire1990
+      not:
+        axis_delta:
+          distribution: marginal-nonuniform-to-distribution-free
+  - id: spike-tilt-uniformization
+    title: Spike-Tilt Uniformization
+    status: "true"
+    evidence: theorem
+    result_origin: "new"
+    argument_note: "[[spike-tilt-uniformization|Spike-Tilt Uniformization]]"
+    summary: "A spiked marginal turns hidden marginal-dependent weak gaps into a contradiction, yielding a distribution-free weak learner."
+    match:
+      status: "true"
+      evidence: theorem
+      source_axis:
+        resource: computationally-efficient
+        strength: weak
+      target_axis:
+        resource: computationally-efficient
+        strength: weak
+      axis_delta:
+        distribution: marginal-nonuniform-to-distribution-free
+        strength: same
+      ref_keys_all:
+        - benedek1991fixed
+        - hanneke2025marginalnonuniform
+  - id: spike-tilt-uniformization-plus-boosting
+    title: Spike-Tilt Uniformization Plus Boosting
+    status: "true"
+    evidence: theorem
+    result_origin: "new"
+    argument_note: "[[spike-tilt-uniformization|Spike-Tilt Uniformization]]"
+    summary: "Spike-tilt uniformization gives distribution-free weak realizable learning, and Schapire boosting gives strong improper realizable learning."
+    match:
+      status: "true"
+      evidence: theorem
+      source_axis:
+        resource: computationally-efficient
+        strength: weak
+      target_axis:
+        resource: computationally-efficient
+        strength: strong
+      axis_delta:
+        distribution: marginal-nonuniform-to-distribution-free
+        strength: weak-to-strong
+      ref_keys_all:
+        - benedek1991fixed
+        - hanneke2025marginalnonuniform
+        - schapire1990
   - id: low-noise-weak-agnostic-robustification
     title: Low-Noise Weak Agnostic Robustification
     status: "true"

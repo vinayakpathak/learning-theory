@@ -30,6 +30,10 @@ tags:
 
 The one-way image coordinate class is efficiently learnable by a distribution-free improper memorization learner. In fact, it is agnostically learnable by improper sparse ERM: for size parameter $n$, the improper class of lookup tables with at most $n$ positive atoms has VC dimension $n$ and contains all length-$n$ proper concepts. A marginal-nonuniform realizable proper learner would still invert the one-way function on a fixed marginal.
 
+## Theorem Statement
+
+Assuming length-preserving one-way functions exist, there is a binary concept class whose concepts encode the image coordinates of a one-way function such that the class is efficiently distribution-free learnable by improper memorization, and even efficiently agnostically learnable by improper sparse empirical risk minimization, but it has no single polynomial-time proper realizable PAC learner even if the polynomial resource bound may depend on the instance marginal. More precisely, for one fixed marginal distribution over instances, any proper learner achieving sufficiently small realizable error would recover a preimage of a one-way-function challenge with nonnegligible probability.
+
 ## Proof Sketch
 
 Let $f:\{0,1\}^n\to\{0,1\}^n$ be length-preserving and one-way. The domain contains triples $(1^k,i,b)$ with $i\in[k]$ and $b\in\{0,1\}$. A seed $s\in\{0,1\}^n$ defines $c_s$ by

@@ -7,79 +7,72 @@ source_note: "[[efficient-marginal-nonuniform-agnostic-improper-pac|Efficient Ma
 target_note: "[[efficient-marginal-nonuniform-weak-agnostic-proper-pac|Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - pcp-active-slice-lookup-class
 ref_keys:
-  - bendavid2001
-  - feldman2010distributionspecific
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - blumer1989
   - hastad2005query
-  - kearns1994cryptographic
-  - hastad1999prg
+  - karp1972
+  - hanneke2025marginalnonuniform
 refs:
-  - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
-  - "[Feldman 2010](https://arxiv.org/abs/0909.2927)"
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
   - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
-  - "[Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)"
-  - "[Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)"
-summary: "Open: no efficient marginal fixed properization is known, and standard separation routes lose either the weak gap or efficient agnostic improper learnability."
-family: properization-open
+  - "[Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)"
+  - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
+summary: "False under NP not subset RP: the PCP active-slice lookup class satisfies the improper source via efficient agnostic one-slice lookup-table ERM, but a marginal-nonuniform weak agnostic proper learner would have pathwise uniform runtime under a full-support marginal and would produce a proof accepted on more than half of the active slice."
+family: pcp-active-slice-weak-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: strong-to-weak
   realizability: same
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
+witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
 ---
-
 # Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-This edge asks whether strong marginal-nonuniform agnostic improper learning always gives weak marginal-nonuniform agnostic proper learning.
+The [[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]] satisfies the source because it is efficiently agnostically learnable by an improper one-slice lookup-table ERM. It fails the target because a marginal-nonuniform weak agnostic proper learner would in particular be a weak realizable proper learner on realizable active-slice labels, because then $\operatorname{OPT}_{\mathcal C}=0$.
+
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)>0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the conditional label distribution or $\delta$.
+
+Assuming $\mathrm{NP}\nsubseteq\mathrm{RP}$, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.
 
 ## Proof Status
 
-**Goal.** Convert an efficient strong agnostic improper learner into a proper learner with inverse-polynomial excess-error advantage under the same fixed marginal. The source can output any hypothesis $g$ satisfying
+**Goal.** Separate the improper source from Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning.
 
-$$
-\operatorname{err}_{\mathcal D}(g)
-\le
-\operatorname{OPT}_{\mathcal C}+\varepsilon,
-$$
+**Witness construction.** Use the PCP active-slice class from [[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]. Choose a perfect-completeness PCP for an NP-complete language with $O(\log n)$ random bits and soundness $q<1/2$. A proper concept is indexed by an instance-proof pair $(\varphi,\pi)$ and, on an example $(\psi,r)$, outputs the verifier decision $V(\varphi,\pi,r)$ when $\psi=\varphi$ and outputs $0$ otherwise.
 
-but the target must output $h\in\mathcal C$ with error at most $\operatorname{OPT}_{\mathcal C}+\beta_P(s)$ for a marginal-dependent weak tolerance $\beta_P(s)<1/2$.
+**Why the source holds.** The verifier randomness has polynomial-size support for each active slice. ERM over the improper finite class of one-slice lookup tables, together with the all-zero hypothesis, is polynomial on a sample because only sampled slices need be considered and the best table on each sampled slice is obtained by empirical majority vote. This improper class contains every proper concept and has polynomial logarithmic size, so standard finite-class uniform convergence gives efficient agnostic improper learning. This distribution-free strong agnostic improper learner is stronger than the source node of this edge.
 
-**Theorem route.** Uniform convergence and finite-class ERM show that good proper hypotheses exist on sufficiently large samples. They do not give an efficient approximate proper ERM or projection from the improper output back into $\mathcal C$. Boosting is also a near miss: the source is already strong, and agnostic boosting constructions typically output votes or aggregates outside the base class rather than a single proper concept.
+**Why the target fails.** Suppose the target learner existed. The atlas uses worst-case/pathwise running-time bounds on finite encoded sample transcripts. Fix a full-support reference marginal $P^\star$ over encoded examples. The marginal-nonuniform guarantee for $P^\star$ gives one polynomial pathwise bound for the learner on all finite transcripts, including transcripts supported on any active slice.
 
-**Counterexample route.** Known hardness templates do not yet give a fixed-marginal weak agnostic proper separation with an easy strong agnostic improper learner.
+Given an NP instance $\varphi$, run the learner on examples sampled uniformly from the active slice $\{(\varphi,r)\}$ and labeled constantly by $1$. If $\varphi$ is satisfiable, perfect completeness makes the distribution realizable, so the learner returns, with constant probability, a proper concept accepted on strictly more than half the verifier random strings. If $\varphi$ is unsatisfiable, PCP soundness keeps every proper concept indexed by $\varphi$ at acceptance at most $q<1/2$, and concepts indexed by $\psi\ne\varphi$ output $0$ on the $\varphi$ slice. Since the slice is polynomial size, enumerate all random strings and accept iff the returned proper hypothesis is accepted on more than half of them. This gives an RP algorithm for the NP-complete language.
 
-Clause-satisfaction and PCP active-slice constructions either give only strong-accuracy gaps or place the hard instance in the marginal. Marginal-nonuniform learning allows the runtime polynomial and weak advantage to depend on that marginal, so an input-specific marginal does not yield a uniform polynomial-time contradiction. Packing all hard slices into one fixed marginal multiplies the gap by the slice mass, and some length-$n$ slices must then fall below the hidden inverse-polynomial advantage of the target learner.
-
-One-way image-coordinate witnesses give strong proper hardness with an agnostic improper source, but their fixed all-length marginal leaves weak learners with low-mass or wrong-length handles. Dense shared-code repairs would need distance from every wrong image at the unknown weak-gap scale, while still preserving efficient agnostic improper learning. Balanced Hadamard or parity encodings have the right weak geometry at a fixed length, but competing agnostically with the best image parity becomes a noisy-parity-type task rather than an evident efficient improper learner.
-
-**Conclusion.** The edge remains open as a marginal-nonuniform properization question.
+**Why marginal-nonuniformity does not save the target.** The hidden weak advantage $\gamma_{P_\varphi}(s)>0$ need not be known: any positive advantage crosses the exact threshold $1/2$, while soundness stays below it. The only apparent loophole is a formula-dependent runtime polynomial, but the current pathwise finite-transcript convention closes it via the fixed full-support marginal bound.
 
 ## References
 
-- [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
-- [Feldman 2010](https://arxiv.org/abs/0909.2927)
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
 - [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
-- [Kearns and Valiant 1994](https://doi.org/10.1145/174644.174647)
-- [Hastad et al. 1999](https://doi.org/10.1137/S0097539793244708)
+- [Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)
+- [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)

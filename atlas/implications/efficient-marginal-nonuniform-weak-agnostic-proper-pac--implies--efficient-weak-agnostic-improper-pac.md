@@ -7,25 +7,27 @@ source_note: "[[efficient-marginal-nonuniform-weak-agnostic-proper-pac|Efficient
 target_note: "[[efficient-weak-agnostic-improper-pac|Efficient Weak Agnostic Improper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "known"
+assumptions:
+  - worst-case lattice hardness
+witnesses:
+  - halfspaces
+witness_note: "[[halfspaces|Halfspaces]]"
 ref_keys:
-  - benedek1991fixed
-  - hanneke2025marginalnonuniform
+  - tiegel2023
 refs:
-  - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
-  - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
-summary: "Open: the source allows marginal-dependent polynomial bounds, while the target requires one distribution-free polynomial bound."
-family: marginal-uniformization-open
+  - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
+summary: "False under worst-case lattice hardness: halfspaces satisfy the marginal-nonuniform weak agnostic proper source via low-noise robustification, but Tiegel rules out distribution-free weak agnostic improper learning."
+family: halfspace-agnostic-hardness
 axis_delta:
   resource: same
   distribution: marginal-nonuniform-to-distribution-free
   strength: same
   realizability: same
   properness: proper-to-improper
-argument_note: "[[marginal-uniformization-open|Marginal Uniformization Open]]"
+argument_note: "[[halfspace-agnostic-hardness|Halfspace Agnostic Hardness]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -35,21 +37,40 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under worst-case lattice hardness.
 
-Open: the source allows marginal-dependent polynomial bounds, while the target requires one distribution-free polynomial bound.
+Use Boolean halfspaces. They satisfy the marginal-nonuniform weak agnostic proper source, but Tiegel's hardness result rules out the distribution-free weak agnostic improper target.
+
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)>0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the conditional label distribution or $\delta$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)>0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.
+
+Assuming the worst-case lattice hardness assumption used in Tiegel's halfspace lower bound, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.
 
 ## Proof Status
 
-**Goal.** Decide whether a marginal-dependent polynomial guarantee can be made distribution-free.
+**Goal.** Separate marginal-nonuniform weak agnostic proper learning from distribution-free weak agnostic improper learning.
 
-**Obstacle.** The source permits a different polynomial $p_P$ for each marginal $P$. The target requires one polynomial bound that works uniformly over all marginals. The definition gives no quantitative control over how the polynomial changes with $P$.
+**Why the source holds.** Halfspaces are efficiently realizably properly PAC learnable by linear feasibility and VC generalization, and constant classifiers are themselves halfspaces. The low-noise weak agnostic robustification therefore gives a proper weak agnostic learner with an inverse-polynomial gap: constants handle the regime where the best halfspace error is not tiny, while repeated runs of the realizable learner on small batches handle the low-noise regime. This witnesses the marginal-nonuniform weak agnostic proper source.
 
-**Known context.** Fixed-distribution and marginal-nonuniform learning were introduced to study exactly this relaxation of uniform PAC bounds. The known characterizations are primarily information-theoretic and do not yield a representation-sensitive computational uniformization theorem for this edge.
+**Why the target fails.** The target requires one fixed additive tolerance $\beta<1/2$. Let $a=1/2-\beta$. Tiegel proves, under worst-case lattice hardness, that no efficient algorithm outputting arbitrary binary hypotheses can achieve error below $1/2-\gamma$ on certain halfspace distributions even when the best halfspace error is at most $\delta$. Choose the hard parameters so that $\delta+\gamma<a$. A target learner would output $h$ with
 
-**Conclusion.** The edge remains open in this atlas. A proof would need a uniformization theorem; a counterexample would need a class with polynomial learning for each fixed marginal but no distribution-free polynomial learner for the target notion.
+$$
+\operatorname{err}(h)
+\le
+\operatorname{OPT}_{\mathcal C}+\beta
+\le
+\delta+\beta
+<
+1/2-\gamma,
+$$
+
+contradicting the lower bound. Since the target permits improper output, this directly refutes the target.
 
 ## References
 
-- [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
-- [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
+- [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)

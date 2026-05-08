@@ -7,27 +7,31 @@ source_note: "[[efficient-agnostic-improper-pac|Efficient Agnostic Improper PAC 
 target_note: "[[efficient-weak-realizable-proper-pac|Efficient Weak Realizable Proper PAC Learning]]"
 domain: binary-classification
 model: pac
-status: "open"
-evidence: unknown
-assumptions: []
-witnesses: []
+status: "false"
+evidence: conditional-counterexample
+result_origin: "unclear"
+assumptions:
+  - "NP not subset RP"
+witnesses:
+  - pcp-active-slice-lookup-class
 ref_keys:
-  - schapire1990
-  - pitt1988
-  - khot2008dnf
+  - blumer1989
+  - hastad2005query
+  - karp1972
 refs:
-  - "[Schapire 1990](https://doi.org/10.1023/A:1022648800760)"
-  - "[Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)"
-  - "[Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)"
-summary: "Still open: after restricting to realizable data, the unresolved step is weak properization from an improper learner."
-family: properization-open
+  - "[Blumer et al. 1989](https://doi.org/10.1145/76359.76371)"
+  - "[Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)"
+  - "[Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)"
+summary: "False under NP not subset RP: the PCP active-slice lookup class is efficiently agnostically learnable improperly, but weak proper realizable learning would decide an NP-complete language."
+family: pcp-active-slice-weak-proper-hardness
 axis_delta:
   resource: same
   distribution: same
   strength: strong-to-weak
   realizability: agnostic-to-realizable
   properness: improper-to-proper
-argument_note: "[[properization-open|Properization Open]]"
+argument_note: "[[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]"
+witness_note: "[[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]]"
 tags:
   - atlas/implication
   - learning/binary-classification
@@ -37,26 +41,32 @@ tags:
 
 ## Verdict
 
-`open`.
+`false`, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.
 
-Still open: after restricting to realizable data, the unresolved step is weak properization from an improper learner.
+The [[pcp-active-slice-lookup-class|PCP Active-Slice Lookup Class]] is efficiently agnostically learnable by an improper one-slice lookup-table ERM, but an efficient weak proper realizable learner would decide an NP-complete language with one-sided randomized error.
+
+## Theorem Statement
+
+Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
+
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
+
+The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le 1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)>0$, independent of $P$ and $c$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.
+
+Assuming $\mathrm{NP}\nsubseteq\mathrm{RP}$, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.
 
 ## Proof Status
 
-**Goal.** Decide whether strong agnostic improper learning forces weak realizable proper learning.
+**Goal.** Separate agnostic improper learning from weak realizable proper learning.
 
-**Reduction of the question.** Restrict the source learner to realizable distributions. This gives a strong realizable improper learner, hence a weak realizable improper learner. The target asks for a weak hypothesis inside $\mathcal C$.
+**Witness construction.** Use the PCP active-slice class from [[pcp-active-slice-weak-proper-hardness|PCP Active-Slice Weak Proper Hardness]]. A proper concept is indexed by an NP instance $\varphi$ and a proof $\pi$; on an example $(\psi,r)$ it runs the verifier on $(\varphi,\pi,r)$ if $\psi=\varphi$, and outputs $0$ otherwise.
 
-**What the known examples say.** Fixed-$k$ term DNF is not a counterexample: it is weakly properly learnable by Schapire's candidate-clause argument, even though it is not strongly properly learnable unless $\mathrm{RP}=\mathrm{NP}$. Thus the standard DNF separation only rules out strong properization, not weak properization.
+**Why the source holds.** The verifier uses $O(\log n)$ random bits, so each active slice has polynomial size. The improper learner runs ERM over one-slice lookup tables and the all-zero hypothesis. Only sampled slices need be considered, and the best table on a sampled slice is obtained by empirical majority vote. Since this finite improper class contains all proper concepts and has polynomial logarithmic size, standard finite-class uniform convergence gives efficient agnostic improper learning.
 
-**Second-pass check: constant-advantage DNF hardness.** Khot and Saket show that two-term DNF is hard to learn by any fixed number of DNF terms to constant advantage, assuming $\mathrm{NP}\not\subseteq\mathrm{RP}$. That would refute a constant-advantage version of this weak proper target.
-
-**Why it is only a near miss.** The weak-realizable target in this atlas asks only for inverse-polynomial advantage. Khot and Saket do not rule out that weaker advantage, and the fixed-$k$ DNF example already has such a proper weak learner. Therefore the standard DNF family still does not separate the source from this weak target.
-
-**Conclusion.** This edge remains open. It is essentially asking whether improper realizable learning always contains enough information to recover a proper hypothesis with nontrivial advantage.
+**Why the target fails.** Given an instance $\varphi$, sample uniformly from its active slice and label every point by $1$. If $\varphi$ is satisfiable, perfect completeness makes this distribution realizable by a proper concept, so a weak proper learner returns a proof accepted on more than half the random strings. If $\varphi$ is unsatisfiable, every proof is accepted on at most an $s<1/2$ fraction. The active slice is polynomial size, so acceptance can be checked to distinguish the two cases in randomized polynomial time. Thus the target would imply $\mathrm{NP}\subseteq\mathrm{RP}$.
 
 ## References
 
-- [Schapire 1990](https://doi.org/10.1023/A:1022648800760)
-- [Pitt and Valiant 1988](https://doi.org/10.1145/48014.63140)
-- [Khot and Saket 2008](https://doi.org/10.1109/FOCS.2008.37)
+- [Blumer et al. 1989](https://doi.org/10.1145/76359.76371)
+- [Håstad and Khot 2005](https://doi.org/10.4086/toc.2005.v001a007)
+- [Karp 1972](https://doi.org/10.1007/978-3-540-68279-0_8)
