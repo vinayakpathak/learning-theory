@@ -56,11 +56,11 @@
 <dt>witnesses</dt>
 <dd></dd>
 <dt>ref_keys</dt>
-<dd>benedek1991fixed, hanneke2025marginalnonuniform, tiegel2023, feldman2012monomials</dd>
+<dd>benedek1991fixed, hopkins2024, hanneke2025marginalnonuniform, tiegel2023, feldman2012monomials</dd>
 <dt>refs</dt>
-<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a>, <a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a>, <a href="https://doi.org/10.1137/120865094">Feldman et al. 2012</a></dd>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://doi.org/10.46298/theoretics.24.2">Hopkins et al. 2024</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a>, <a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a>, <a href="https://doi.org/10.1137/120865094">Feldman et al. 2012</a></dd>
 <dt>summary</dt>
-<dd>Open: marginal-preserving low-noise coupling gives proper weak agnostic candidates when OPT is below the fixed-marginal clean-transcript scale, but the middle-OPT regime needs an efficient proper residual selector or neutralizer; known halfspace, monomial, PCP, parity/code, and one-way routes either vary the marginal, prove only strong hardness, or leave legal weak proper handles.</dd>
+<dd>Open: low-noise coupling gives proper weak agnostic candidates below the fixed-marginal clean-transcript scale. The unresolved middle-OPT regime asks for an efficient same-marginal proper neutralizer/list-selector. Fixed-P trace-cover theorems give the right sample-level object, but the marginal strong clean source does not by itself give a polynomial-time proper search, projection, or cover-enumeration algorithm.</dd>
 <dt>family</dt>
 <dd>marginal-agnostic-hardness-open</dd>
 <dt>axis_delta</dt>
@@ -93,11 +93,15 @@ $$
 $$
 When $M_{\mathcal C}(\mu)$ is below the clean-transcript regime, this is only a weak residual selector requirement, but no efficient selector follows from clean realizable proper learning alone. The improper sibling can fall back to the better constant classifier; constants need not be legal concepts here.</p>
 <p><strong>Conditional positive structures.</strong> The edge would be true under extra structure such as proper constants, an efficiently findable anchor and complement, efficient approximate proper neutralizers, or searchable fixed-marginal weak residual covers. These are real additional assumptions, not consequences of the source node.</p>
+<p><strong>Conditional neutralizer/list-selector lemma.</strong> More precisely, the low-noise list from clean-transcript coupling plus any $P$-polynomial procedure that, in the middle-OPT regime, returns a validation-searchable list of legal concepts containing one weak residual selector would prove the target. A legal neutralizer also suffices when the best correlation is small. The depth-8 search found this conditional theorem useful but did not derive the selector from marginal-nonuniform clean proper learning alone.</p>
+<p><strong>Fixed-$P$ trace-cover near miss.</strong> Fixed-distribution sample theory and realizable-to-agnostic cover theorems suggest that a finite proper trace cover exists at the sample-complexity level. The obstacle is computational and representation-sensitive: the source learner may define the cover only implicitly, the cover may be exponentially large, and the source gives no polynomial-time weighted projection or enumeration procedure for noisy labels.</p>
+<p><strong>Depth-9 final check.</strong> The final pass rechecked the cover route against Hopkins--Kane--Lovett--Mahajan and Benedek--Itai. If a $P$-polynomial explicit proper cover or projection oracle were available, validation would prove the edge, even in a strong marginal agnostic form. The generic construction still enumerates all labelings of a clean sample, so its natural size is exponential in the fixed-$P$ clean sample bound. Marginal-nonuniformity allows the polynomial to depend on $P$, but not an exponential-in-polynomial trace enumeration for that same $P$.</p>
 <p><strong>Why known hardness is insufficient.</strong> Halfspaces have proper constant fallbacks and their fixed-marginal hardness is strong rather than weak. Monomial/FGRW and PCP routes vary or encode the hard instance in the marginal. Parity, LPN, and code routes leave neutral wrong proper hypotheses that satisfy the weak threshold. One-way and PRF-style routes either break the clean proper source or leak weak handles. Noisy-code attempts that make every wrong proper concept fail need inverse-polynomially negative pairwise correlations, and PSD/Plotkin bounds then leave only polynomially many hidden targets.</p>
 <p><strong>Conclusion.</strong> The edge remains open. A proof needs an efficient fixed-marginal residual proper selector or neutralizer; a counterexample must rule out all weak handles, not merely make exact recovery hard.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://doi.org/10.46298/theoretics.24.2">Hopkins et al. 2024</a></li>
 <li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
 <li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></li>
 <li><a href="https://doi.org/10.1137/120865094">Feldman et al. 2012</a></li>

@@ -13,13 +13,17 @@ assumptions: []
 witnesses: []
 ref_keys:
   - benedek1991fixed
+  - hopkins2024
   - hanneke2025marginalnonuniform
   - tiegel2023
+  - feldman2012monomials
 refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
+  - "[Hopkins et al. 2024](https://doi.org/10.46298/theoretics.24.2)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
-summary: "Open: the distribution-free source gives a uniform low-noise agnostic robustification by clean-transcript coupling, but the middle-noise regime still needs a same-marginal proper neutralizer or hidden disagreement-region selector. No known witness blocks all neutral proper outputs while preserving distribution-free clean weak proper learning."
+  - "[Feldman et al. 2012](https://doi.org/10.1137/120865094)"
+summary: "Open after depth-8 search: the low-noise branch follows by clean-transcript coupling, but the middle-noise regime still needs an efficient same-marginal proper selector or neutralizer. A negative resolution would need a strengthened fixed-ensemble no-neutral signed-search primitive (NNSS) with clean extension and hardness against all polynomial-size proper outputs. Halfspace, CSP/PCP, parity/code, and oracle-diagonal routes remain near misses rather than atlas-valid witnesses."
 family: marginal-agnostic-hardness-open
 axis_delta:
   resource: same
@@ -86,10 +90,18 @@ over legal disagreement regions $D\in\Delta_h=\{D_{h,g}:g\in\mathcal C_s\}$. The
 
 **Missing lemma.** A positive resolution would derive a same-$P$ proper neutralizer or disagreement-region selector from distribution-free weak realizable proper learning. A negative resolution would require a fixed-marginal no-neutral-output witness: exact clean labels remain distribution-free weak properly learnable, but every proper output meeting the weak OPT-relative agnostic threshold decodes a hidden hard patch.
 
+**Depth-8 conditional primitive.** The search sharpened the negative route into a strengthened fixed-ensemble no-neutral signed-search primitive (`NNSS`). Such a primitive would need one size-indexed marginal ensemble, efficient clean proper extension for all realizable samples, and signed regressions for which some proper comparator has positive score while every randomized polynomial-time learner fails to output any legal proper hypothesis whose score reaches even the weak threshold. The hardness would have to block constants, complements, biased defaults, balanced legal samplers, padded larger representations, support lookup, and random clean-extension traces. No standard assumption checked in the search instantiates this primitive.
+
+**Near misses after depth 8.** Halfspace hardness targets stronger `OPT + epsilon` accuracy or leaks legal near-neutral directions at the weak threshold. CSP/PCP and Max-kLIN templates repeatedly provide legal random assignments, complements, constants, or public defaults; removing these handles tends to break distribution-free clean weak proper learning on concentrated marginals. Parity, LPN, and code-style constructions have fixed natural marginals, but wrong parities or wrong codewords are neutral enough in the middle-noise regime. Oracle diagonal constructions illustrate why a no-neutral witness is plausible, but they are not atlas-valid separations.
+
+**Depth-9 final check.** The last distribution-free selector search found the same bottleneck in feasible-set language. Distribution-freeness supplies a uniform clean-transcript oracle and therefore the low-noise branch, but middle-noise repair still needs either exponential clean-trace enumeration or an agnostic residual oracle stronger than the source node. Standard signed-optimization hardness is also too strong a target: the weak additive threshold allows defaults, random feasible assignments, approximation algorithms, or neutral codewords that exact ERM lower bounds do not rule out.
+
 **Conclusion.** The implication remains open in `marginal-agnostic-hardness-open`; the unresolved subproblem is the proper-output middle-noise branch under fixed marginals.
 
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
+- [Hopkins et al. 2024](https://doi.org/10.46298/theoretics.24.2)
 - [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
 - [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)
+- [Feldman et al. 2012](https://doi.org/10.1137/120865094)

@@ -15,15 +15,17 @@ ref_keys:
   - bendavid2001
   - kalai2008agnosticboosting
   - gavinsky2003
+  - feldman2010distributionspecific
   - ghai2025agnosticboosting
   - dacunha2026agnosticboosting
 refs:
   - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
   - "[Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)"
   - "[Gavinsky 2003](https://www.jmlr.org/papers/v4/gavinsky03a.html)"
+  - "[Feldman 2010](https://arxiv.org/abs/0909.2927)"
   - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
-summary: "Still open. A fixed-additive weak agnostic improper learner gives useful guarantees only on query distributions with OPT_C below the weak gap. Known observable polynomial agnostic boosters require weak slack at the final accuracy scale, while known residual-free fixed-slack boosters use candidate enumeration whose runtime is not polynomial uniformly in the atlas representation parameters."
+summary: "Still open. The source gives only one fixed additive slack. Known observable polynomial agnostic boosters need tunable weak slack at the final accuracy scale, while known residual-free fixed-slack boosters use clean-slice or relabeling searches with exponents depending on weak-sample or capacity parameters. No explicit class is known that separates the two nodes."
 family: agnostic-boosting-open
 axis_delta:
   resource: same
@@ -49,7 +51,7 @@ Still open under the atlas fixed-additive weak agnostic convention. The closest 
 
 Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
 
-The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)>0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\beta$ for one fixed additive weak-agnostic tolerance $\beta<1/2$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$, and by a polynomial in $1/(1/2-\beta)$ if this tolerance is treated as a parameter. The tolerance is not a final-accuracy parameter that the learner may tune down to $\varepsilon$.
 
 The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
 
@@ -95,7 +97,9 @@ Thus generic reweighting, relabeling, filtering, validation, and compression do 
 
 **Clean-tuple barrier.** A tempting replacement is to sample only the useful weak-learner inputs instead of enumerating them. If the needed weak input is an $m_0$-sample whose empirical corruption is at most $\gamma$, a random attempt succeeds with probability exponentially small in $m_0$. The known fixed-slack construction avoids this by exhaustive menu enumeration; no observable polynomial sampler is currently known.
 
-**Why this is not a false edge.** The password picture is a black-box obstruction, not an atlas separation. A false edge would require a class that is distribution-free $\operatorname{opt}+\beta$ improperly learnable on every labeled distribution while strong improper agnostic learning remains hard. Cryptographic hidden-comparator templates usually make the weak source hard on distributions supported inside the hidden region, and public-handle variants let adversarial distributions avoid the handles.
+**Depth-8 search outcome.** The depth-limited search found no theorem after the current fixed-slack boosting work that removes this clean-witness search in representation-uniform polynomial time. It also found no standard separation. Halfspaces fail the fixed-additive weak source under Tiegel's hardness; parity/LPN witnesses work only for an inverse-polynomial weak-gap variant; code, CSP, PRF, and public-handle templates either fail the all-distributions weak source or make improper strong learning easy once the handle is public.
+
+**Depth-9 final check.** The final pass rechecked the 2026 fixed-slack boosters and nearby threshold-separation results. The da Cunha et al. residual-free route remains the closest positive evidence, but the known runtime still has the weak sample parameter and dual-capacity parameters in exponents when translated to this representation-uniform PAC edge. The same pass found no source-positive class with hard strong improper learning; all checked halfspace, parity/LPN, PRF, code, CSP, and handle routes still fail either the fixed-additive source or the strong improper target.
 
 **Conditional true principles.** The implication would be true under tunable weak slack, a fully polynomial fixed-slack booster, a fixed-parameter regime where the known exponents are constant, or an extra stability/generosity condition forcing the weak learner to return useful hypotheses on noisy comparator distributions.
 
@@ -108,5 +112,6 @@ Thus generic reweighting, relabeling, filtering, validation, and compression do 
 - [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
 - [Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)
 - [Gavinsky 2003](https://www.jmlr.org/papers/v4/gavinsky03a.html)
+- [Feldman 2010](https://arxiv.org/abs/0909.2927)
 - [Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)
 - [da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)

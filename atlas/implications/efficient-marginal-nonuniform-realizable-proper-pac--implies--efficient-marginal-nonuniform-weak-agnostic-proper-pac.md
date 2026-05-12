@@ -13,15 +13,17 @@ assumptions: []
 witnesses: []
 ref_keys:
   - benedek1991fixed
+  - hopkins2024
   - hanneke2025marginalnonuniform
   - tiegel2023
   - feldman2012monomials
 refs:
   - "[Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)"
+  - "[Hopkins et al. 2024](https://doi.org/10.46298/theoretics.24.2)"
   - "[Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)"
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
   - "[Feldman et al. 2012](https://doi.org/10.1137/120865094)"
-summary: "Open: marginal-preserving low-noise coupling gives proper weak agnostic candidates when OPT is below the fixed-marginal clean-transcript scale, but the middle-OPT regime needs an efficient proper residual selector or neutralizer; known halfspace, monomial, PCP, parity/code, and one-way routes either vary the marginal, prove only strong hardness, or leave legal weak proper handles."
+summary: "Open: low-noise coupling gives proper weak agnostic candidates below the fixed-marginal clean-transcript scale. The unresolved middle-OPT regime asks for an efficient same-marginal proper neutralizer/list-selector. Fixed-P trace-cover theorems give the right sample-level object, but the marginal strong clean source does not by itself give a polynomial-time proper search, projection, or cover-enumeration algorithm."
 family: marginal-agnostic-hardness-open
 axis_delta:
   resource: same
@@ -71,6 +73,12 @@ When $M_{\mathcal C}(\mu)$ is below the clean-transcript regime, this is only a 
 
 **Conditional positive structures.** The edge would be true under extra structure such as proper constants, an efficiently findable anchor and complement, efficient approximate proper neutralizers, or searchable fixed-marginal weak residual covers. These are real additional assumptions, not consequences of the source node.
 
+**Conditional neutralizer/list-selector lemma.** More precisely, the low-noise list from clean-transcript coupling plus any $P$-polynomial procedure that, in the middle-OPT regime, returns a validation-searchable list of legal concepts containing one weak residual selector would prove the target. A legal neutralizer also suffices when the best correlation is small. The depth-8 search found this conditional theorem useful but did not derive the selector from marginal-nonuniform clean proper learning alone.
+
+**Fixed-$P$ trace-cover near miss.** Fixed-distribution sample theory and realizable-to-agnostic cover theorems suggest that a finite proper trace cover exists at the sample-complexity level. The obstacle is computational and representation-sensitive: the source learner may define the cover only implicitly, the cover may be exponentially large, and the source gives no polynomial-time weighted projection or enumeration procedure for noisy labels.
+
+**Depth-9 final check.** The final pass rechecked the cover route against Hopkins--Kane--Lovett--Mahajan and Benedek--Itai. If a $P$-polynomial explicit proper cover or projection oracle were available, validation would prove the edge, even in a strong marginal agnostic form. The generic construction still enumerates all labelings of a clean sample, so its natural size is exponential in the fixed-$P$ clean sample bound. Marginal-nonuniformity allows the polynomial to depend on $P$, but not an exponential-in-polynomial trace enumeration for that same $P$.
+
 **Why known hardness is insufficient.** Halfspaces have proper constant fallbacks and their fixed-marginal hardness is strong rather than weak. Monomial/FGRW and PCP routes vary or encode the hard instance in the marginal. Parity, LPN, and code routes leave neutral wrong proper hypotheses that satisfy the weak threshold. One-way and PRF-style routes either break the clean proper source or leak weak handles. Noisy-code attempts that make every wrong proper concept fail need inverse-polynomially negative pairwise correlations, and PSD/Plotkin bounds then leave only polynomially many hidden targets.
 
 **Conclusion.** The edge remains open. A proof needs an efficient fixed-marginal residual proper selector or neutralizer; a counterexample must rule out all weak handles, not merely make exact recovery hard.
@@ -78,6 +86,7 @@ When $M_{\mathcal C}(\mu)$ is below the clean-transcript regime, this is only a 
 ## References
 
 - [Benedek and Itai 1991](https://doi.org/10.1016/0304-3975(91)90026-X)
+- [Hopkins et al. 2024](https://doi.org/10.46298/theoretics.24.2)
 - [Hanneke et al. 2025](https://openreview.net/forum?id=aoVCFtox89)
 - [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)
 - [Feldman et al. 2012](https://doi.org/10.1137/120865094)

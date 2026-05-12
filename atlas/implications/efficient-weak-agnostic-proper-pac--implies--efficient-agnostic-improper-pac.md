@@ -15,6 +15,7 @@ ref_keys:
   - bendavid2001
   - kalai2008agnosticboosting
   - gavinsky2003
+  - feldman2010distributionspecific
   - ghai2025agnosticboosting
   - dacunha2026agnosticboosting
   - tiegel2023
@@ -22,10 +23,11 @@ refs:
   - "[Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)"
   - "[Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)"
   - "[Gavinsky 2003](https://www.jmlr.org/papers/v4/gavinsky03a.html)"
+  - "[Feldman 2010](https://arxiv.org/abs/0909.2927)"
   - "[Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)"
   - "[da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)"
   - "[Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)"
-summary: "Open: fixed-additive proper weak agnostic learning gives a nontrivial constant-slack oracle and is boostable statistically or with fixed weak parameters, but known fixed-slack boosters use clean-witness enumeration with representation-dependent exponents; no fixed-gap class separation is known."
+summary: "Open. Efficient weak agnostic proper learning immediately relaxes to efficient weak agnostic improper learning, so any positive resolution of the improper weak-to-strong agnostic boosting edge would prove this edge. Current boosting/OCO routes require an accuracy-tunable weighted correlation, cost-sensitive ERM, or residual-separation oracle; properness alone gives legal base hypotheses for voting but not that oracle."
 family: agnostic-boosting-open
 axis_delta:
   resource: same
@@ -51,7 +53,7 @@ Open as an efficient PAC implication. The statistical or fixed-parameter oracle 
 
 Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.
 
-The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)>0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.
+The **source guarantee** is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\beta$ for one fixed additive weak-agnostic tolerance $\beta<1/2$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$, and by a polynomial in $1/(1/2-\beta)$ if this tolerance is treated as a parameter. The tolerance is not a final-accuracy parameter that the learner may tune down to $\varepsilon$.
 
 The **target guarantee** is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times\{0,1\}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon>0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.
 
@@ -62,6 +64,8 @@ Open problem: Does every binary concept class satisfying the source guarantee al
 **Goal.** Decide whether weak agnostic proper learning can be boosted to strong agnostic improper learning.
 
 **What properness contributes.** The source hypotheses lie in $\mathcal C$, but the target allows an improper final vote. Thus properness of the weak hypotheses is not the obstacle; useful proper hypotheses can be validated, sign-flipped, weighted, and combined by an improper learner. The real question is whether the fixed-additive weak agnostic learner supplies enough oracle power for efficient agnostic boosting.
+
+**Reduction to the improper core.** This edge is conditionally implied by the open improper-source edge [[efficient-weak-agnostic-improper-pac|Efficient Weak Agnostic Improper PAC Learning]] $\Rightarrow$ [[efficient-agnostic-improper-pac|Efficient Agnostic Improper PAC Learning]]. A proper weak agnostic learner is already an improper weak agnostic learner with the same sample and time bounds, since the improper model only relaxes the output constraint. The converse transfer is not automatic: a false witness for the improper-source edge may rely essentially on improper weak hypotheses and fail the stronger proper source here.
 
 **Translation to the boosting oracle.** Work in $\{-1,1\}$ labels. The fixed-additive condition
 $$
@@ -89,6 +93,8 @@ The noisy-comparator calculation gives the same obstruction operationally. If $Y
 
 Affine parities give a useful model fork but not a current-edge separation. Under constant-noise decision-LPN, they separate a parameterized inverse-polynomial weak-gap variant: clean-batch Gaussian elimination gives proper weak learning at gap $\Theta(1/n)$, while strong improper agnostic learning under the uniform marginal would distinguish LPN. For the fixed constant $\beta$ in this atlas node, the same class is source-negative: low-noise parity with noise below $1/2-\beta$ would already require weak recovery of the hidden parity.
 
+**Depth-9 schema check.** The final pass confirmed that the edge should be read using the fixed-additive source definition above. If this node were later changed to allow a nonconstant inverse-polynomial weak gap, affine parities under decision-LPN would become a serious conditional false route. Under the current Ben-David-style fixed tolerance, that route fails the source, and properness still does not supply the missing polynomial clean-witness or cost-sensitive oracle.
+
 **Why this is not a separation.** The decoy-oracle picture is only a black-box barrier. A valid false edge would need a represented class with a uniform polynomial-time proper $\operatorname{opt}_{\mathcal C}+\beta$ learner for every labeled distribution, while every polynomial-time improper learner fails to achieve $\operatorname{opt}_{\mathcal C}+\varepsilon$ for some distribution. Current PRF, one-way-handle, PCP, halfspace, parity, coding, and fixed-$k$ DNF templates miss one side of this requirement: either the weak source also becomes hard, or the public handles and improper voting make the strong target easy.
 
 A real fixed-gap separation would need a class with a public distribution-free proper weak decoder for every weighted corruption pattern below a fixed noise radius, but with hard improper agnostic prediction at a larger constant noise rate. No standard candidate currently supplies both sides.
@@ -102,6 +108,7 @@ A real fixed-gap separation would need a class with a public distribution-free p
 - [Ben-David et al. 2001](https://doi.org/10.1007/3-540-44581-1_33)
 - [Kalai et al. 2008](https://doi.org/10.1145/1374376.1374466)
 - [Gavinsky 2003](https://www.jmlr.org/papers/v4/gavinsky03a.html)
+- [Feldman 2010](https://arxiv.org/abs/0909.2927)
 - [Ghai and Singh 2025](https://proceedings.mlr.press/v267/ghai25a.html)
 - [da Cunha et al. 2026](https://arxiv.org/abs/2601.11265)
 - [Tiegel 2023](https://proceedings.mlr.press/v195/tiegel23a.html)
