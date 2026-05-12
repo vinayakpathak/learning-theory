@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Realizable Proper PAC Learning $\Rightarrow$ Efficient Agnostic Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-realizable-proper-pac--implies--efficient-agnostic-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-realizable-proper-pac__implies__efficient-agnostic-improper-pac</dd>
+<dt>source</dt>
+<dd>efficient-realizable-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-agnostic-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-realizable-proper-pac.html">Efficient Realizable Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-agnostic-improper-pac.html">Efficient Agnostic Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd>worst-case lattice hardness</dd>
+<dt>witnesses</dt>
+<dd>halfspaces</dd>
+<dt>ref_keys</dt>
+<dd>tiegel2023</dd>
+<dt>refs</dt>
+<dd><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></dd>
+<dt>summary</dt>
+<dd>Halfspaces are efficiently realizably properly learnable, but distribution-free improper agnostic learning of halfspaces is hard under worst-case lattice assumptions.</dd>
+<dt>family</dt>
+<dd>halfspace-agnostic-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;same&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;realizable-to-agnostic&quot;,&quot;properness&quot;:&quot;proper-to-improper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/halfspace-agnostic-hardness.html">Halfspace Agnostic Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/halfspaces.html">Halfspaces</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-realizable-proper-pac-learning-efficient-agnostic-improper-pac-learning">Efficient Realizable Proper PAC Learning $\Rightarrow$ Efficient Agnostic Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under worst-case lattice hardness assumptions.</p>
+<p>Halfspaces are efficiently learnable in the realizable proper setting, but Tiegel proves hardness for distribution-free agnostic learning of halfspaces even with improper hypotheses.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.</p>
+<p>Assuming the worst-case lattice hardness assumption used in Tiegel's halfspace lower bound, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p><strong>Goal.</strong> Refute the universal implication under worst-case lattice hardness assumptions. It is enough to exhibit a class that is efficiently realizably properly learnable but not efficiently agnostically improperly learnable.</p>
+<p><strong>Construction.</strong> Take $\mathcal C$ to be the class of Boolean halfspaces over $\mathbb R^d$, represented by a weight vector and threshold.</p>
+<p><strong>Why the source property holds.</strong> In the realizable proper PAC problem, every labeled sample is assumed to be consistent with some halfspace. A learner can find a consistent halfspace by solving the corresponding linear feasibility problem:</p>
+<p>$$
+y_i(\langle w,x_i\rangle-\theta)&gt;0
+$$</p>
+<p>for all labeled examples $(x_i,y_i)$. Standard linear programming gives a polynomial-time procedure in the usual finite-bit representation model. Together with the VC bound for halfspaces, this gives efficient realizable proper PAC learning.</p>
+<p><strong>Why the target property fails.</strong> Tiegel constructs, from worst-case lattice problems, distribution-free agnostic halfspace instances with an inverse-polynomial error gap: in the yes case, some halfspace has small error, while in the no case no efficient improper learner can output a hypothesis whose error is within the required agnostic tolerance. Thus an efficient improper agnostic learner for halfspaces would distinguish the lattice instances and violate the assumed lattice hardness.</p>
+<p><strong>Conclusion.</strong> Halfspaces satisfy the source node but fail the target node under the stated assumption. Therefore efficient realizable proper PAC learning does not imply efficient agnostic improper PAC learning under worst-case lattice hardness assumptions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

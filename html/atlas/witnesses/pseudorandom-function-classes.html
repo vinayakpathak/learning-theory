@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pseudorandom Function Classes - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-witness section-witnesses">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/witnesses/pseudorandom-function-classes.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>witness</dd>
+<dt>id</dt>
+<dd>pseudorandom-function-classes</dd>
+<dt>title</dt>
+<dd>Pseudorandom Function Classes</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>assumptions</dt>
+<dd>standard cryptographic assumptions</dd>
+<dt>ref_keys</dt>
+<dd>goldreich1986, kearns1994cryptographic</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/6490.6503">Goldreich et al. 1986</a>, <a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></dd>
+<dt>tags</dt>
+<dd>atlas/witness, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="pseudorandom-function-classes">Pseudorandom Function Classes</h1>
+<h2 id="role">Role</h2>
+<p>This witness separates sample-efficient learning from computationally efficient learning. A keyed family with polynomial key length has finite VC dimension, so unbounded empirical risk minimization gives proper agnostic sample-efficient PAC learning. Under standard cryptographic assumptions, however, no randomized polynomial-time learner can even weakly learn the family on the hard marginal distribution; such a learner would distinguish pseudorandom functions from random labelings.</p>
+<p>Thus the class satisfies every sample-efficient source node in this binary PAC atlas but fails every computationally efficient target node.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/6490.6503">Goldreich et al. 1986</a></li>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

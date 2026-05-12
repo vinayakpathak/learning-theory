@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clause-Satisfaction Lookup Class - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-witness section-witnesses">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/witnesses/clause-satisfaction-lookup-class.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>witness</dd>
+<dt>id</dt>
+<dd>clause-satisfaction-lookup-class</dd>
+<dt>title</dt>
+<dd>Clause-Satisfaction Lookup Class</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>assumptions</dt>
+<dd>NP not subset RP</dd>
+<dt>ref_keys</dt>
+<dd>blumer1989, karp1972</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></dd>
+<dt>tags</dt>
+<dd>atlas/witness, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="clause-satisfaction-lookup-class">Clause-Satisfaction Lookup Class</h1>
+<h2 id="role">Role</h2>
+<p>This witness separates improper learning from proper learning. The instance domain consists of polynomially many clauses, so an improper lookup-table learner can compete with the class. Proper hypotheses encode assignments, and a highly accurate proper learner on realizable clause distributions would solve 3-SAT with one-sided randomized error.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning $\Rightarrow$ Sample-Efficient Realizable Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/sample-efficient-marginal-nonuniform-agnostic-proper-pac--implies--sample-efficient-realizable-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>sample-efficient-marginal-nonuniform-agnostic-proper-pac__implies__sample-efficient-realizable-improper-pac</dd>
+<dt>source</dt>
+<dd>sample-efficient-marginal-nonuniform-agnostic-proper-pac</dd>
+<dt>target</dt>
+<dd>sample-efficient-realizable-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/sample-efficient-marginal-nonuniform-agnostic-proper-pac.html">Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/sample-efficient-realizable-improper-pac.html">Sample-Efficient Realizable Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>witnesses</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>valiant1984, blumer1989, benedek1991fixed, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>summary</dt>
+<dd>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</dd>
+<dt>family</dt>
+<dd>sample-complexity-equivalence</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;agnostic-to-realizable&quot;,&quot;properness&quot;:&quot;proper-to-improper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/sample-complexity-equivalence.html">Sample-Complexity Equivalence</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="sample-efficient-marginal-nonuniform-agnostic-proper-pac-learning-sample-efficient-realizable-improper-pac-learning">Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning $\Rightarrow$ Sample-Efficient Realizable Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>, by the binary sample-complexity equivalence and the marginal-nonuniform trichotomy.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size is bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$. No polynomial running-time bound is required.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size is bounded by $p(s,1/\varepsilon,\log(1/\delta))$. No polynomial running-time bound is required.</p>
+<p>The theorem asserts that every class satisfying the source guarantee also satisfies the target guarantee.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p><strong>Goal.</strong> Show that the source guarantee is enough for <a href="../definitions/sample-efficient-realizable-improper-pac.html">Sample-Efficient Realizable Improper PAC Learning</a> once polynomial running time is not required.</p>
+<p><strong>Why the source gives sample control.</strong> The source is a polynomial-rate marginal-nonuniform sample guarantee after ignoring any runtime requirement. In the sample-only binary setting, the usual VC/ERM equivalences convert among realizable, agnostic, weak, strong, proper, and improper variants.</p>
+<p><strong>Why marginal nonuniformity uniformizes here.</strong> Hanneke, Moran, and Thiessen's marginal-nonuniform trichotomy says that binary classes with finite VC dimension have linear marginal-nonuniform rates, while classes with infinite VC dimension require arbitrarily slow marginal-nonuniform rates. Therefore a polynomial marginal-nonuniform sample guarantee forces finite VC dimension.</p>
+<p><strong>Why the target follows.</strong> Standard VC theory gives distribution-free polynomial sample complexity for binary PAC learning when VC dimension is finite. Since runtime is unrestricted, exhaustive empirical risk minimization can be used to obtain the requested proper or improper target variant.</p>
+<p><strong>Conclusion.</strong> The implication is true as a sample-complexity statement. It should not be read as giving a polynomial-time learner.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

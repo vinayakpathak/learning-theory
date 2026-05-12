@@ -13,6 +13,7 @@
 *.synctex.gz
 *.toc
 build/
+node_modules/
 lean/.lake/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json

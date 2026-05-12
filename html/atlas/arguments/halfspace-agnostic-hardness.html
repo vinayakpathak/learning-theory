@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halfspace Agnostic Hardness - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/halfspace-agnostic-hardness.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>halfspace-agnostic-hardness</dd>
+<dt>title</dt>
+<dd>Halfspace Agnostic Hardness</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>halfspaces</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/halfspaces.html">Halfspaces</a></dd>
+<dt>assumptions</dt>
+<dd>worst-case lattice hardness</dd>
+<dt>ref_keys</dt>
+<dd>tiegel2023</dd>
+<dt>refs</dt>
+<dd><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="halfspace-agnostic-hardness">Halfspace Agnostic Hardness</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under worst-case lattice hardness.</p>
+<p>Boolean halfspaces satisfy the relevant realizable source nodes by efficient proper realizable learning. Tiegel's hardness result rules out the corresponding agnostic target nodes for halfspaces, including improper agnostic targets in the distribution-free setting and the marginal-nonuniform agnostic targets captured in the existing implication notes.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample-Complexity Equivalence - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/sample-complexity-equivalence.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>sample-complexity-equivalence</dd>
+<dt>title</dt>
+<dd>Sample-Complexity Equivalence</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>ref_keys</dt>
+<dd>valiant1984, blumer1989, schapire1990, freund1995boosting, bendavid2001, kalai2008agnosticboosting, benedek1991fixed, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a>, <a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a>, <a href="https://doi.org/10.1145/1374376.1374466">Kalai et al. 2008</a>, <a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="sample-complexity-equivalence">Sample-Complexity Equivalence</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>, for the sample-only binary PAC notions tracked here.</p>
+<p>Once running time is ignored, empirical risk minimization over the benchmark class is an admissible learner. In the distribution-free binary setting, finite VC dimension characterizes realizable and agnostic PAC learnability, and the same uniform-convergence bounds support proper learning whenever the benchmark class itself is the output class.</p>
+<p>For weak-to-strong directions, classical boosting is the algorithmic reference point: Schapire's weak-to-strong theorem and Freund's boost-by-majority show how a weak realizable advantage can be amplified. The sample-only edges do not need to implement that booster efficiently. They use the same finite-sample consequence instead: a binary class that is weakly learnable with polynomial samples is on the finite-dimensional side of the VC sample-complexity characterization, so standard uniform convergence supplies arbitrary accuracy once unbounded ERM is allowed.</p>
+<p>For the agnostic weak-to-strong directions, the route is two-step. First, a weak agnostic learner with fixed tolerance $\beta&lt;1/2$ is a weak realizable learner when restricted to realizable labeled distributions, because then $\inf_{c\in\mathcal C}\operatorname{err}(c)=0$. Second, the resulting finite-dimensional sample control gives agnostic learning by ERM: with a sufficiently large sample, every $c\in\mathcal C$ has empirical error close to true error, so an empirical minimizer satisfies $\operatorname{err}(h)\le \inf_{c\in\mathcal C}\operatorname{err}(c)+\varepsilon$. This is the sample-complexity counterpart of agnostic boosting, as studied by Ben-David--Long--Mansour and Kalai--Mansour--Verbin, but it does not assert a polynomial-time black-box conversion for the atlas's fixed-additive weak agnostic node.</p>
+<p>In the marginal-nonuniform setting, the same reasoning is applied at a fixed marginal when the target remains marginal-nonuniform, with the polynomial allowed to depend on that marginal. When a marginal-nonuniform sample source is used to prove a distribution-free target, Hanneke, Moran, and Thiessen's trichotomy supplies the additional uniformization step.</p>
+<p>The marginal-to-distribution-free step is also settled at the sample-only polynomial-rate level. Hanneke, Moran, and Thiessen's trichotomy says that binary classes with finite VC dimension have linear marginal-nonuniform rates, while classes with infinite VC dimension require arbitrarily slow marginal-nonuniform rates. Thus a polynomial marginal-nonuniform sample guarantee forces finite VC dimension, and standard VC theory gives the distribution-free sample-efficient target.</p>
+<p>This argument does not settle computational marginal-to-distribution-free uniformization. A learner whose running-time polynomial may depend on the marginal distribution need not come with one polynomial-time bound that works uniformly over all marginals. Those computational edges remain in <a href="marginal-uniformization-open.html">Marginal Uniformization Open</a>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></li>
+<li><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a></li>
+<li><a href="https://doi.org/10.1145/1374376.1374466">Kalai et al. 2008</a></li>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

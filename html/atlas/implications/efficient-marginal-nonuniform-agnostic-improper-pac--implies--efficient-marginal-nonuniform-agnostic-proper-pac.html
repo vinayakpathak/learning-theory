@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Agnostic Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-marginal-nonuniform-agnostic-improper-pac--implies--efficient-marginal-nonuniform-agnostic-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-marginal-nonuniform-agnostic-improper-pac__implies__efficient-marginal-nonuniform-agnostic-proper-pac</dd>
+<dt>source</dt>
+<dd>efficient-marginal-nonuniform-agnostic-improper-pac</dd>
+<dt>target</dt>
+<dd>efficient-marginal-nonuniform-agnostic-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-agnostic-improper-pac.html">Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>unclear</dd>
+<dt>assumptions</dt>
+<dd>NP not subset RP</dd>
+<dt>witnesses</dt>
+<dd>clause-satisfaction-lookup-class</dd>
+<dt>ref_keys</dt>
+<dd>blumer1989, karp1972</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></dd>
+<dt>summary</dt>
+<dd>False under NP not subset RP: a fixed-uniform-marginal clause lookup class is agnostically learnable improperly, but proper learning would decide 3-SAT.</dd>
+<dt>family</dt>
+<dd>clause-satisfaction-proper-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;same&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;improper-to-proper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/clause-satisfaction-proper-hardness.html">Clause-Satisfaction Proper Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/clause-satisfaction-lookup-class.html">Clause-Satisfaction Lookup Class</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-marginal-nonuniform-agnostic-improper-pac-learning-efficient-marginal-nonuniform-agnostic-proper-pac-learning">Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.</p>
+<p>The clause-satisfaction lookup class is agnostically learnable by an improper lookup-table learner, but a marginal-nonuniform proper agnostic learner under one fixed clause marginal would decide 3-SAT.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$.</p>
+<p>Assuming $\mathrm{NP}\nsubseteq\mathrm{RP}$, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.</p>
+<h2 id="proof-status">Proof Status</h2>
+<p><strong>Source.</strong> For each $n$, let $X_n$ be the set of all 3-CNF clauses over variables $x_1,\ldots,x_n$. Proper hypotheses are assignments $a\in{0,1}^n$, represented by
+$$
+h_a(C)=1 \quad\Longleftrightarrow\quad a \text{ satisfies } C.
+$$
+An improper learner may output an arbitrary lookup table on $X_n$. Since $|X_n|=O(n^3)$, empirical majority labels over clauses give efficient distribution-free agnostic improper learning, hence the marginal-nonuniform improper source.</p>
+<h1 id="fixed-marginal-let-p-n-be-uniform-on-x-n-given-a-3-cnf-formula-with-clause-set-f-x-n-define-a-joint-distribution-with-marginal-p-n-by-labeling-clauses-in-f-as-1-and-labeling-clauses-outside-f-by-an-independent-fair-coin-for-every-assignment-a-err-h-a"><strong>Fixed marginal.</strong> Let $P_n$ be uniform on $X_n$. Given a 3-CNF formula $\varphi$ with clause set $F\subseteq X_n$, define a joint distribution with marginal $P_n$ by labeling clauses in $F$ as $1$ and labeling clauses outside $F$ by an independent fair coin. For every assignment $a$,
+$$
+\operatorname{err}(h_a)</h1>
+<p>\frac{|{C\in F:h_a(C)=0}|}{|X_n|}
++\frac{|X_n|-|F|}{2|X_n|}.
+$$
+The non-formula region contributes the same fair-noise term for every proper hypothesis.</p>
+<p>If $\varphi$ is satisfiable, some assignment attains the fair-noise baseline. If $\varphi$ is unsatisfiable, every assignment falsifies at least one formula clause, so the optimum proper error is larger by at least $1/|X_n|$. A marginal-nonuniform proper agnostic learner for the fixed marginal $P_n$, run with accuracy $1/(3|X_n|)$, would return a satisfying assignment in the satisfiable case. Checking the returned assignment gives a one-sided randomized polynomial-time algorithm for 3-SAT, contradicting $\mathrm{NP}\nsubseteq\mathrm{RP}$.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

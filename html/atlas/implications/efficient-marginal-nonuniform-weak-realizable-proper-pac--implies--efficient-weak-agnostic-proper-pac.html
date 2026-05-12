@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning $\Rightarrow$ Efficient Weak Agnostic Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-marginal-nonuniform-weak-realizable-proper-pac--implies--efficient-weak-agnostic-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-marginal-nonuniform-weak-realizable-proper-pac__implies__efficient-weak-agnostic-proper-pac</dd>
+<dt>source</dt>
+<dd>efficient-marginal-nonuniform-weak-realizable-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-weak-agnostic-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-weak-agnostic-proper-pac.html">Efficient Weak Agnostic Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd>worst-case lattice hardness</dd>
+<dt>witnesses</dt>
+<dd>halfspaces</dd>
+<dt>ref_keys</dt>
+<dd>tiegel2023</dd>
+<dt>refs</dt>
+<dd><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></dd>
+<dt>summary</dt>
+<dd>Halfspaces satisfy the source, but fail the distribution-free agnostic target under worst-case lattice assumptions.</dd>
+<dt>family</dt>
+<dd>halfspace-agnostic-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;realizable-to-agnostic&quot;,&quot;properness&quot;:&quot;same&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/halfspace-agnostic-hardness.html">Halfspace Agnostic Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/halfspaces.html">Halfspaces</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-marginal-nonuniform-weak-realizable-proper-pac-learning-efficient-weak-agnostic-proper-pac-learning">Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning $\Rightarrow$ Efficient Weak Agnostic Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under worst-case lattice hardness.</p>
+<p>Halfspaces satisfy the source, but fail the distribution-free agnostic target under worst-case lattice assumptions.</p>
+<h2 id="counterexample">Counterexample</h2>
+<p><strong>Goal.</strong> Refute the implication with a class satisfying the source but not the distribution-free agnostic target.</p>
+<p><strong>Construction.</strong> Use Boolean halfspaces. Halfspaces are efficiently realizably properly PAC learnable by linear feasibility and VC generalization. Therefore they satisfy every realizable source node here, including marginal-nonuniform and improper weakenings.</p>
+<p><strong>Why the target fails.</strong> Tiegel proves that distribution-free agnostic learning of halfspaces is hard even for improper hypotheses under worst-case lattice assumptions. This rules out the agnostic target, and it also rules out the proper target when properness is required.</p>
+<p><strong>Conclusion.</strong> The source can hold while the target fails under the stated hardness assumption.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

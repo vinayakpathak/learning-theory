@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One-Way Image Coordinate Weak-Handle Hardness - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/one-way-image-coordinate-weak-handle-hardness.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>one-way-image-coordinate-weak-handle-hardness</dd>
+<dt>title</dt>
+<dd>One-Way Image Coordinate Weak-Handle Hardness</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>one-way-image-coordinate-weak-handle-class</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/one-way-image-coordinate-weak-handle-class.html">One-Way Image Coordinate Weak-Handle Class</a></dd>
+<dt>assumptions</dt>
+<dd>length-preserving one-way functions exist</dd>
+<dt>ref_keys</dt>
+<dd>kearns1994cryptographic, hastad1999prg</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a>, <a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="one-way-image-coordinate-weak-handle-hardness">One-Way Image Coordinate Weak-Handle Hardness</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under the assumption that length-preserving one-way functions exist.</p>
+<p>Adding constants and bounded positive-atom handle concepts to the one-way image-coordinate class makes weak proper learning easy, while strong proper learning under the fixed coordinate marginal still inverts the one-way function. Singleton handles are enough for inverse-polynomial weak realizable variants; bounded subset handles give a fixed additive weak agnostic tolerance.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Assuming length-preserving one-way functions exist, there is a binary concept class obtained from the one-way image-coordinate construction by adding constants and bounded positive-atom handle concepts with the following two properties. First, the class has polynomial-time proper weak learners: in the realizable case a proper hypothesis can achieve error at most $1/2-1/\operatorname{poly}(s)$, and in the agnostic case a proper hypothesis can achieve error at most $\operatorname{OPT}_{\mathcal C}+1/2-\Omega(1)$. Second, the class has no polynomial-time strong proper learner whose polynomial resource bound is allowed to depend on the instance marginal. For one fixed marginal distribution, any proper learner achieving sufficiently small strong realizable error would recover a preimage of a one-way-function challenge with nonnegligible probability.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p>For a length-$n$ image-coordinate target, let $M$ be the marginal mass of its positive set. The all-zero concept has error $M$ and the all-one concept has error $1-M$. A singleton on a heaviest positive atom has error at most $M(1-1/n)$, giving an inverse-polynomial weak edge. For fixed-additive weak agnostic sources, allow bounded subset handles: a handle containing the heaviest $\lfloor n/4\rfloor$ positive atoms has error at most $3M/4$, so the best of all-zero, all-one, and this handle has error at most $3/7&lt;1/2$. Samples and validation find the best empirical bounded handle in polynomial time.</p>
+<p>For strong proper hardness, use the fixed marginal with mass $\mu_k=6/(\pi^2k^2)$ on the length-$k$ block. Accuracy $\mu_n/(3n)$ against a length-$n$ image-coordinate target excludes the added handles and forces a seed hypothesis with the same image. A strong proper learner would therefore invert a length-preserving one-way function.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+<li><a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

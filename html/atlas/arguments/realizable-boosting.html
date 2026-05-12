@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Realizable Boosting - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/realizable-boosting.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>realizable-boosting</dd>
+<dt>title</dt>
+<dd>Realizable Boosting</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>ref_keys</dt>
+<dd>schapire1990, freund1995boosting</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="realizable-boosting">Realizable Boosting</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>.</p>
+<p>Schapire's weak-to-strong boosting theorem and Freund's boost-by-majority convert weak realizable learning into strong realizable learning with an improper final hypothesis, since the boosted vote need not lie in the original class. In implication notes, this family covers edges whose source gives a weak realizable learner, or gives a weak agnostic learner that specializes to weak realizable learning on realizable distributions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spike-Tilt Uniformization - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/spike-tilt-uniformization.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>spike-tilt-uniformization</dd>
+<dt>title</dt>
+<dd>Spike-Tilt Uniformization</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>ref_keys</dt>
+<dd>benedek1991fixed, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="spike-tilt-uniformization">Spike-Tilt Uniformization</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>.</p>
+<p>Under the atlas deterministic-output and pathwise finite-transcript conventions, marginal-nonuniform weak realizable learning already contains a distribution-free inverse-polynomial weak edge.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class. Suppose there is a single weak realizable learner $A$ such that, for every marginal distribution $P$, there are a polynomial $p_P$ and an inverse-polynomial advantage $\gamma_P(s)&gt;0$ with the following property: for every target $c\in\mathcal C$, with high probability $A$ outputs a hypothesis of error at most $1/2-\gamma_P(s)$ under $P$, and its sample and running-time bounds are pathwise bounded by $p_P$. If the learner's output can be treated deterministically after fixing its internal randomness, then there is one polynomial $p$ and one inverse-polynomial advantage $\gamma(s)&gt;0$, independent of $P$, giving a distribution-free weak realizable learner for $\mathcal C$.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p>Fix constant confidence and use a full-support reference marginal to obtain one pathwise polynomial sample and runtime bound $m(s)$ for the marginal-nonuniform weak learner. This step uses only that every finite transcript possible under any marginal has positive probability under the reference marginal.</p>
+<p>Write labels and hypotheses as ${\pm1}$-valued functions. For a target $c$, define the signed edge</p>
+<p>$$
+e_P(h)=\mathbb E_P[c(X)h(X)].
+$$</p>
+<p>Suppose the learner has no uniform weak edge. Then for some marginal $P$, with constant probability it outputs deterministic hypotheses with</p>
+<p>$$
+0&lt;e_P(h)&lt;O(1/m(s)).
+$$</p>
+<p>Among those low-edge outputs, averaging over $x\sim P$ finds a point $x^\star$ where a constant fraction of the outputs are wrong. Form the spiked marginal</p>
+<p>$$
+Q=(1-\varepsilon)P+\varepsilon\delta_{x^\star},
+\qquad
+\varepsilon=\Theta(1/m(s)).
+$$</p>
+<p>The $m(s)$-sample transcript laws under $P$ and $Q$ have only constant total variation distance, since a sample sees the spike with probability $O(m(s)\varepsilon)$. But every low-edge output that is wrong at $x^\star$ has nonpositive edge under $Q$, contradicting the source guarantee for the marginal $Q$.</p>
+<p>Therefore the source learner has a uniform inverse-polynomial weak advantage $\Omega(1/m(s))$. Standard validation amplifies confidence. When a strong realizable improper target is desired, Schapire-style boosting applies to the resulting distribution-free weak learner.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

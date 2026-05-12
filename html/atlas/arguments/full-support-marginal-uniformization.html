@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full-Support Marginal Uniformization - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/full-support-marginal-uniformization.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>full-support-marginal-uniformization</dd>
+<dt>title</dt>
+<dd>Full-Support Marginal Uniformization</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>ref_keys</dt>
+<dd>benedek1991fixed, bendavid1995parameterization, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="full-support-marginal-uniformization">Full-Support Marginal Uniformization</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>, under the atlas convention that efficient PAC sample use and running time are worst-case bounds on finite encoded sample transcripts.</p>
+<p>For a single marginal-nonuniform learner, a full-support reference marginal turns a marginal-dependent worst-case resource polynomial into one distribution-free resource polynomial. Accuracy is not transferred from the reference marginal; it comes directly from the source guarantee for the target marginal.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class and let $A$ be a single PAC learner. Suppose that for every marginal distribution $P$ over instances there is a polynomial $p_P$ such that, for every realizable or agnostic labeling distribution with instance marginal $P$, $A$ satisfies the relevant PAC error guarantee and has worst-case, pathwise sample and running-time bounded by $p_P$ on every finite encoded sample transcript. If there is a reference marginal $P^\star$ with full support on every finite encoded instance in each size slice, then $p_{P^\star}$ is a single distribution-free polynomial resource bound for $A$. The accuracy guarantee under any actual marginal $P$ is still obtained by applying the original fixed-$P$ guarantee, not by transferring accuracy from $P^\star$.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p>Let $A$ be the single learner promised by the marginal-nonuniform source. Choose a reference marginal $P^\star$ with full support on every finitely encoded instance in each representation-size slice. Applying the source to $P^\star$ gives a polynomial $p_{P^\star}$ bounding $A$'s sample use and running time.</p>
+<p>Every finite labeled transcript that can occur under any marginal has positive probability under $P^\star$ for a suitable target or conditional label rule. If $A$ exceeded $p_{P^\star}$ on that transcript, it would violate the source's worst-case resource bound for $P^\star$. Thus $p_{P^\star}$ is one distribution-free sample/time bound for $A$.</p>
+<p>For accuracy, fix the actual marginal $P$ and apply the source guarantee directly to $P$. Combining that accuracy statement with the uniform resource bound proves the corresponding distribution-free efficient target whenever the remaining target requirements are already met by the source.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

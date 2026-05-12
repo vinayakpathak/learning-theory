@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample-to-Computational Hardness - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/sample-to-computational-hardness.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>sample-to-computational-hardness</dd>
+<dt>title</dt>
+<dd>Sample-to-Computational Hardness</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>pseudorandom-function-classes</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/pseudorandom-function-classes.html">Pseudorandom Function Classes</a></dd>
+<dt>assumptions</dt>
+<dd>standard cryptographic assumptions</dd>
+<dt>ref_keys</dt>
+<dd>goldreich1986, kearns1994cryptographic</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/6490.6503">Goldreich et al. 1986</a>, <a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="sample-to-computational-hardness">Sample-to-Computational Hardness</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under standard cryptographic assumptions.</p>
+<p>The purpose of the new resource axis is to separate information-theoretic sample bounds from polynomial-time algorithms. A finite keyed concept family has VC dimension at most logarithmic in its size, so an unbounded empirical-risk search gives sample-efficient proper agnostic learning. Cryptographic pseudorandomness can still rule out any randomized polynomial-time learner with even a weak realizable guarantee under the hard marginal distribution.</p>
+<p>Consequently, a sample-efficient source node does not imply a computationally efficient target node, even when the target is weaker along the realizability, strength, properness, or distribution axes.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/6490.6503">Goldreich et al. 1986</a></li>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

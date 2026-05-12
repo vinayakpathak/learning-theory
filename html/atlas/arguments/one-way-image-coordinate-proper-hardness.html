@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One-Way Image Coordinate Proper Hardness - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/one-way-image-coordinate-proper-hardness.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>one-way-image-coordinate-proper-hardness</dd>
+<dt>title</dt>
+<dd>One-Way Image Coordinate Proper Hardness</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>one-way-image-coordinate-class</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/one-way-image-coordinate-class.html">One-Way Image Coordinate Class</a></dd>
+<dt>assumptions</dt>
+<dd>length-preserving one-way functions exist</dd>
+<dt>ref_keys</dt>
+<dd>kearns1994cryptographic, hastad1999prg</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a>, <a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="one-way-image-coordinate-proper-hardness">One-Way Image Coordinate Proper Hardness</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under the assumption that length-preserving one-way functions exist.</p>
+<p>The one-way image coordinate class is efficiently learnable by a distribution-free improper memorization learner. In fact, it is agnostically learnable by improper sparse ERM: for size parameter $n$, the improper class of lookup tables with at most $n$ positive atoms has VC dimension $n$ and contains all length-$n$ proper concepts. A marginal-nonuniform realizable proper learner would still invert the one-way function on a fixed marginal.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Assuming length-preserving one-way functions exist, there is a binary concept class whose concepts encode the image coordinates of a one-way function such that the class is efficiently distribution-free learnable by improper memorization, and even efficiently agnostically learnable by improper sparse empirical risk minimization, but it has no single polynomial-time proper realizable PAC learner even if the polynomial resource bound may depend on the instance marginal. More precisely, for one fixed marginal distribution over instances, any proper learner achieving sufficiently small realizable error would recover a preimage of a one-way-function challenge with nonnegligible probability.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p>Let $f:{0,1}^n\to{0,1}^n$ be length-preserving and one-way. The domain contains triples $(1^k,i,b)$ with $i\in[k]$ and $b\in{0,1}$. A seed $s\in{0,1}^n$ defines $c_s$ by</p>
+<p>$$
+c_s(1^k,i,b)=1
+\quad\Longleftrightarrow\quad
+k=n \text{ and } b=f(s)_i .
+$$</p>
+<p>An improper realizable learner records the positive atoms observed in the sample and predicts $0$ elsewhere. For a length-$n$ target there are only $n$ positive atoms, so polynomially many samples reveal every positive atom with nonnegligible mass and leave at most $\varepsilon$ unseen positive mass.</p>
+<p>For agnostic improper sources, use the larger sparse class of all hypotheses with at most $n$ positive atoms. This class has VC dimension $n$ and admits a polynomial-time sample ERM: compute the empirical benefit of predicting $1$ rather than $0$ at each sampled atom, keep the at most $n$ positive-benefit atoms with largest benefits, and predict $0$ elsewhere. Since the sparse class contains the proper concepts of size $n$, VC uniform convergence gives agnostic improper learning against the original class.</p>
+<p>For the proper lower bound, fix the marginal $P$ that chooses $k$ with mass $\mu_k=6/(\pi^2k^2)$, then chooses $i\in[k]$ and $b\in{0,1}$ uniformly. For a target seed $s$ of length $n$, set $\varepsilon_n=\mu_n/(3n)$. If a proper hypothesis $c_t$ has $P$-error at most $\varepsilon_n$ against $c_s$, then $|t|=n$ and $f(t)=f(s)$: the wrong length makes error $\mu_n/2$, and one wrong image bit makes error at least $\mu_n/n$.</p>
+<p>Given a challenge $y=f(s)$, one can simulate labeled examples from this fixed marginal by labeling $(1^k,i,b)$ as positive exactly when $k=n$ and $b=y_i$. A marginal-nonuniform proper learner run with accuracy $\varepsilon_n$ outputs a seed $t$ satisfying $f(t)=y$ in time polynomial in $n$, contradicting one-wayness.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+<li><a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

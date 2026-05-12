@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Low-Noise Weak Agnostic Robustification - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/low-noise-weak-agnostic-robustification.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>low-noise-weak-agnostic-robustification</dd>
+<dt>title</dt>
+<dd>Low-Noise Weak Agnostic Robustification</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>ref_keys</dt>
+<dd>valiant1984, blumer1989</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="low-noise-weak-agnostic-robustification">Low-Noise Weak Agnostic Robustification</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>.</p>
+<p>Distribution-free realizable learning gives a weak agnostic improper learner with an inverse-polynomial gap. The target's marginal-nonuniform weak agnostic node only asks for such an inverse-polynomial gap, not a fixed constant gap.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class. If $\mathcal C$ has a distribution-free realizable PAC learner, either strong or weak, with polynomial sample and time bounds, then $\mathcal C$ has an improper weak agnostic PAC learner with inverse-polynomial additive advantage: for every joint distribution $\mathcal D$ over $\mathcal X\times{0,1}$, the learner outputs a binary hypothesis $h$ with $\operatorname{err}<em>{\mathcal D}(h)\le \inf</em>{c\in\mathcal C}\operatorname{err}_{\mathcal D}(c)+1/2-1/\operatorname{poly}(s)$. If the realizable learner has only marginal-dependent polynomial bounds, the same conclusion holds marginal-by-marginal, with the weak agnostic gap and polynomial bound allowed to depend on the instance marginal.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p>Let $L$ be a distribution-free realizable learner. For a weak source, let $\gamma(s)$ be its realizable advantage and let $m(s)$ be its polynomial sample bound. For a strong source, run the learner to a fixed clean accuracy and take the resulting clean advantage as a constant $\gamma$.</p>
+<p>Set
+$$
+\alpha(s) \le \min{\gamma(s)/4, 1/(8m(s))}.
+$$</p>
+<p>On agnostic data, include the two constant classifiers and repeatedly run $L$ on fresh batches of $m(s)$ examples, pretending the labels are realizable. Validate all candidates on a fresh sample and output the empirically best one.</p>
+<p>If $\operatorname{OPT}<em>{\mathcal C}(\mathcal D) \ge 2\alpha(s)$, a constant classifier already has error at most $1/2$, which is within
+$$
+\operatorname{OPT}</em>{\mathcal C}(\mathcal D)+1/2-\alpha(s).
+$$</p>
+<p>If $\operatorname{OPT}_{\mathcal C}(\mathcal D)=\eta&lt;2\alpha(s)$, choose $c^\star\in\mathcal C$ with error $\eta$. A fresh batch is entirely consistent with $c^\star$ with probability at least $1-m(s)\eta$, which is still inverse-polynomially bounded away from zero by the choice of $\alpha$. Conditioned on this clean-batch event, the examples are realizable by $c^\star$ under a conditional marginal $Q$. Because the original learner is distribution-free, its same polynomial bound applies to $Q$. The conditional marginal differs from the original marginal by $O(\eta)$ in total variation, so a weakly good clean hypothesis remains weakly good on the original agnostic distribution. Repetition and validation preserve polynomial sample and time bounds.</p>
+<p>The proof does not give a fixed constant weak-agnostic tolerance. For marginal-nonuniform realizable sources, use the equivalent marginal-preserving coupling form rather than conditioning on a clean batch: couple the noisy run and the realizable run on the same original $P$-distributed instance sequence, and choose the weak gap below the inverse of the $P$-specific sample bound. Then the only polynomial used is the one attached to the original marginal $P$.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

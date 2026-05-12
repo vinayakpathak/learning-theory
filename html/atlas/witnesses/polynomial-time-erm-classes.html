@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polynomial-Time ERM Classes - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-witness section-witnesses">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/witnesses/polynomial-time-erm-classes.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>witness</dd>
+<dt>id</dt>
+<dd>polynomial-time-erm-classes</dd>
+<dt>title</dt>
+<dd>Polynomial-Time ERM Classes</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>valiant1984, blumer1989, kearns1994</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1023/A:1022615600103">Kearns et al. 1994</a></dd>
+<dt>tags</dt>
+<dd>atlas/witness, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="polynomial-time-erm-classes">Polynomial-Time ERM Classes</h1>
+<h2 id="role">Role</h2>
+<p>This witness records the standard positive baseline for the strongest proper agnostic nodes. If a class has polynomial sample complexity and admits a polynomial-time empirical risk minimization procedure over the proper class, then the ERM learner is an efficient proper agnostic PAC learner.</p>
+<p>This is not meant as a sharp separation witness. Its role is to mark the top of the atlas as nonempty: familiar simple classes with efficient ERM, such as finite polynomial-size classes, thresholds, intervals, and other low-complexity classes with explicit optimization procedures, satisfy the strongest node and hence all monotone relaxations.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1023/A:1022615600103">Kearns et al. 1994</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

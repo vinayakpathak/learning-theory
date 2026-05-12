@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Agnostic Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-weak-agnostic-proper-pac--implies--efficient-agnostic-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-weak-agnostic-proper-pac__implies__efficient-agnostic-improper-pac</dd>
+<dt>source</dt>
+<dd>efficient-weak-agnostic-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-agnostic-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-weak-agnostic-proper-pac.html">Efficient Weak Agnostic Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-agnostic-improper-pac.html">Efficient Agnostic Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>witnesses</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>bendavid2001, kalai2008agnosticboosting, gavinsky2003, ghai2025agnosticboosting, dacunha2026agnosticboosting, tiegel2023</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a>, <a href="https://doi.org/10.1145/1374376.1374466">Kalai et al. 2008</a>, <a href="https://www.jmlr.org/papers/v4/gavinsky03a.html">Gavinsky 2003</a>, <a href="https://proceedings.mlr.press/v267/ghai25a.html">Ghai and Singh 2025</a>, <a href="https://arxiv.org/abs/2601.11265">da Cunha et al. 2026</a>, <a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></dd>
+<dt>summary</dt>
+<dd>Open: fixed-additive proper weak agnostic learning gives a nontrivial constant-slack oracle and is boostable statistically or with fixed weak parameters, but known fixed-slack boosters use clean-witness enumeration with representation-dependent exponents; no fixed-gap class separation is known.</dd>
+<dt>family</dt>
+<dd>agnostic-boosting-open</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;same&quot;,&quot;strength&quot;:&quot;weak-to-strong&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;proper-to-improper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/agnostic-boosting-open.html">Agnostic Boosting Open</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-weak-agnostic-proper-pac-learning-efficient-agnostic-improper-pac-learning">Efficient Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Agnostic Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>.</p>
+<p>Open as an efficient PAC implication. The statistical or fixed-parameter oracle version is essentially settled by recent agnostic boosting, but the known running-time bounds do not give the representation-uniform polynomial-time reduction required by this atlas node.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)&gt;0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. There is one polynomial $p$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.</p>
+<p>Open problem: Does every binary concept class satisfying the source guarantee also satisfy the target guarantee?</p>
+<h2 id="proof-status">Proof Status</h2>
+<p><strong>Goal.</strong> Decide whether weak agnostic proper learning can be boosted to strong agnostic improper learning.</p>
+<p><strong>What properness contributes.</strong> The source hypotheses lie in $\mathcal C$, but the target allows an improper final vote. Thus properness of the weak hypotheses is not the obstacle; useful proper hypotheses can be validated, sign-flipped, weighted, and combined by an improper learner. The real question is whether the fixed-additive weak agnostic learner supplies enough oracle power for efficient agnostic boosting.</p>
+<p><strong>Translation to the boosting oracle.</strong> Work in ${-1,1}$ labels. The fixed-additive condition
+$$
+\operatorname{err}(h) \le \operatorname{opt}<em>{\mathcal C}+\beta
+$$
+is equivalent to
+$$
+\operatorname{corr}(h,Y) \ge \max</em>{c\in\mathcal C}\operatorname{corr}(c,Y)-2\beta .
+$$
+Thus a $\beta$-weak agnostic proper learner gives the agnostic weak oracle of da Cunha et al. with parameters $\gamma_0=1$ and $\epsilon_0=2\beta$. Since $\beta&lt;1/2$, this is nontrivial: $\gamma_0&gt;\epsilon_0$.</p>
+<p><strong>What this proves statistically.</strong> Da Cunha et al.'s theorem for nontrivial agnostic weak learners then yields an improper classifier $v$ with
+$$
+\operatorname{err}<em>{\mathcal D}(v)\le \operatorname{opt}</em>{\mathcal C}+O(\varepsilon)
+$$
+after choosing the sample size large enough. So, if the weak learner is treated as an oracle with fixed parameters and the cost measure is polynomial in the sample size, this edge should be regarded as true.</p>
+<p><strong>Why this still does not settle the efficient edge.</strong> The atlas edge is a representation-uniform computational claim. The da Cunha et al. running-time bound is polynomial in the sample size only when the weak-learner parameters are fixed; more explicitly, the displayed bound has an exponent depending on the weak learner's sample parameter $m_0$ and on the dual VC dimension of the base class. In an efficient PAC implication, $m_0$ and the relevant dimensions may grow with the representation size, so a bound of the form $n^{\operatorname{poly}(s)}$ is not polynomial time in the usual sense. Earlier efficient agnostic boosting results, including Ghai and Singh, require a more accuracy-sensitive oracle, for example $\epsilon_0=O(\varepsilon)$, while the atlas source gives only the fixed value $\epsilon_0=2\beta$. Ben-David, Long, and Mansour use exactly the fixed-additive weak notion, but their guarantee is weaker than $\operatorname{opt}_{\mathcal C}+\varepsilon$.</p>
+<p>The noisy-comparator calculation gives the same obstruction operationally. If $Y=f(X)N$ with $f\in\mathcal C$ and noise rate $\eta&gt;1/2-\beta$, the weak learner may legally be neutral on the original distribution. Agreement filtering with a current predictor lowers the selected noise below the weak threshold only after that predictor already has substantial correlation with $f$. Thus generic observable denoising does not produce the first useful weak call.</p>
+<p><strong>Clean-witness obstruction.</strong> Properness of the weak outputs is not the problem, since the target may output an improper vote over proper hypotheses. The quantitative issue is that a fixed-additive weak learner may legally return decoys whenever the queried distribution has $\operatorname{opt}_{\mathcal C}\ge 1/2-\beta$. To drive excess error below an arbitrary $\varepsilon$, a booster must discover query distributions or clean subsets on which a near-optimal comparator is visible below this threshold. The current fixed-slack theorem does this by exhaustive clean-subset enumeration, which gives fixed-parameter rather than fully polynomial running time.</p>
+<p><strong>Counterexample route checked.</strong> Halfspaces would be the natural target-hard candidate, because Tiegel rules out even improper agnostic learning of halfspaces under worst-case lattice assumptions. But Tiegel's result also rules out the weak agnostic source for halfspaces: no efficient algorithm can output any binary hypothesis with nontrivial advantage even when the optimum halfspace error is tiny. Thus halfspaces cannot witness this implication's failure.</p>
+<p>Affine parities give a useful model fork but not a current-edge separation. Under constant-noise decision-LPN, they separate a parameterized inverse-polynomial weak-gap variant: clean-batch Gaussian elimination gives proper weak learning at gap $\Theta(1/n)$, while strong improper agnostic learning under the uniform marginal would distinguish LPN. For the fixed constant $\beta$ in this atlas node, the same class is source-negative: low-noise parity with noise below $1/2-\beta$ would already require weak recovery of the hidden parity.</p>
+<p><strong>Why this is not a separation.</strong> The decoy-oracle picture is only a black-box barrier. A valid false edge would need a represented class with a uniform polynomial-time proper $\operatorname{opt}<em>{\mathcal C}+\beta$ learner for every labeled distribution, while every polynomial-time improper learner fails to achieve $\operatorname{opt}</em>{\mathcal C}+\varepsilon$ for some distribution. Current PRF, one-way-handle, PCP, halfspace, parity, coding, and fixed-$k$ DNF templates miss one side of this requirement: either the weak source also becomes hard, or the public handles and improper voting make the strong target easy.</p>
+<p>A real fixed-gap separation would need a class with a public distribution-free proper weak decoder for every weighted corruption pattern below a fixed noise radius, but with hard improper agnostic prediction at a larger constant noise rate. No standard candidate currently supplies both sides.</p>
+<p><strong>Missing lemma.</strong> A positive resolution would follow from a polynomial clean-witness generation lemma: from samples of $\mathcal D$ and a proper $\operatorname{opt}<em>{\mathcal C}+\beta$ weak agnostic learner with sample bound $m_0$, construct in time polynomial in the representation size, $m_0$, $1/\varepsilon$, and $\log(1/\delta)$ a polynomial list of proper hypotheses whose small improper votes contain an $\operatorname{opt}</em>{\mathcal C}+\varepsilon$ classifier. Equivalently, replace the $n^{m_0}$ clean-subset enumeration in the fixed-slack booster by a polynomial-size hitting, compression, stability, or hard-core-search procedure.</p>
+<p><strong>Conclusion.</strong> The best current classification is: true for the statistical/oracle or fixed-parameter boosting formulation, still open for the efficient PAC implication as stated here. To mark the edge true, one needs a fully polynomial clean-witness generator. To mark it false, one needs a class with efficient fixed-additive weak agnostic proper learning but hard strong agnostic improper learning.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a></li>
+<li><a href="https://doi.org/10.1145/1374376.1374466">Kalai et al. 2008</a></li>
+<li><a href="https://www.jmlr.org/papers/v4/gavinsky03a.html">Gavinsky 2003</a></li>
+<li><a href="https://proceedings.mlr.press/v267/ghai25a.html">Ghai and Singh 2025</a></li>
+<li><a href="https://arxiv.org/abs/2601.11265">da Cunha et al. 2026</a></li>
+<li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">Tiegel 2023</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

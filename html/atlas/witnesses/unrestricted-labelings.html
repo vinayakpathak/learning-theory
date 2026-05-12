@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unrestricted Labelings - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-witness section-witnesses">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/witnesses/unrestricted-labelings.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>witness</dd>
+<dt>id</dt>
+<dd>unrestricted-labelings</dd>
+<dt>title</dt>
+<dd>Unrestricted Labelings</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>valiant1984, blumer1989</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></dd>
+<dt>tags</dt>
+<dd>atlas/witness, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="unrestricted-labelings">Unrestricted Labelings</h1>
+<h2 id="role">Role</h2>
+<p>This witness records an absolute impossibility baseline, not a sharp separation between adjacent atlas nodes. Let the instance space contain a nonatomic part, such as $[0,1]$ with Lebesgue marginal, and let the concept class contain all measurable binary labelings of that space. In the realizable setting, finitely many samples reveal labels only on the sampled points; the target can still disagree arbitrarily on almost all unseen points.</p>
+<p>Consequently, no finite-sample learner can guarantee nontrivial error for this class under that marginal, even before imposing properness, distribution-free uniformity, or agnostic excess-error requirements. The example is useful in definition notes whose nearest sharper boundary question is still open in the atlas.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

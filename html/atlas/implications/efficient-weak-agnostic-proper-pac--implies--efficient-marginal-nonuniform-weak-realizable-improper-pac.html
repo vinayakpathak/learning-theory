@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-weak-agnostic-proper-pac--implies--efficient-marginal-nonuniform-weak-realizable-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-weak-agnostic-proper-pac__implies__efficient-marginal-nonuniform-weak-realizable-improper-pac</dd>
+<dt>source</dt>
+<dd>efficient-weak-agnostic-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-marginal-nonuniform-weak-realizable-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-weak-agnostic-proper-pac.html">Efficient Weak Agnostic Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>trivial</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>witnesses</dt>
+<dd></dd>
+<dt>refs</dt>
+<dd></dd>
+<dt>summary</dt>
+<dd>The target only relaxes requirements already met by the source learner.</dd>
+<dt>family</dt>
+<dd>monotone-relaxation</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;distribution-free-to-marginal-nonuniform&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;agnostic-to-realizable&quot;,&quot;properness&quot;:&quot;proper-to-improper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/monotone-relaxation.html">Monotone Relaxation</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-weak-agnostic-proper-pac-learning-efficient-marginal-nonuniform-weak-realizable-improper-pac-learning">Efficient Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>.</p>
+<p>The target only relaxes requirements already met by the source learner.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)&gt;0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le 1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)&gt;0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the target concept or $\delta$.</p>
+<p>The theorem asserts that every class satisfying the source guarantee also satisfies the target guarantee.</p>
+<h2 id="proof">Proof</h2>
+<p><strong>Goal.</strong> Show that the source learner already satisfies the target requirements.</p>
+<p><strong>Construction.</strong> Run the source learner unchanged. If the target is realizable and the source is agnostic, restrict attention to realizable labeled distributions, where the benchmark error is zero. If the target is improper and the source is proper, the same proper output is allowed. If the target is weak and the source is strong, run the strong learner with a fixed constant accuracy parameter.</p>
+<p><strong>Distribution dependence.</strong> If the source is distribution-free and the target is marginal-nonuniform, use the same source polynomial as $p_P$ for every marginal $P$. If both notions are marginal-nonuniform, use the source polynomial for the same marginal.</p>
+<p><strong>Conclusion.</strong> Every target requirement is a relaxation of a source requirement.</p>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marginal-Nonuniform Boosting Open - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/marginal-boosting-open.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>marginal-boosting-open</dd>
+<dt>title</dt>
+<dd>Marginal-Nonuniform Boosting Open</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>ref_keys</dt>
+<dd>schapire1990, freund1995boosting, feldman2010distributionspecific, ghai2025agnosticboosting, dacunha2026agnosticboosting, benedek1991fixed, bendavid1995parameterization, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a>, <a href="https://arxiv.org/abs/0909.2927">Feldman 2010</a>, <a href="https://proceedings.mlr.press/v267/ghai25a.html">Ghai and Singh 2025</a>, <a href="https://arxiv.org/abs/2601.11265">da Cunha et al. 2026</a>, <a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="marginal-nonuniform-boosting-open">Marginal-Nonuniform Boosting Open</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>.</p>
+<p>This family records edges where boosting would have to preserve one polynomial bound that may depend on the marginal distribution. Standard realizable boosting explains the distribution-free weak-to-strong direction, but it does not by itself settle the marginal-dependent rate bookkeeping used by these nodes.</p>
+<p>The obstruction is not merely that the final boosted hypothesis is improper. Schapire-style and boost-by-majority procedures call the weak learner on filtered or reweighted example distributions. Freund's boost-by-majority analysis includes distribution-dependent weak accuracy as a near miss, but it still needs quantitative control over how the weak guarantee behaves on those induced distributions. The atlas marginal-nonuniform nodes only promise a polynomial for each marginal separately, so they do not supply one original-marginal polynomial controlling every reweighted marginal generated during boosting.</p>
+<p>The depth-limited search sharpened this into an envelope problem. A positive theorem would follow from a KL-stable or bounded-density-stable family of induced marginals whose weak-learner polynomials are all dominated by one polynomial depending only on the original marginal. The current source definition has no such local-uniformity assumption. Conversely, oracle-style diagonal examples that assign unrelated polynomials to reweighted marginals are not atlas counterexamples until they are realized by one concrete concept class and one uniform learner satisfying the source for every marginal.</p>
+<p>The weak-agnostic-to-realizable-improper edge sharpened the issue further. Distribution-specific agnostic boosting is attractive because it can keep the instance marginal fixed by changing labels, but existing Feldman/Ghai-style theorems require threshold or correlation weak oracles with tunable additive slack. The atlas weak agnostic source provides only a fixed additive tolerance $\operatorname{OPT}+1/2-\gamma_P(s)$, and same-marginal relabeling cannot shrink this floor enough to drive realizable error to arbitrary $\varepsilon$.</p>
+<p>There is a near-positive countable diagonal argument: if marginal-nonuniform guarantees are interpreted size-conditionally, any unbounded deterioration of the weak gaps over booster-induced transcript marginals can be stitched into one bad marginal, forcing an original-marginal envelope. Under the current global-mixture reading, however, weak learning may ignore sufficiently low-mass bad slices, so the diagonalization is not yet an atlas theorem.</p>
+<p>The remaining false-witness route would need more than rare hard slices. Since the source quantifies over all marginals, including marginals that isolate a hard slice, a witness must remain weakly learnable on each slice. Cheap weak handles strong enough to certify that source tend to be available to an improper boosted learner as well. A genuine counterexample would need computationally nonboostable handles: one weak handle is easy under every marginal, but finding enough independent handles for low-error improper prediction is hard.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></li>
+<li><a href="https://arxiv.org/abs/0909.2927">Feldman 2010</a></li>
+<li><a href="https://proceedings.mlr.press/v267/ghai25a.html">Ghai and Singh 2025</a></li>
+<li><a href="https://arxiv.org/abs/2601.11265">da Cunha et al. 2026</a></li>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

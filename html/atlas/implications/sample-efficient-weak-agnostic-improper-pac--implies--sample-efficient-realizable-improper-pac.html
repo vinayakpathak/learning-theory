@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample-Efficient Weak Agnostic Improper PAC Learning $\Rightarrow$ Sample-Efficient Realizable Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/sample-efficient-weak-agnostic-improper-pac--implies--sample-efficient-realizable-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>sample-efficient-weak-agnostic-improper-pac__implies__sample-efficient-realizable-improper-pac</dd>
+<dt>source</dt>
+<dd>sample-efficient-weak-agnostic-improper-pac</dd>
+<dt>target</dt>
+<dd>sample-efficient-realizable-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/sample-efficient-weak-agnostic-improper-pac.html">Sample-Efficient Weak Agnostic Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/sample-efficient-realizable-improper-pac.html">Sample-Efficient Realizable Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>witnesses</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>valiant1984, blumer1989, freund1995boosting, bendavid2001, kalai2008agnosticboosting</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a>, <a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a>, <a href="https://doi.org/10.1145/1374376.1374466">Kalai et al. 2008</a></dd>
+<dt>summary</dt>
+<dd>Ignoring runtime, VC/ERM sample-complexity equivalences give the strong target; boosting supplies the weak-to-strong reference point.</dd>
+<dt>family</dt>
+<dd>sample-complexity-equivalence</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;same&quot;,&quot;strength&quot;:&quot;weak-to-strong&quot;,&quot;realizability&quot;:&quot;agnostic-to-realizable&quot;,&quot;properness&quot;:&quot;same&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/sample-complexity-equivalence.html">Sample-Complexity Equivalence</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="sample-efficient-weak-agnostic-improper-pac-learning-sample-efficient-realizable-improper-pac-learning">Sample-Efficient Weak Agnostic Improper PAC Learning $\Rightarrow$ Sample-Efficient Realizable Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>, by the sample-complexity theorem recorded in <a href="../arguments/sample-complexity-equivalence.html">Sample-Complexity Equivalence</a>.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)&gt;0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size is bounded by $p(s,\log(1/\delta))$. No polynomial running-time bound is required.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size is bounded by $p(s,1/\varepsilon,\log(1/\delta))$. No polynomial running-time bound is required.</p>
+<p>The theorem asserts that every class satisfying the source guarantee also satisfies the target guarantee.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p><strong>Goal.</strong> Show that the source guarantee is enough for <a href="../definitions/sample-efficient-realizable-improper-pac.html">Sample-Efficient Realizable Improper PAC Learning</a> once polynomial running time is not required.</p>
+<p><strong>Weak-to-strong route.</strong> The source gives a polynomial weak sample guarantee, meaning accuracy bounded away from random guessing. Classical boosting, such as Freund's boost-by-majority, is the algorithmic weak-to-strong conversion in the realizable case. For this sample-only implication, the safer route is the finite-sample characterization: a binary class that is weakly learnable with polynomial samples has the same finite-dimensional sample control needed for strong PAC learning, and runtime is unrestricted.</p>
+<p><strong>Agnostic conversion.</strong> If the source is weak agnostic, restrict it to realizable distributions: then $\inf_{c\in\mathcal C}\operatorname{err}(c)=0$, so the fixed tolerance $\beta&lt;1/2$ gives a weak realizable guarantee. If the target is agnostic, use the finite-dimensional sample control obtained above to run exhaustive empirical risk minimization over $\mathcal C$; uniform convergence gives $\operatorname{err}(h)\le\inf_{c\in\mathcal C}\operatorname{err}(c)+\varepsilon$. This is the sample-complexity counterpart of agnostic boosting, but it does not claim an efficient black-box conversion for the atlas's fixed-additive weak agnostic learner.</p>
+<p><strong>Distribution bookkeeping.</strong> If the target is marginal-nonuniform, a distribution-free sample bound can be read marginal-by-marginal. If a marginal-nonuniform source must imply a distribution-free target, Hanneke, Moran, and Thiessen's trichotomy supplies the extra step: polynomial marginal-dependent weak rates force finite VC dimension, after which standard distribution-free VC bounds apply. If both source and target are marginal-nonuniform, the same fixed-marginal sample-complexity reasoning is applied with the polynomial allowed to depend on that marginal.</p>
+<p><strong>Why the target follows.</strong> With finite sample control in hand, standard VC and fixed-marginal uniform-convergence bounds give the requested strong realizable or agnostic guarantee. Because runtime is unrestricted, the learner may choose an empirical risk minimizer in $\mathcal C$; that handles proper targets, and improper targets may use the same proper hypothesis.</p>
+<p><strong>Conclusion.</strong> The implication is true as a sample-complexity statement. It should not be read as giving a polynomial-time algorithm.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></li>
+<li><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a></li>
+<li><a href="https://doi.org/10.1145/1374376.1374466">Kalai et al. 2008</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

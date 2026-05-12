@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Weak Realizable Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac--implies--efficient-weak-realizable-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac__implies__efficient-weak-realizable-improper-pac</dd>
+<dt>source</dt>
+<dd>sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-weak-realizable-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-weak-realizable-improper-pac.html">Efficient Weak Realizable Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd>standard cryptographic assumptions</dd>
+<dt>witnesses</dt>
+<dd>pseudorandom-function-classes</dd>
+<dt>ref_keys</dt>
+<dd>goldreich1986, kearns1994cryptographic</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/6490.6503">Goldreich et al. 1986</a>, <a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></dd>
+<dt>summary</dt>
+<dd>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</dd>
+<dt>family</dt>
+<dd>sample-to-computational-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;sample-efficient-to-computationally-efficient&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;agnostic-to-realizable&quot;,&quot;properness&quot;:&quot;proper-to-improper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/sample-to-computational-hardness.html">Sample-to-Computational Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/pseudorandom-function-classes.html">Pseudorandom Function Classes</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac-learning-efficient-weak-realizable-improper-pac-learning">Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Weak Realizable Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under standard cryptographic assumptions.</p>
+<h2 id="counterexample">Counterexample</h2>
+<p><strong>Goal.</strong> Refute the implication from sample efficiency to computational efficiency.</p>
+<p><strong>Construction.</strong> Use the pseudorandom concept families recorded in <a href="../witnesses/pseudorandom-function-classes.html">Pseudorandom Function Classes</a>. Their finite keyed representation gives finite VC dimension, so unbounded empirical risk minimization satisfies the sample-efficient source node.</p>
+<p><strong>Why the target fails.</strong> Under standard cryptographic assumptions, an efficient weak learner for these classes under the hard marginal distribution would distinguish pseudorandom functions from random labelings. This rules out the computationally efficient target, even if the target only asks for weak realizable improper learning or permits marginal-nonuniform bounds.</p>
+<p><strong>Conclusion.</strong> Sample-efficient PAC learnability does not imply computationally efficient PAC learnability.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/6490.6503">Goldreich et al. 1986</a></li>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

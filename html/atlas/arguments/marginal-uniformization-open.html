@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marginal Uniformization Open - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/marginal-uniformization-open.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>marginal-uniformization-open</dd>
+<dt>title</dt>
+<dd>Marginal Uniformization Open</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>ref_keys</dt>
+<dd>benedek1991fixed, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="marginal-uniformization-open">Marginal Uniformization Open</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>.</p>
+<p>This family records computational edges from marginal-nonuniform nodes to distribution-free nodes. The source may use a polynomial running-time bound depending on the marginal distribution, while the target asks for one polynomial-time bound uniform over all marginals.</p>
+<p>For edges whose source is already a weak learner, the remaining obstruction can be sharper than resource uniformization. Under the atlas convention that sample use and running time are worst-case bounds on finite encoded transcripts, <a href="full-support-marginal-uniformization.html">Full-Support Marginal Uniformization</a> can make the resource bound of a single source learner distribution-free. What it does not do is uniformize the weak advantage: a guarantee of the form $\gamma_P(s)\ge s^{-k(P)}$ for each marginal $P$ does not provide one inverse-polynomial exponent that works for all marginals. Existing boosting theorems amplify a supplied weak advantage with quantitative dependence on that advantage, and current hidden-gap counterexample templates either require prediction-time randomized hypotheses or run into gap-scale validation/orientation tests.</p>
+<p>The analogous sample-only polynomial-rate question is no longer recorded as open here. Hanneke, Moran, and Thiessen's marginal-nonuniform trichotomy implies that polynomial marginal-nonuniform sample rates force finite VC dimension, and standard VC theory then gives the distribution-free sample-efficient nodes.</p>
+<p>A natural component-to-mixture calculation does transfer error statistically: if $P^\star=\sum_i w_iP_i$ and a hypothesis has error at most $w_i\varepsilon$ under $P^\star$, then it has error at most $\varepsilon$ under $P_i$. This does not become a distribution-free computational learner. PAC samples from a target marginal $P_i$ do not generally provide labeled samples from the chosen mixture $P^\star$, and even with such extra access the source runtime is bounded by the mixture-specific polynomial $p_{P^\star}$ rather than by one uniform polynomial.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

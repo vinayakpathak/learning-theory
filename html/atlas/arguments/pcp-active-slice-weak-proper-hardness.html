@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PCP Active-Slice Weak Proper Hardness - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/pcp-active-slice-weak-proper-hardness.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>pcp-active-slice-weak-proper-hardness</dd>
+<dt>title</dt>
+<dd>PCP Active-Slice Weak Proper Hardness</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>pcp-active-slice-lookup-class</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/pcp-active-slice-lookup-class.html">PCP Active-Slice Lookup Class</a></dd>
+<dt>assumptions</dt>
+<dd>NP not subset RP</dd>
+<dt>ref_keys</dt>
+<dd>hastad2005query, karp1972</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.4086/toc.2005.v001a007">Håstad and Khot 2005</a>, <a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="pcp-active-slice-weak-proper-hardness">PCP Active-Slice Weak Proper Hardness</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.</p>
+<p>The PCP active-slice lookup class is efficiently learnable by an improper memorization learner, and even by an agnostic improper one-slice lookup-table ERM. An efficient weak proper learner would decide an NP-complete language with one-sided randomized error.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Assuming $\mathrm{NP}\nsubseteq\mathrm{RP}$, there is a binary concept class built from a perfect-completeness PCP verifier with logarithmic randomness such that the class is efficiently distribution-free learnable by improper memorization and efficiently agnostically learnable by improper one-slice lookup-table empirical risk minimization, but it has no polynomial-time proper learner that achieves even inverse-polynomial weak advantage in the realizable PAC setting. Such a weak proper learner would distinguish satisfiable from unsatisfiable instances of an NP-complete language by learning on the active verifier-randomness slice.</p>
+<h2 id="proof-sketch">Proof Sketch</h2>
+<p>Use a perfect-completeness PCP with logarithmic randomness and soundness $s&lt;1/2$, as in Håstad and Khot. A proper concept is indexed by an NP instance $\varphi$ and a proof string $\pi$. On an example $(\psi,r)$, it outputs the verifier decision $V(\varphi,\pi,r)$ if $\psi=\varphi$, and outputs $0$ otherwise.</p>
+<p>The active slice for a fixed $\varphi$ has polynomial size because the verifier uses $O(\log |\varphi|)$ random bits. An improper learner can memorize the positive sample points on that active slice and predict $0$ elsewhere, giving distribution-free realizable improper learning.</p>
+<p>For weak agnostic improper sources, use the finite class of all one-slice lookup tables, plus the all-zero hypothesis. Its logarithmic size is polynomial: choose the active slice and then a Boolean table over polynomially many verifier random strings. ERM is polynomial on a sample because only sampled slices can beat the all-zero hypothesis, and the best table on such a slice is obtained by empirical majority vote. Since every proper hypothesis is contained in this improper class, finite-class uniform convergence gives agnostic improper learning against $\mathcal C$.</p>
+<p>If a weak proper learner existed, then on input $\varphi$ we could sample uniformly from the active slice ${(\varphi,r)}$ and label every example by $1$. If $\varphi$ is satisfiable, perfect completeness makes this distribution realizable by some proper concept, so the learner returns a proper hypothesis accepted on more than half the verifier random strings. If $\varphi$ is unsatisfiable, every proper hypothesis on the $\varphi$ slice is accepted on at most an $s&lt;1/2$ fraction. Since the active slice is polynomial, the reduction can estimate or enumerate acceptance and distinguish the two cases with one-sided randomized error.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.4086/toc.2005.v001a007">Håstad and Khot 2005</a></li>
+<li><a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

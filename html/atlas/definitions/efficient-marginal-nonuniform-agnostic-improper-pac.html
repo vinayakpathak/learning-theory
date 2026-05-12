@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Marginal-Nonuniform Agnostic Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-definition section-definitions">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/definitions/efficient-marginal-nonuniform-agnostic-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>definition</dd>
+<dt>id</dt>
+<dd>efficient-marginal-nonuniform-agnostic-improper-pac</dd>
+<dt>title</dt>
+<dd>Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>realizability</dt>
+<dd>agnostic</dd>
+<dt>properness</dt>
+<dd>improper</dd>
+<dt>strength</dt>
+<dd>strong</dd>
+<dt>resource</dt>
+<dd>computationally-efficient</dd>
+<dt>distribution</dt>
+<dd>marginal-nonuniform</dd>
+<dt>loss</dt>
+<dd>zero-one</dd>
+<dt>output_constraint</dt>
+<dd>improper</dd>
+<dt>sample_complexity</dt>
+<dd>marginal-dependent-polynomial</dd>
+<dt>runtime</dt>
+<dd>marginal-dependent-polynomial</dd>
+<dt>characterization_status</dt>
+<dd>partial</dd>
+<dt>characterization</dt>
+<dd>A distribution-dependent agnostic PAC relaxation: one learner works for all joint distributions, but the polynomial bound may depend on the marginal distribution over instances.</dd>
+<dt>characterization_ref_keys</dt>
+<dd>benedek1991fixed, bendavid1995parameterization, hanneke2025marginalnonuniform</dd>
+<dt>characterization_refs</dt>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/definition, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-marginal-nonuniform-agnostic-improper-pac-learning">Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</h1>
+<h2 id="definition">Definition</h2>
+<p>A single learner $A$ receives i.i.d. examples from an arbitrary joint distribution $\mathcal D$ over $\mathcal X\times{0,1}$. Let $P=\mathcal D_X$ be its marginal over instances. The learner must output a hypothesis $h$, possibly outside $\mathcal C$.</p>
+<p>For every marginal $P$, there is a polynomial $p_P$ such that for every joint distribution $\mathcal D$ with marginal $P$ and every $\varepsilon,\delta\in(0,1)$, with probability at least $1-\delta$,</p>
+<p>$$
+\operatorname{err}<em>{\mathcal D}(h)\le \inf</em>{c\in\mathcal C}\operatorname{err}_{\mathcal D}(c)+\varepsilon .
+$$</p>
+<p>The sample complexity and running time are at most</p>
+<p>$$
+p_P(s,1/\varepsilon,\log(1/\delta)).
+$$</p>
+<p>The polynomial $p_P$ may depend on the marginal distribution $P$, but not on the target concept, conditional label rule, $\varepsilon$, or $\delta$. The learner itself is still one uniform algorithm for the class, and it is not given a separate algorithm as advice for each $P$.</p>
+<h2 id="naming">Naming</h2>
+<p>Benedek and Itai studied learnability with respect to fixed distributions, and Ben-David, Benedek, and Mansour organized PAC models by their uniformity parameters. Recent work of Hanneke, Moran, and Thiessen calls the variant where rates may depend on the marginal distribution <strong>marginal-nonuniform PAC learnability</strong>.</p>
+<h2 id="characterization-status">Characterization Status</h2>
+<p><code>partial</code>: this note records the computational marginal-nonuniform version used by the atlas. No representation-sensitive characterization is asserted here.</p>
+<h2 id="boundary-examples">Boundary Examples</h2>
+<p>Positive boundary examples include the distribution-free improper examples. <a href="../witnesses/clause-satisfaction-lookup-class.html">The Clause-Satisfaction Lookup Class</a> satisfies efficient agnostic improper learning and therefore this node, while proper realizable learning is conditionally hard. No atlas witness is currently known that separates this marginal-nonuniform node from its distribution-free counterpart; that reverse direction is tracked as <a href="../arguments/marginal-uniformization-open.html">open</a>.</p>
+<p>The main negative boundary example is <a href="../witnesses/halfspaces.html">Halfspaces</a>. They satisfy efficient realizable proper learning, but Tiegel's distribution-specific hardness rules out marginal-nonuniform strong agnostic improper learning under worst-case lattice assumptions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+<h2 id="outgoing-implications">Outgoing Implications</h2>
+<div class="table-wrap">
+<table class="atlas-table">
+<thead><tr><th>Target</th><th>Status</th><th>Evidence</th><th>Assumptions</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td><a href="efficient-agnostic-improper-pac.html">Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True under the atlas worst-case efficiency convention: a full-support reference marginal gives one transcript-wise resource polynomial, while source agnostic-improper accuracy already holds for every marginal.</td></tr>
+<tr><td><a href="efficient-agnostic-proper-pac.html">Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>The clause-satisfaction lookup class is efficiently agnostically improperly learnable, while proper agnostic learning would imply the forbidden proper realizable learner.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>False under NP not subset RP: a fixed-uniform-marginal clause lookup class is agnostically learnable improperly, but proper learning would decide 3-SAT.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-realizable-improper-pac.html">Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source learner.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-realizable-proper-pac.html">Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>length-preserving one-way functions exist</td><td>False under one-way functions: image-coordinate concepts are agnostically learnable by improper sparse ERM, but fixed-marginal realizable proper learning would invert the one-way function.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source learner.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>False under NP not subset RP: the PCP active-slice lookup class satisfies the improper source via efficient agnostic one-slice lookup-table ERM, but a marginal-nonuniform weak agnostic proper learner would have pathwise uniform runtime under a full-support marginal and would produce a proof accepted on more than half of the active slice.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source learner.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>False under NP not subset RP: the PCP active-slice lookup class is efficiently marginal-nonuniform agnostically learnable improperly, but a marginal-nonuniform weak realizable proper learner has pathwise uniform runtime under a full-support marginal and would produce a proof accepted on more than half of the active slice.</td></tr>
+<tr><td><a href="efficient-realizable-improper-pac.html">Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True under the atlas worst-case efficiency convention: agnostic learning gives realizable accuracy, and a full-support reference marginal gives one transcript-wise polynomial resource bound.</td></tr>
+<tr><td><a href="efficient-realizable-proper-pac.html">Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>The clause-satisfaction lookup class is efficiently agnostically improperly learnable, but any efficient proper realizable learner would put 3-SAT in RP.</td></tr>
+<tr><td><a href="efficient-weak-agnostic-improper-pac.html">Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True under the atlas worst-case efficiency convention: a fixed strong-agnostic accuracy parameter gives weak agnostic accuracy, and a full-support reference marginal gives one transcript-wise polynomial resource bound.</td></tr>
+<tr><td><a href="efficient-weak-agnostic-proper-pac.html">Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>False under NP not subset RP: the PCP active-slice lookup class is distribution-free agnostically learnable improperly, hence marginal-nonuniform agnostically learnable improperly, but weak agnostic proper learning would decide an NP-complete language.</td></tr>
+<tr><td><a href="efficient-weak-realizable-improper-pac.html">Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True under the atlas worst-case efficiency convention: agnostic learning gives constant weak realizable advantage, and a full-support reference marginal gives one transcript-wise polynomial resource bound.</td></tr>
+<tr><td><a href="efficient-weak-realizable-proper-pac.html">Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>NP not subset RP</td><td>False under NP not subset RP: the PCP active-slice lookup class is efficiently agnostically learnable improperly, hence marginal-nonuniform agnostically learnable improperly, but weak proper realizable learning would decide an NP-complete language.</td></tr>
+<tr><td><a href="sample-efficient-agnostic-improper-pac.html">Sample-Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-agnostic-proper-pac.html">Sample-Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-agnostic-improper-pac.html">Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient).</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-agnostic-proper-pac.html">Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>Ignoring runtime, standard sample-complexity characterizations and unbounded ERM give the target sample-efficient guarantee.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-realizable-improper-pac.html">Sample-Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-realizable-proper-pac.html">Sample-Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>Ignoring runtime, standard sample-complexity characterizations and unbounded ERM give the target sample-efficient guarantee.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; strength: strong-to-weak).</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>Ignoring runtime, standard sample-complexity characterizations and unbounded ERM give the target sample-efficient guarantee.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; strength: strong-to-weak; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>Ignoring runtime, standard sample-complexity characterizations and unbounded ERM give the target sample-efficient guarantee.</td></tr>
+<tr><td><a href="sample-efficient-realizable-improper-pac.html">Sample-Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-realizable-proper-pac.html">Sample-Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-weak-agnostic-improper-pac.html">Sample-Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-weak-agnostic-proper-pac.html">Sample-Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-weak-realizable-improper-pac.html">Sample-Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+<tr><td><a href="sample-efficient-weak-realizable-proper-pac.html">Sample-Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>True: polynomial marginal-nonuniform sample rates collapse to finite VC dimension, and VC theory gives the distribution-free sample-efficient target.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="incoming-implications">Incoming Implications</h2>
+<div class="table-wrap">
+<table class="atlas-table">
+<thead><tr><th>Source</th><th>Status</th><th>Evidence</th><th>Assumptions</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td><a href="efficient-agnostic-improper-pac.html">Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source learner.</td></tr>
+<tr><td><a href="efficient-agnostic-proper-pac.html">Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source learner.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source learner.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-realizable-improper-pac.html">Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-realizable-proper-pac.html">Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>False under worst-case lattice hardness: halfspaces satisfy the weak marginal-nonuniform agnostic improper source via low-noise robustification from efficient realizable proper learning, but Tiegel's standard-Gaussian hardness rules out the strong marginal-nonuniform agnostic improper target.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>False under worst-case lattice hardness: halfspaces satisfy the proper weak marginal-nonuniform agnostic source via low-noise robustification, but Tiegel's standard-Gaussian hardness rules out the strong marginal-nonuniform agnostic improper target.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-realizable-improper-pac.html">Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-realizable-proper-pac.html">Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-weak-agnostic-improper-pac.html">Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-open">open</span></td><td>unknown</td><td></td><td>Open: a distribution-free fixed-additive weak agnostic improper learner gives a fixed-slack oracle, but known same-marginal boosters need accuracy-scale slack and known fixed-slack boosters put weak-sample or capacity parameters in representation-dependent exponents; no source-positive deterministic-improper separation is known.</td></tr>
+<tr><td><a href="efficient-weak-agnostic-proper-pac.html">Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-open">open</span></td><td>unknown</td><td></td><td>Open. A distribution-free proper fixed-additive weak agnostic learner supplies proper hypotheses suitable for an improper final vote, and same-marginal boosting shows that marginal changes are not the main obstruction. The open point is quantitative: known accuracy-sensitive agnostic boosters need weak slack at the final epsilon scale, while known residual-free fixed-slack boosters put weak sample or capacity parameters in the runtime exponent.</td></tr>
+<tr><td><a href="efficient-weak-realizable-improper-pac.html">Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="efficient-weak-realizable-proper-pac.html">Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>worst-case lattice hardness</td><td>Halfspaces satisfy the realizable source, but Tiegel's standard-Gaussian distribution-specific hardness rules out the marginal-nonuniform strong agnostic improper target under worst-case lattice assumptions.</td></tr>
+<tr><td><a href="sample-efficient-agnostic-improper-pac.html">Sample-Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-agnostic-proper-pac.html">Sample-Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-agnostic-improper-pac.html">Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-agnostic-proper-pac.html">Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-realizable-improper-pac.html">Sample-Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-realizable-proper-pac.html">Sample-Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-realizable-improper-pac.html">Sample-Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-realizable-proper-pac.html">Sample-Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-weak-agnostic-improper-pac.html">Sample-Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-weak-agnostic-proper-pac.html">Sample-Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-weak-realizable-improper-pac.html">Sample-Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+<tr><td><a href="sample-efficient-weak-realizable-proper-pac.html">Sample-Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Pseudorandom function classes are sample-efficient but are not efficiently weakly learnable under standard cryptographic assumptions.</td></tr>
+</tbody>
+</table>
+</div>
+
+    </article>
+  </main>
+</body>
+</html>

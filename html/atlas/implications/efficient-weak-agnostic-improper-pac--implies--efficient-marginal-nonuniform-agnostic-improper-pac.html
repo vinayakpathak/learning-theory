@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Weak Agnostic Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Agnostic Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-weak-agnostic-improper-pac--implies--efficient-marginal-nonuniform-agnostic-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-weak-agnostic-improper-pac__implies__efficient-marginal-nonuniform-agnostic-improper-pac</dd>
+<dt>source</dt>
+<dd>efficient-weak-agnostic-improper-pac</dd>
+<dt>target</dt>
+<dd>efficient-marginal-nonuniform-agnostic-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-weak-agnostic-improper-pac.html">Efficient Weak Agnostic Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-agnostic-improper-pac.html">Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>witnesses</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>bendavid2001, feldman2010distributionspecific, ghai2025agnosticboosting, dacunha2026agnosticboosting</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a>, <a href="https://arxiv.org/abs/0909.2927">Feldman 2010</a>, <a href="https://proceedings.mlr.press/v267/ghai25a.html">Ghai and Singh 2025</a>, <a href="https://arxiv.org/abs/2601.11265">da Cunha et al. 2026</a></dd>
+<dt>summary</dt>
+<dd>Open: a distribution-free fixed-additive weak agnostic improper learner gives a fixed-slack oracle, but known same-marginal boosters need accuracy-scale slack and known fixed-slack boosters put weak-sample or capacity parameters in representation-dependent exponents; no source-positive deterministic-improper separation is known.</dd>
+<dt>family</dt>
+<dd>agnostic-boosting-open</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;distribution-free-to-marginal-nonuniform&quot;,&quot;strength&quot;:&quot;weak-to-strong&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;same&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/agnostic-boosting-open.html">Agnostic Boosting Open</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-weak-agnostic-improper-pac-learning-efficient-marginal-nonuniform-agnostic-improper-pac-learning">Efficient Weak Agnostic Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>.</p>
+<p>Open. The source is distribution-free, so reweighted weak calls are not the marginal-uniformity problem here. The remaining gap is the lack of a fully polynomial fixed-additive agnostic booster or a matching deterministic-improper separation.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)&gt;0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$.</p>
+<p>Open problem: Does every binary concept class satisfying the source guarantee also satisfy the target guarantee?</p>
+<h2 id="proof-status">Proof Status</h2>
+<p><strong>Goal.</strong> Decide whether a distribution-free fixed-additive weak agnostic improper learner implies strong agnostic improper learning with marginal-dependent polynomial resources.</p>
+<p><strong>Fixed-slack translation.</strong> In correlation form, the source gives
+$$
+\operatorname{corr}(W,Y)\ge \sup_{c\in \mathcal C}\operatorname{corr}(c,Y)-2\beta
+$$
+for one fixed $\beta&lt;1/2$. This is a nontrivial fixed-slack weak oracle, so the issue is not induced marginals: the same weak learner is valid on every reweighted distribution queried by a booster.</p>
+<p><strong>Fixed-additive slack barrier.</strong> Let the source tolerance be $\beta=1/2-\gamma$. The weak learner is forced to provide signal only on query distributions with $\operatorname{OPT}_{\mathcal C}&lt;\gamma$. In correlation form it gives $\rho-2\beta$, not a tunable residual-scale oracle. Consequently Feldman/Ghai-style same-marginal agnostic boosters preserve the right marginal but do not drive excess error below the fixed slack floor.</p>
+<p><strong>Marginal-nonuniform bookkeeping.</strong> The target allows a polynomial $p_P$ for each marginal $P$, but this one polynomial must work for all conditional label rules over $P$. It cannot depend on the hidden comparator or have degree growing with the weak sample bound, representation-dependent capacity, or other parameters that vary with $s$.</p>
+<p><strong>Known fixed-slack near positive.</strong> Da Cunha--Hogsgaard--Paudice accepts the source as a fixed-slack weak oracle, but the available construction pays $n^{m_0}$-type or capacity-in-the-exponent costs. The apparent reason is a clean-tuple search for comparator-dependent low-noise structure. Since that structure is conditional-label information inside a fixed marginal, the marginal-nonuniform allowance does not remove the search.</p>
+<p><strong>No atlas-valid separation.</strong> A false witness would need a class that is distribution-free $\operatorname{OPT}+\beta$ weakly learnable by deterministic improper hypotheses on every marginal, while exact $\operatorname{OPT}+\varepsilon$ deterministic improper learning is hard under one fixed marginal. The sharp code template requires arbitrary-weight low-noise threshold decoding below $\gamma$ and high-noise fixed-marginal improper hardness above $\gamma$. Reed--Solomon soft-decision decoding is a near miss, but the binary arbitrary-bit-weight source condition, average-case PAC hardness, and improper-list-validation issues are not resolved by known theorems.</p>
+<p><strong>Conclusion.</strong> Keep the edge open. A fully polynomial fixed-slack agnostic booster or same-marginal low-OPT forcing lemma would resolve it true. A public threshold-decodable code family, or a semi-agnostic class with exact fixed-marginal hardness, would resolve it false. Neither is currently known.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a></li>
+<li><a href="https://arxiv.org/abs/0909.2927">Feldman 2010</a></li>
+<li><a href="https://proceedings.mlr.press/v267/ghai25a.html">Ghai and Singh 2025</a></li>
+<li><a href="https://arxiv.org/abs/2601.11265">da Cunha et al. 2026</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

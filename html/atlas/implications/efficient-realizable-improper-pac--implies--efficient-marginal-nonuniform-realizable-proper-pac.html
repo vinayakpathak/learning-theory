@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Realizable Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Realizable Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-realizable-improper-pac--implies--efficient-marginal-nonuniform-realizable-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-realizable-improper-pac__implies__efficient-marginal-nonuniform-realizable-proper-pac</dd>
+<dt>source</dt>
+<dd>efficient-realizable-improper-pac</dd>
+<dt>target</dt>
+<dd>efficient-marginal-nonuniform-realizable-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-realizable-improper-pac.html">Efficient Realizable Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-realizable-proper-pac.html">Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>unclear</dd>
+<dt>assumptions</dt>
+<dd>length-preserving one-way functions exist</dd>
+<dt>witnesses</dt>
+<dd>one-way-image-coordinate-class</dd>
+<dt>ref_keys</dt>
+<dd>kearns1994cryptographic, hastad1999prg</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a>, <a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></dd>
+<dt>summary</dt>
+<dd>False under one-way functions: image-coordinate concepts are easy to predict improperly, but fixed-marginal proper learning would invert the one-way function.</dd>
+<dt>family</dt>
+<dd>one-way-image-coordinate-proper-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;distribution-free-to-marginal-nonuniform&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;improper-to-proper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/one-way-image-coordinate-proper-hardness.html">One-Way Image Coordinate Proper Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/one-way-image-coordinate-class.html">One-Way Image Coordinate Class</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-realizable-improper-pac-learning-efficient-marginal-nonuniform-realizable-proper-pac-learning">Efficient Realizable Improper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Realizable Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, assuming length-preserving one-way functions exist.</p>
+<p>Image-coordinate concepts are easy to learn by improper memorization, but proper learning under one fixed marginal would recover a preimage of a one-way image.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. There is one polynomial $p$, independent of $P$ and $c$, such that the worst-case sample size and running time are bounded by $p(s,1/\varepsilon,\log(1/\delta))$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the target concept, $\varepsilon$, or $\delta$.</p>
+<p>Assuming length-preserving one-way functions exist, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.</p>
+<h2 id="proof-status">Proof Status</h2>
+<p><strong>Witness.</strong> Let $f:{0,1}^n\to{0,1}^n$ be a length-preserving one-way function. The instance domain contains triples $(1^k,i,b)$ with $i\in[k]$ and $b\in{0,1}$. A seed $s\in{0,1}^n$ represents the concept
+$$
+c_s(1^k,i,b)=1
+\quad\Longleftrightarrow\quad
+k=n \text{ and } b=f(s)_i .
+$$</p>
+<p><strong>Why the source holds.</strong> For a length-$n$ target, there are only $n$ positive atoms. An improper learner records every positive atom seen in the sample and predicts $0$ elsewhere. With
+$$
+O\left(\frac{n}{\varepsilon}\log\frac{n}{\delta}\right)
+$$
+examples, every positive atom of mass at least $\varepsilon/n$ is observed with probability at least $1-\delta$, and the unseen positive mass is at most $\varepsilon$. This gives efficient distribution-free improper realizable PAC learning.</p>
+<p><strong>Why the target fails.</strong> Fix the marginal $P$ that chooses $k$ with mass $\mu_k=6/(\pi^2k^2)$, then chooses $i\in[k]$ and $b\in{0,1}$ uniformly. For a target seed $s$ of length $n$, set $\varepsilon_n=\mu_n/(3n)$, so $1/\varepsilon_n$ is polynomial in $n$.</p>
+<p>If a proper hypothesis $c_t$ has $P$-error at most $\varepsilon_n$ against $c_s$, then $|t|=n$ and $f(t)=f(s)$. The wrong length makes error $\mu_n/2$, while one wrong image bit contributes error at least $\mu_n/n$.</p>
+<p>Given a one-way challenge $y=f(s)$, simulate examples from the fixed marginal $P$ and label $(1^k,i,b)$ as positive exactly when $k=n$ and $b=y_i$. A marginal-nonuniform proper learner run at accuracy $\varepsilon_n$ would output a seed $t$ with $f(t)=y$ in polynomial time, contradicting one-wayness.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+<li><a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

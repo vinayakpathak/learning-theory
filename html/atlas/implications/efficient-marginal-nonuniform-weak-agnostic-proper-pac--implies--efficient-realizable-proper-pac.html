@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Realizable Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-marginal-nonuniform-weak-agnostic-proper-pac--implies--efficient-realizable-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-marginal-nonuniform-weak-agnostic-proper-pac__implies__efficient-realizable-proper-pac</dd>
+<dt>source</dt>
+<dd>efficient-marginal-nonuniform-weak-agnostic-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-realizable-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-realizable-proper-pac.html">Efficient Realizable Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd>RP != NP</dd>
+<dt>witnesses</dt>
+<dd>fixed-k-term-DNF</dd>
+<dt>ref_keys</dt>
+<dd>schapire1990, pitt1988, haussler1990</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <a href="https://doi.org/10.1145/48014.63140">Pitt and Valiant 1988</a>, <a href="https://www.cis.upenn.edu/~mkearns/papers/models.pdf">Haussler et al. 1990</a></dd>
+<dt>summary</dt>
+<dd>Fixed-k-term DNF satisfies the source, but fails the distribution-free strong proper target unless RP = NP.</dd>
+<dt>family</dt>
+<dd>fixed-k-term-dnf-proper-boosting-separation</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;weak-to-strong&quot;,&quot;realizability&quot;:&quot;agnostic-to-realizable&quot;,&quot;properness&quot;:&quot;same&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/fixed-k-term-dnf-proper-boosting-separation.html">Fixed-k-Term DNF Proper Boosting Separation</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/fixed-k-term-DNF.html">Fixed-k-Term DNF</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-marginal-nonuniform-weak-agnostic-proper-pac-learning-efficient-realizable-proper-pac-learning">Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Realizable Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under RP != NP.</p>
+<p>Fixed-k-term DNF satisfies the source, but fails the distribution-free strong proper target unless RP = NP.</p>
+<h2 id="counterexample">Counterexample</h2>
+<p><strong>Goal.</strong> Refute the implication using a class that is easy enough for the source but hard for the distribution-free strong proper target.</p>
+<p><strong>Construction.</strong> Use fixed-$k$ term DNF for a fixed $k\ge2$. Pitt and Valiant give an efficient improper realizable learner via equivalent polynomial-size $k$-CNF hypotheses, and Schapire's argument gives weak proper learning for this class. Hence fixed-$k$ term DNF satisfies the source node in this edge.</p>
+<p><strong>Why the target fails.</strong> Pitt and Valiant show that proper realizable learning of fixed-$k$ term DNF is hard unless $\mathrm{RP}=\mathrm{NP}$. A strong distribution-free proper target, realizable or agnostic, would imply such a proper realizable learner by restriction. Haussler, Kearns, Littlestone, and Warmuth justify transferring the learning-from-examples formulation to the PAC variants used here.</p>
+<p><strong>Conclusion.</strong> Fixed-$k$ term DNF satisfies the source but not the target under $\mathrm{RP}\ne\mathrm{NP}$.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><a href="https://doi.org/10.1145/48014.63140">Pitt and Valiant 1988</a></li>
+<li><a href="https://www.cis.upenn.edu/~mkearns/papers/models.pdf">Haussler et al. 1990</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

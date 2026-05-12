@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clause-Satisfaction Proper Hardness - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-arguments">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/arguments/clause-satisfaction-proper-hardness.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>clause-satisfaction-proper-hardness</dd>
+<dt>title</dt>
+<dd>Clause-Satisfaction Proper Hardness</dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>clause-satisfaction-lookup-class</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/clause-satisfaction-lookup-class.html">Clause-Satisfaction Lookup Class</a></dd>
+<dt>assumptions</dt>
+<dd>NP not subset RP</dd>
+<dt>ref_keys</dt>
+<dd>blumer1989, karp1972</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="clause-satisfaction-proper-hardness">Clause-Satisfaction Proper Hardness</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.</p>
+<p>The clause-satisfaction lookup class is efficiently agnostically learnable by an improper lookup-table learner. Proper hypotheses encode assignments, so a sufficiently accurate proper learner would yield a randomized polynomial-time one-sided algorithm for 3-SAT.</p>
+<p>For marginal-nonuniform agnostic proper targets, the hard marginal can be fixed in advance: use the uniform marginal over all clauses on $n$ variables and encode the input formula only in the conditional labels. Formula clauses receive label $1$, while non-formula clauses receive fair-coin labels. The fair-noise region contributes exactly $1/2$ error for every assignment, leaving an inverse-polynomial gap on the formula clauses.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

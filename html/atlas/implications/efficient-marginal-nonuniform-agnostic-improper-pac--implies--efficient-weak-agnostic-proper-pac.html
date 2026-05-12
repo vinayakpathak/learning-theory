@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Efficient Weak Agnostic Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-marginal-nonuniform-agnostic-improper-pac--implies--efficient-weak-agnostic-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-marginal-nonuniform-agnostic-improper-pac__implies__efficient-weak-agnostic-proper-pac</dd>
+<dt>source</dt>
+<dd>efficient-marginal-nonuniform-agnostic-improper-pac</dd>
+<dt>target</dt>
+<dd>efficient-weak-agnostic-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-agnostic-improper-pac.html">Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-weak-agnostic-proper-pac.html">Efficient Weak Agnostic Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>unclear</dd>
+<dt>assumptions</dt>
+<dd>NP not subset RP</dd>
+<dt>witnesses</dt>
+<dd>pcp-active-slice-lookup-class</dd>
+<dt>ref_keys</dt>
+<dd>bendavid2001, blumer1989, hastad2005query, karp1972</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a>, <a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a>, <a href="https://doi.org/10.4086/toc.2005.v001a007">Håstad and Khot 2005</a>, <a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></dd>
+<dt>summary</dt>
+<dd>False under NP not subset RP: the PCP active-slice lookup class is distribution-free agnostically learnable improperly, hence marginal-nonuniform agnostically learnable improperly, but weak agnostic proper learning would decide an NP-complete language.</dd>
+<dt>family</dt>
+<dd>pcp-active-slice-weak-proper-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;strong-to-weak&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;improper-to-proper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/pcp-active-slice-weak-proper-hardness.html">PCP Active-Slice Weak Proper Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/pcp-active-slice-lookup-class.html">PCP Active-Slice Lookup Class</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-marginal-nonuniform-agnostic-improper-pac-learning-efficient-weak-agnostic-proper-pac-learning">Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Efficient Weak Agnostic Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, under the assumption $\mathrm{NP}\nsubseteq\mathrm{RP}$.</p>
+<p>The <a href="../witnesses/pcp-active-slice-lookup-class.html">PCP Active-Slice Lookup Class</a> is efficiently agnostically learnable by an improper one-slice lookup-table ERM, and therefore satisfies the marginal-nonuniform agnostic improper source. However, an efficient weak agnostic proper learner for the same class would decide an NP-complete language with one-sided randomized error.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs an arbitrary binary hypothesis $h$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the conditional label distribution, $\varepsilon$, or $\delta$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma(s)$. There is one polynomial $p$ and an inverse-polynomial weak gap $\gamma(s)&gt;0$, independent of $P$ and $\mathcal D$, such that the worst-case sample size and running time are bounded by $p(s,\log(1/\delta))$.</p>
+<p>Assuming $\mathrm{NP}\nsubseteq\mathrm{RP}$, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.</p>
+<h2 id="proof-status">Proof Status</h2>
+<p><strong>Goal.</strong> Separate the marginal-nonuniform agnostic improper source from the distribution-free weak agnostic proper target.</p>
+<p><strong>Witness construction.</strong> Use the PCP active-slice class from <a href="../arguments/pcp-active-slice-weak-proper-hardness.html">PCP Active-Slice Weak Proper Hardness</a>. Proper hypotheses encode an NP instance $\varphi$ and a proof $\pi$; on an example $(\psi,r)$ they run the verifier on $(\varphi,\pi,r)$ if $\psi=\varphi$, and output $0$ otherwise.</p>
+<p><strong>Why the source holds.</strong> The class satisfies the stronger distribution-free <a href="../definitions/efficient-agnostic-improper-pac.html">Efficient Agnostic Improper PAC Learning</a> node. An improper learner performs ERM over one-slice lookup tables and the all-zero hypothesis. The verifier uses logarithmic randomness, so each active slice is polynomial size; only sampled slices need be considered, and the best table on a sampled slice is obtained by majority vote. Since every proper hypothesis is one such lookup table, finite-class uniform convergence gives efficient agnostic improper learning. This immediately implies the marginal-nonuniform source.</p>
+<p><strong>Why the target fails.</strong> Given an NP instance $\varphi$, sample uniformly from the active slice ${(\varphi,r)}$ and label every example by $1$. If $\varphi$ is satisfiable, perfect completeness gives proper error $0$, so a weak agnostic proper learner must output a proof accepted on more than half of verifier random strings. If $\varphi$ is unsatisfiable, PCP soundness keeps every proof below one-half acceptance. The active slice is polynomial size, so the returned hypothesis's acceptance can be checked in polynomial time, yielding an $\mathrm{RP}$ algorithm for an NP-complete language.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a></li>
+<li><a href="https://doi.org/10.1145/76359.76371">Blumer et al. 1989</a></li>
+<li><a href="https://doi.org/10.4086/toc.2005.v001a007">Håstad and Khot 2005</a></li>
+<li><a href="https://doi.org/10.1007/978-3-540-68279-0_8">Karp 1972</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

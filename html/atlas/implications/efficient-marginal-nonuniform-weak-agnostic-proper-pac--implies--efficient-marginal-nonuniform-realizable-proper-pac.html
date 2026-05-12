@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Realizable Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-implications">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/implications/efficient-marginal-nonuniform-weak-agnostic-proper-pac--implies--efficient-marginal-nonuniform-realizable-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>efficient-marginal-nonuniform-weak-agnostic-proper-pac__implies__efficient-marginal-nonuniform-realizable-proper-pac</dd>
+<dt>source</dt>
+<dd>efficient-marginal-nonuniform-weak-agnostic-proper-pac</dd>
+<dt>target</dt>
+<dd>efficient-marginal-nonuniform-realizable-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/efficient-marginal-nonuniform-realizable-proper-pac.html">Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>binary-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>unclear</dd>
+<dt>assumptions</dt>
+<dd>length-preserving one-way functions exist</dd>
+<dt>witnesses</dt>
+<dd>one-way-image-coordinate-weak-handle-class</dd>
+<dt>ref_keys</dt>
+<dd>kearns1994cryptographic, hastad1999prg</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a>, <a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></dd>
+<dt>summary</dt>
+<dd>False under one-way functions: proper constants and bounded subset handles give the weak agnostic marginal-nonuniform proper source, but fixed-marginal realizable proper learning would invert the one-way function.</dd>
+<dt>family</dt>
+<dd>one-way-image-coordinate-weak-handle-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;same&quot;,&quot;strength&quot;:&quot;weak-to-strong&quot;,&quot;realizability&quot;:&quot;agnostic-to-realizable&quot;,&quot;properness&quot;:&quot;same&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/one-way-image-coordinate-weak-handle-hardness.html">One-Way Image Coordinate Weak-Handle Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/one-way-image-coordinate-weak-handle-class.html">One-Way Image Coordinate Weak-Handle Class</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/binary-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="efficient-marginal-nonuniform-weak-agnostic-proper-pac-learning-efficient-marginal-nonuniform-realizable-proper-pac-learning">Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning $\Rightarrow$ Efficient Marginal-Nonuniform Realizable Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, assuming length-preserving one-way functions exist.</p>
+<p>Use the <a href="../witnesses/one-way-image-coordinate-weak-handle-class.html">one-way image-coordinate weak-handle class</a>: image-coordinate seed concepts, the two constants, and bounded positive-atom subset handles. The handles give the weak agnostic marginal-nonuniform proper source, but strong realizable proper learning under the fixed coordinate marginal would invert the one-way function.</p>
+<h2 id="theorem-statement">Theorem Statement</h2>
+<p>Let $\mathcal C$ be a binary concept class over an instance space $\mathcal X$, with representation-size parameter $s$; all errors are zero-one errors.</p>
+<p>The <strong>source guarantee</strong> is: there is a single learner $A$ that, given i.i.d. examples $(X,Y)\sim\mathcal D$ from an arbitrary joint distribution on $\mathcal X\times{0,1}$, with instance marginal $P=\mathcal D_X$, confidence parameter $\delta\in(0,1)$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every joint distribution $\mathcal D$, the guarantee is $\Pr[h(X)\ne Y]\le \inf_{c\in\mathcal C}\Pr[c(X)\ne Y]+1/2-\gamma_P(s)$. For every marginal $P$ there is a polynomial $p_P$ and an inverse-polynomial weak gap $\gamma_P(s)&gt;0$ such that the worst-case sample size and running time are bounded by $p_P(s,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ and $\gamma_P$ may depend on $P$ but not on the conditional label distribution or $\delta$.</p>
+<p>The <strong>target guarantee</strong> is: there is a single learner $B$ that, given i.i.d. examples $(X,c(X))$ with $X\sim P$ and $c\in\mathcal C$, confidence parameter $\delta\in(0,1)$, accuracy parameter $\varepsilon&gt;0$, outputs a hypothesis $h\in\mathcal C$ with probability at least $1-\delta$. For every marginal $P$ and target $c\in\mathcal C$, the guarantee is $\Pr_{X\sim P}[h(X)\ne c(X)]\le\varepsilon$. For every marginal $P$ there is a polynomial $p_P$ such that the worst-case sample size and running time are bounded by $p_P(s,1/\varepsilon,\log(1/\delta))$; the same learner works for all marginals, and $p_P$ may depend on $P$ but not on the target concept, $\varepsilon$, or $\delta$.</p>
+<p>Assuming length-preserving one-way functions exist, there exists a binary concept class $\mathcal C$ for which the source guarantee holds and the target guarantee fails.</p>
+<h2 id="proof-status">Proof Status</h2>
+<p><strong>Goal.</strong> Separate weak agnostic marginal-nonuniform proper learning from strong realizable marginal-nonuniform proper learning.</p>
+<p><strong>Why the source holds.</strong> The class is marginal-nonuniform weak agnostically learnable by proper handles. For a length-$n$ image-coordinate target with positive mass $M$, the all-zero concept has error $M$, the all-one concept has error $1-M$, and the bounded handle on the heaviest $\lfloor n/4\rfloor$ positive atoms has error at most $3M/4$. The best of these has error at most $3/7&lt;1/2$, and samples plus validation find the best empirical handle in polynomial time. On agnostic data, the same searchable handle family is within a fixed additive tolerance of any near-optimal seed concept, while constants and handle targets are handled directly.</p>
+<p><strong>Why the target fails.</strong> Fix the coordinate marginal with length-$k$ mass $\mu_k=6/(\pi^2 k^2)$. On a length-$n$ one-way challenge $y=f(s)$, label the length-$n$ coordinate block according to $y$. This distribution is realizable by a seed concept. A realizable proper learner run with $\varepsilon=\mu_n/(3n)$ must output a seed concept of length $n$ with the same image, since constants, bounded handles, wrong lengths, and wrong images all have larger error. This recovers a preimage of $y$ in randomized polynomial time, contradicting one-wayness.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/174644.174647">Kearns and Valiant 1994</a></li>
+<li><a href="https://doi.org/10.1137/S0097539793244708">Hastad et al. 1999</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -15,12 +15,34 @@ The first implemented slice focuses on binary distribution-free PAC learning and
 
 ## Structure
 
+- `atlas/`: Markdown source of truth for the learning-definition graph
+- `html/`: generated static HTML export of `atlas/`
+- `scripts/build-html-site.mjs`: HTML export generator
 - `main.tex`: report entrypoint
 - `sections/`: chapter content
 - `references.bib`: bibliography
 - `Makefile`: build entrypoints
 
-## Build
+## HTML Atlas Export
+
+The static browser export is generated from the Markdown notes under `atlas/`.
+
+Regenerate it after changing atlas notes, dashboards, or graph metadata:
+
+```sh
+npm install
+npm run build:html
+```
+
+Open the generated site from:
+
+```text
+html/index.html
+```
+
+The export mirrors `atlas/**/*.md` to `html/atlas/**/*.html`, renders Obsidian-style math through MathJax, converts wiki links to local HTML links, and replaces Dataview dashboard blocks with static or client-side HTML tables.
+
+## PDF Build
 
 Preferred:
 

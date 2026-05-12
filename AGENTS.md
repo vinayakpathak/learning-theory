@@ -87,6 +87,14 @@ The target audience is mathematically mature but not specialist. Write so that a
 
 There is no full automated test suite. Before submitting atlas changes, run focused consistency checks.
 
+When any source file under `atlas/` changes, regenerate the static HTML export before submitting:
+
+```sh
+npm run build:html
+```
+
+This keeps `html/` synchronized with the Markdown atlas. If dependencies are not installed yet, run `npm install` first.
+
 Check that Markdown frontmatter parses:
 
 ```sh
