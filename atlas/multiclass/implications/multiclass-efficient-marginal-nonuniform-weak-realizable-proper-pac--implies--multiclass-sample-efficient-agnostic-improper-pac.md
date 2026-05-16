@@ -1,0 +1,61 @@
+---
+type: implication
+id: multiclass-efficient-marginal-nonuniform-weak-realizable-proper-pac__implies__multiclass-sample-efficient-agnostic-improper-pac
+source: multiclass-efficient-marginal-nonuniform-weak-realizable-proper-pac
+target: multiclass-sample-efficient-agnostic-improper-pac
+source_note: "[[multiclass-efficient-marginal-nonuniform-weak-realizable-proper-pac|Multiclass Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning]]"
+target_note: "[[multiclass-sample-efficient-agnostic-improper-pac|Multiclass Sample-Efficient Agnostic Improper PAC Learning]]"
+domain: multiclass-classification
+model: pac
+status: 'true'
+evidence: theorem
+result_origin: known
+assumptions: []
+witnesses: []
+ref_keys:
+- daniely2014optimal
+- daniely2015multiclass
+- brukhim2022
+- cohen2025multiclass
+refs:
+- "[Daniely and Shalev-Shwartz 2014](https://proceedings.mlr.press/v35/daniely14b.html)"
+- "[Daniely et al. 2015](https://jmlr.org/papers/v16/daniely15a.html)"
+- "[Brukhim et al. 2022](https://doi.org/10.1109/FOCS54457.2022.00093)"
+- "[Cohen et al. 2025](https://arxiv.org/abs/2511.12659)"
+summary: At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.
+family: multiclass-sample-complexity-equivalence
+axis_delta:
+  resource: computationally-efficient-to-sample-efficient
+  distribution: marginal-nonuniform-to-distribution-free
+  strength: weak-to-strong
+  realizability: realizable-to-agnostic
+  properness: proper-to-improper
+argument_note: "[[multiclass-sample-complexity-equivalence|Sample-Complexity Equivalence]]"
+tags:
+- atlas/implication
+- learning/multiclass-classification
+---
+
+# Multiclass Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning $\Rightarrow$ Multiclass Sample-Efficient Agnostic Improper PAC Learning
+
+## Verdict
+
+`true`, with evidence `theorem`.
+
+Since runtime is unrestricted at the target, the implication is a sample-complexity statement. For finite multiclass labels, the Natarajan/graph-dimension theory, DS-dimension characterization, and recent agnostic sample-complexity bounds provide the standard finite-sample side of the argument.
+
+## Axis Delta
+
+- `resource`: `computationally-efficient-to-sample-efficient`
+- `distribution`: `marginal-nonuniform-to-distribution-free`
+- `strength`: `weak-to-strong`
+- `realizability`: `realizable-to-agnostic`
+- `properness`: `proper-to-improper`
+
+
+## References
+
+- [Daniely and Shalev-Shwartz 2014](https://proceedings.mlr.press/v35/daniely14b.html)
+- [Daniely et al. 2015](https://jmlr.org/papers/v16/daniely15a.html)
+- [Brukhim et al. 2022](https://doi.org/10.1109/FOCS54457.2022.00093)
+- [Cohen et al. 2025](https://arxiv.org/abs/2511.12659)

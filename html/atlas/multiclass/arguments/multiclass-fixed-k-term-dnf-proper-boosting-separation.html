@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Fixed-k-Term DNF Proper Boosting Separation - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/arguments/multiclass-fixed-k-term-dnf-proper-boosting-separation.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>multiclass-fixed-k-term-dnf-proper-boosting-separation</dd>
+<dt>title</dt>
+<dd>Multiclass Fixed-k-Term DNF Proper Boosting Separation</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>witnesses</dt>
+<dd>multiclass-fixed-k-term-DNF</dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/multiclass-fixed-k-term-DNF.html">Fixed-k-Term DNF</a></dd>
+<dt>assumptions</dt>
+<dd>RP != NP</dd>
+<dt>ref_keys</dt>
+<dd>schapire1990, pitt1988, haussler1990</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <code>pitt1988</code>, <code>haussler1990</code></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-fixed-k-term-dnf-proper-boosting-separation">Multiclass Fixed-k-Term DNF Proper Boosting Separation</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, with evidence <code>conditional-counterexample</code>.</p>
+<p>This note is the multiclass counterpart of the binary argument family. When it records a separation, the witness is usually obtained by embedding the binary witness into a finite multiclass label space. When it records a true implication, the proof uses only zero-one correctness and the majority-accuracy weak convention adopted by this multiclass atlas.</p>
+<h2 id="scope">Scope</h2>
+<p>The multiclass atlas is finite-label and separate from the binary atlas. The embedding observations here are used only to transfer lower-bound examples into the multiclass type; they do not create implication edges between binary and multiclass nodes.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><code>pitt1988</code></li>
+<li><code>haussler1990</code></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

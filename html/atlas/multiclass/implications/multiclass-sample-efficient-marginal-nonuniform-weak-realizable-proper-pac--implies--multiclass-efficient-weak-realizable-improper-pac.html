@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning $\Rightarrow$ Multiclass Efficient Weak Realizable Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/implications/multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac--implies--multiclass-efficient-weak-realizable-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac__implies__multiclass-efficient-weak-realizable-improper-pac</dd>
+<dt>source</dt>
+<dd>multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac</dd>
+<dt>target</dt>
+<dd>multiclass-efficient-weak-realizable-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/multiclass-efficient-weak-realizable-improper-pac.html">Multiclass Efficient Weak Realizable Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd>standard cryptographic assumptions</dd>
+<dt>witnesses</dt>
+<dd>multiclass-pseudorandom-function-classes</dd>
+<dt>ref_keys</dt>
+<dd>goldreich1986, kearns1994cryptographic</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1145/6490.6503">goldreich1986</a>, <a href="https://doi.org/10.1145/174644.174647">kearns1994cryptographic</a></dd>
+<dt>summary</dt>
+<dd>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</dd>
+<dt>family</dt>
+<dd>multiclass-sample-to-computational-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;sample-efficient-to-computationally-efficient&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;proper-to-improper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/multiclass-sample-to-computational-hardness.html">Sample-to-Computational Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/multiclass-pseudorandom-function-classes.html">Pseudorandom Function Classes</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac-learning-multiclass-efficient-weak-realizable-improper-pac-learning">Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning $\Rightarrow$ Multiclass Efficient Weak Realizable Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, with evidence <code>conditional-counterexample</code>.</p>
+<p>A binary separation witness embeds into the finite multiclass setting by fixing two labels and never using the others. Thus <a href="../witnesses/multiclass-pseudorandom-function-classes.html">Pseudorandom Function Classes</a> satisfies the source while failing the target under standard cryptographic assumptions.</p>
+<h2 id="axis-delta">Axis Delta</h2>
+<ul>
+<li><code>resource</code>: <code>sample-efficient-to-computationally-efficient</code></li>
+<li><code>distribution</code>: <code>marginal-nonuniform-to-distribution-free</code></li>
+<li><code>strength</code>: <code>same</code></li>
+<li><code>realizability</code>: <code>same</code></li>
+<li><code>properness</code>: <code>proper-to-improper</code></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/6490.6503">goldreich1986</a></li>
+<li><a href="https://doi.org/10.1145/174644.174647">kearns1994cryptographic</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

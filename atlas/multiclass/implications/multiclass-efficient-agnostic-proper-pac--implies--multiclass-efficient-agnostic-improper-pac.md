@@ -1,0 +1,44 @@
+---
+type: implication
+id: multiclass-efficient-agnostic-proper-pac__implies__multiclass-efficient-agnostic-improper-pac
+source: multiclass-efficient-agnostic-proper-pac
+target: multiclass-efficient-agnostic-improper-pac
+source_note: "[[multiclass-efficient-agnostic-proper-pac|Multiclass Efficient Agnostic Proper PAC Learning]]"
+target_note: "[[multiclass-efficient-agnostic-improper-pac|Multiclass Efficient Agnostic Improper PAC Learning]]"
+domain: multiclass-classification
+model: pac
+status: 'true'
+evidence: trivial
+result_origin: known
+assumptions: []
+witnesses: []
+refs: []
+summary: A proper agnostic learner is also an improper agnostic learner if the output class is allowed to contain the benchmark class.
+family: multiclass-monotone-relaxation
+axis_delta:
+  resource: same
+  distribution: same
+  strength: same
+  realizability: same
+  properness: proper-to-improper
+argument_note: "[[multiclass-monotone-relaxation|Monotone Relaxation]]"
+tags:
+- atlas/implication
+- learning/multiclass-classification
+---
+
+# Multiclass Efficient Agnostic Proper PAC Learning $\Rightarrow$ Multiclass Efficient Agnostic Improper PAC Learning
+
+## Verdict
+
+`true`, with evidence `trivial`.
+
+The target relaxes one or more axis requirements already met by the source. The same multiclass learner can therefore be used unchanged.
+
+## Axis Delta
+
+- `resource`: `same`
+- `distribution`: `same`
+- `strength`: `same`
+- `realizability`: `same`
+- `properness`: `proper-to-improper`

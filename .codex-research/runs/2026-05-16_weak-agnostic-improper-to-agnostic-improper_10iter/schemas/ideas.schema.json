@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "ideas": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "risks": {
+            "type": "string"
+          },
+          "suggested_lenses": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "why_promising": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "summary",
+          "why_promising",
+          "risks",
+          "suggested_lenses"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "solution_status": {
+      "description": "Solver status: solved, maybe, or unsolved.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "solution_status",
+    "ideas"
+  ],
+  "type": "object"
+}

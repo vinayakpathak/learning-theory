@@ -1,0 +1,29 @@
+{
+  "context_manifest": [
+    {
+      "copied_to": "inputs/efficient-weak-agnostic-improper-pac-implies-efficient-agnos.md",
+      "kind": "file",
+      "source": "/Users/vinayakpathak/learning-theory/atlas/implications/efficient-weak-agnostic-improper-pac--implies--efficient-agnostic-improper-pac.md"
+    },
+    {
+      "copied_to": "inputs/efficient-weak-agnostic-improper-pac.md",
+      "kind": "file",
+      "source": "/Users/vinayakpathak/learning-theory/atlas/definitions/efficient-weak-agnostic-improper-pac.md"
+    },
+    {
+      "copied_to": "inputs/efficient-agnostic-improper-pac.md",
+      "kind": "file",
+      "source": "/Users/vinayakpathak/learning-theory/atlas/definitions/efficient-agnostic-improper-pac.md"
+    },
+    {
+      "copied_to": "inputs/agnostic-boosting-open.md",
+      "kind": "file",
+      "source": "/Users/vinayakpathak/learning-theory/atlas/arguments/agnostic-boosting-open.md"
+    }
+  ],
+  "created_at": "2026-05-16T13:51:16",
+  "problem_source": "/Users/vinayakpathak/learning-theory/.codex-research/problem_inputs/weak-agnostic-improper-to-agnostic-improper.md",
+  "project_root": "/Users/vinayakpathak/learning-theory",
+  "run_id": "2026-05-16_weak-agnostic-improper-to-agnostic-improper_10iter_gpt55_xhigh_full",
+  "title": "Fixed-slack weak agnostic improper to strong agnostic improper"
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Marginal-Nonuniform Agnostic Hardness Open - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/arguments/multiclass-marginal-agnostic-hardness-open.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>multiclass-marginal-agnostic-hardness-open</dd>
+<dt>title</dt>
+<dd>Multiclass Marginal-Nonuniform Agnostic Hardness Open</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>ref_keys</dt>
+<dd>benedek1991fixed, hanneke2025marginalnonuniform, tiegel2023, feldman2012monomials</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a>, <a href="https://proceedings.mlr.press/v195/tiegel23a.html">tiegel2023</a>, <a href="https://doi.org/10.1137/120865094">feldman2012monomials</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-marginal-nonuniform-agnostic-hardness-open">Multiclass Marginal-Nonuniform Agnostic Hardness Open</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>, with evidence <code>unknown</code>.</p>
+<p>This family also remains open in the multiclass atlas. Hopkins--Kane--Lovett--Mahajan give broad realizable-to-agnostic reductions, including distribution-family and finite-label settings, but the reduction constructs a finite cover by running the realizable learner over possible labelings of an unlabeled sample. That is a sample-complexity theorem rather than a representation-sensitive polynomial-time implication, so it does not close these efficient edges.</p>
+<p>The target here is additionally proper. The existing low-noise robustification argument gives improper weak agnostic targets by validating arbitrary hypotheses and neutral defaults. It does not automatically provide a legal proper multiclass hypothesis when the class has no constant labels, complements, balanced sampler, or other proper neutralizer. Conversely, known distribution-free agnostic hardness witnesses do not by themselves rule out marginal-dependent polynomial bounds. The right fixed-marginal proper weak selector or no-neutral separation is still missing.</p>
+<h2 id="scope">Scope</h2>
+<p>The multiclass atlas is finite-label and separate from the binary atlas. The embedding observations here are used only to transfer lower-bound examples into the multiclass type; they do not create implication edges between binary and multiclass nodes.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+<li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">tiegel2023</a></li>
+<li><a href="https://doi.org/10.1137/120865094">feldman2012monomials</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

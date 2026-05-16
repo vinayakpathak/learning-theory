@@ -1,0 +1,88 @@
+## Summary
+
+Convex-geometric verdict: anchor doping is not a generic way to refine a fixed-additive weak agnostic oracle into an $\epsilon$-accurate optimizer. It can work only if the public anchor creates a genuine $\alpha$-margin separation of the target-good cap, where $\alpha=2\beta$ is the fixed support-function error. Without that strong anchor structure, an adversarial legal oracle can keep returning an anchor-favored, target-suboptimal hypothesis and ignore the target perturbation.
+
+Here “support-function oracle” is literal: for target/query direction $z$ and $K=\operatorname{conv}(C)$, the source returns some hypothesis with value at least
+$$
+\sigma_K(z)-\alpha,\qquad \alpha=2\beta.
+$$`
+Strong agnostic learning needs a returned hypothesis whose original target-direction value is within $2\epsilon$ of $\sigma_K(a)$.
+
+## Concrete Progress
+
+A clean convex criterion emerged. For an allowed query direction $z$, define the target-bad set
+$$
+C_{\mathrm{bad}}(\epsilon)=\{c\in C:\langle c,a\rangle\le \sigma_C(a)-2\epsilon\}.
+$$
+Then a single weak call at $z$ forces a target-good proper response iff
+$$
+\sigma_C(z)-\sigma_{C_{\mathrm{bad}}(\epsilon)}(z)>\alpha.
+$$
+If this gap is at most $\alpha$, some target-bad concept is still a legal weak-oracle answer.
+
+Thus anchor doping succeeds only when some doped direction separates the target-bad cap from the whole class by more than the fixed slack.
+
+## Claims Or Lemmas
+
+**Anchor Lock-In Lemma.** Let $u$ be a public anchor direction, $a$ the original target direction, and
+$$
+z_\lambda=(1-\lambda)u+\lambda a,\qquad \lambda\in[0,1].
+$$
+For any $c_0\in C$, define
+$$
+\kappa=\sigma_C(u)-\langle c_0,u\rangle,\qquad
+\Delta=\sigma_C(a)-\langle c_0,a\rangle.
+$$
+Then
+$$
+\sigma_C(z_\lambda)-\langle c_0,z_\lambda\rangle
+\le (1-\lambda)\kappa+\lambda\Delta.
+$$
+So if $(1-\lambda)\kappa+\lambda\Delta\le\alpha$, the oracle may legally return $c_0$ on the doped query.
+
+In particular, if $c_0$ maximizes the anchor direction and $2\epsilon<\Delta\le\alpha$, then $c_0$ is target-bad for strong learning but remains a legal answer for every $\lambda\in[0,1]$.
+
+## Proof Attempts
+
+The positive homotopy idea would be: start from an anchor direction $u$ whose optimizer is known, move along $z_\lambda=(1-\lambda)u+\lambda a$, and hope the weak oracle eventually returns a target optimizer.
+
+The obstruction is that support functions have wide approximate faces. With fixed additive slack, the oracle is allowed to remain inside the old anchor face until the target perturbation improves the true optimum by more than $\alpha$. If the relevant target gap is between $2\epsilon$ and $\alpha$, this never forces movement, even at $\lambda=1$.
+
+A value-based refinement also seems blocked. If one estimates $\sigma_C(z_\lambda)$ only up to additive $\alpha$, finite differences over a unit interval have uncertainty at least order $\alpha$. This cannot recover $o(\alpha)$ target-score information.
+
+## Gaps And Risks
+
+This is not an atlas separation. It is a black-box obstruction to this specific anchor-doping/support-refinement strategy.
+
+Reweighting can escape the simple line-segment obstruction if it creates a query direction whose bad-cap separation exceeds $\alpha$. But finding such a reweighting is exactly the missing structure: it must identify regions or features where target-good hypotheses beat target-bad ones by constant margin.
+
+Improper oracle outputs only help the learner. The obstruction uses a legal proper oracle response from $C$, so it applies to reductions that must tolerate adversarial but valid weak learners.
+
+## Counterexamples Or Obstructions
+
+Two-vertex convex body: take $C=\{c_{\mathrm{good}},c_{\mathrm{bad}}\}$ with
+$$
+2\epsilon < \langle c_{\mathrm{good}}-c_{\mathrm{bad}},a\rangle \le \alpha,
+$$
+and let the public anchor favor, or even merely not penalize, $c_{\mathrm{bad}}$. Then $c_{\mathrm{bad}}$ is too poor for the strong target but remains $\alpha$-optimal on every anchor mixture. Validation cannot help if the oracle never emits the good vertex.
+
+This shows fixed additive slack can hide precisely the $\epsilon$-scale distinction strong agnostic learning needs.
+
+## Sources Consulted
+
+Local project files only: `problem.md`, `working_notes/canonical_summary.md`, `claim_ledger.md`, `lemma_bank.md`, `failed_attempts.md`, `counterexamples.md`, `literature_map.md`, `promising_directions.md`, `iteration_summaries.md`, and the assigned `idea.md`.
+
+No external web sources consulted.
+
+## Recommended Next Steps
+
+Record the cap-separation criterion and Anchor Lock-In Lemma as restricted black-box progress.
+
+If this idea is pursued, formalize an allowed query family $\mathcal Q$ and study
+$$
+M_{\mathcal Q}(\epsilon)=\sup_{z\in\mathcal Q}
+\left(\sigma_C(z)-\sigma_{C_{\mathrm{bad}}(\epsilon)}(z)\right).
+$$
+Anchor doping can force success only when $M_{\mathcal Q}(\epsilon)>\alpha$.
+
+The most useful follow-up is to test whether any natural public anchor generated by previous weak calls can certify such an $\alpha$-separation without already solving a strong selection problem.

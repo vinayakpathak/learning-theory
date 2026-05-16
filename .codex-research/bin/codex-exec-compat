@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+real_codex="/Users/vinayakpathak/.nvm/versions/node/v24.14.1/bin/codex"
+args=()
+approval_args=()
+
+while (($#)); do
+  case "$1" in
+    -a|--approval|--ask-for-approval)
+      shift
+      if (($#)); then
+        approval_args=(-a "$1")
+        shift
+      fi
+      ;;
+    *)
+      args+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if ((${#approval_args[@]})); then
+  exec "$real_codex" "${approval_args[@]}" "${args[@]}" < /dev/null
+else
+  exec "$real_codex" "${args[@]}" < /dev/null
+fi

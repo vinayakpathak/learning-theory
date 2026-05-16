@@ -1,0 +1,77 @@
+{
+  "ideas": [
+    {
+      "id": "idea_01",
+      "risks": "May fail because the needed gap-preservation condition could be false for standard residual-based filters; proving a polynomial lower bound on mass may require assumptions absent from the target oracle model.",
+      "suggested_lenses": [
+        "conditional positive proof",
+        "explicit invariant synthesis",
+        "oracle semantics translation"
+      ],
+      "summary": "Define a concrete residual-forcing filter family (e.g., adaptive rejection based on empirical residual sign + clipping) and prove a theorem: after each round t, every accepted distribution D_t satisfies explicit OPT_C(D_t) ≤ 1/2 - γ_t with γ_t ≥ 1/poly(n,1/ε), and acceptance mass(D_t) ≥ 1/poly(n,1/ε). If proved, instantiate a standard agnostic-boosting framework to obtain ε-accuracy from fixed β.",
+      "title": "Prove a polynomially stable filter-gap invariant",
+      "why_promising": "This directly isolates the only blocked step in prior attempts and would turn the current conditional route into a complete theorem under a clearly stated wrapper family."
+    },
+    {
+      "id": "idea_02",
+      "risks": "Existing lower-bound machinery may not separate the exact oracle model; reduction might end up proving only that some restricted boosters fail, not that ε-boosting is impossible.",
+      "suggested_lenses": [
+        "negative construction",
+        "counterexample search",
+        "lower-bound reduction"
+      ],
+      "summary": "Build a fully specified counterexample triplet (class C, distribution D, adaptive filter family F) where OPT_C(D) is small but every adaptive filtering strategy in F can drive OPT_C(D_t) to 1/2 on high-probability rounds while preserving no polynomial mass collapse constraint violation. This would formally refute the unqualified positive route.",
+      "title": "Formal filter-instability witness against adaptive residual-forcing",
+      "why_promising": "A complete explicit witness would settle the core obstruction claim from Iterations 1–2 and justify why fixed-slack cannot be naively amplified."
+    },
+    {
+      "id": "idea_03",
+      "risks": "SQ/lower-bound translation may be delicate because the fixed-slack learner outputs hypotheses, not tolerance-calibrated expectation queries, so matching oracle strength may produce only weak negative evidence.",
+      "suggested_lenses": [
+        "SQ complexity",
+        "precision lower bound",
+        "conditional non-improvability"
+      ],
+      "summary": "Formalize the fixed additive oracle as a precision-limited statistical oracle: each call only certifies corr ≥ γ(β) on current distribution, then prove that arbitrary-ε refinement requires query precision Ω(ε) unavailable without additional interface/assumption. Derive impossibility or complexity blow-up under a standard SQ hardness benchmark.",
+      "title": "SQ precision barrier for fixed-slack fixed-β amplification",
+      "why_promising": "This aligns with the repeated 'precision mismatch' suspicion and could give a principled negative result without relying on class-specific complexity assumptions."
+    },
+    {
+      "id": "idea_04",
+      "risks": "This may show only that one proof family does not apply cleanly unless it ends at a stronger assumption than the target model permits.",
+      "suggested_lenses": [
+        "literature audit",
+        "parameter semantics",
+        "theorem-by-theorem mapping"
+      ],
+      "summary": "Complete a theorem-by-theorem normalization table for KMV/Feldman/potential-based agnostic boosting variants in the exact form err ≤ OPT+β for binary predictions, documenting exactly what assumptions they require (advantage definition, margin signals, weighted distribution access) and final excess/complexity dependence.",
+      "title": "Precise parameter-convention audit of existing agnostic boosting theorems",
+      "why_promising": "The prior notes already suggest this is likely the cleanest path to either a rigorous positive theorem with extra assumptions or a formal statement that current attempts overclaimed applicability."
+    },
+    {
+      "id": "idea_05",
+      "risks": "Assumption set (e.g., Massart or margin noise) may be too narrow or already known; could produce a high-confidence but weakly useful partial theorem.",
+      "suggested_lenses": [
+        "conditional theorem",
+        "noise-model assumptions",
+        "specialized subclass"
+      ],
+      "summary": "Target classes with low-noise structure (e.g., Tsybakov/Massart noise on bounded-complexity classes, or finite VC + calibration properties) and prove that fixed-β weak learners imply full strong agnostic learners with explicit dependence on noise/margin constants.",
+      "title": "Conditional positive theorem under stable-noise / margin hypotheses",
+      "why_promising": "It preserves the possibility of a non-vacuous result while honestly separating unconditional and assumption-based progress."
+    },
+    {
+      "id": "idea_06",
+      "risks": "May only reduce the gap by constants unless one shows a true ε-dependent stage; could risk re-deriving known O(β+ε) results.",
+      "suggested_lenses": [
+        "hybrid reduction",
+        "distribution surgery",
+        "boosting variant design"
+      ],
+      "summary": "Investigate a two-stage wrapper: use fixed-slack oracle to build a coarse hypothesis and synthetic hard-core residual distribution where ε-dependent structure is amplified via re-sampling/sketching; then apply a second-stage learner tailored to the synthetic residual where the effective target class has bounded excess gap.",
+      "title": "Hybrid coarse-to-fine residual reduction",
+      "why_promising": "Could bypass full OPT preservation on original D by engineering a new residual domain where fixed slack still yields shrinking effective error across rounds."
+    }
+  ],
+  "solution_status": "unsolved"
+}

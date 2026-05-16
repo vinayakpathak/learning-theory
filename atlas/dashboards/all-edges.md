@@ -2,10 +2,10 @@
 type: dashboard
 id: all-edges-dashboard
 title: All Edges Dashboard
-domain: binary-classification
+domain: learning-atlas
 tags:
   - atlas/dashboard
-  - learning/binary-classification
+  - learning/all-domains
 ---
 
 # All Edges Dashboard
@@ -125,14 +125,14 @@ const textOf = value => asArray(value).join(", ");
 const normalize = value => String(value ?? "").toLowerCase();
 
 const defsById = new Map(
-  dv.pages('"atlas/definitions"')
-    .where(p => p.type === "definition" && p.domain === "binary-classification")
+  dv.pages('"atlas"')
+    .where(p => p.type === "definition")
     .array()
     .map(p => [p.id, p])
 );
 
-const allEdges = dv.pages('"atlas/implications"')
-  .where(p => p.type === "implication" && p.domain === "binary-classification")
+const allEdges = dv.pages('"atlas"')
+  .where(p => p.type === "implication")
   .array()
   .map(edge => ({
     edge,

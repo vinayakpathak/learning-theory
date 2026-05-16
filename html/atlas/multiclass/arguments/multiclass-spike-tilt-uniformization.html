@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Spike-Tilt Uniformization - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/arguments/multiclass-spike-tilt-uniformization.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>multiclass-spike-tilt-uniformization</dd>
+<dt>title</dt>
+<dd>Multiclass Spike-Tilt Uniformization</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>ref_keys</dt>
+<dd>benedek1991fixed, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-spike-tilt-uniformization">Multiclass Spike-Tilt Uniformization</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>, with evidence <code>theorem</code>.</p>
+<p>The spike-tilt construction is stated for multiclass zero-one correctness, not for a literal binary product $c(x)h(x)$. Given a target multiclass concept $c$ and a candidate $h$, the binary correctness variable is $+1$ on the event $h(x)=c(x)$ and $-1$ otherwise. Tilting the marginal by this correctness event lets a marginal-nonuniform weak learner reveal a distribution-free weak gap.</p>
+<p>Once the weak learner is distribution-free in this correctness sense, standard finite-label multiclass boosting can aggregate weak hypotheses into an improper strong learner whenever the target edge is realizable and improper.</p>
+<h2 id="scope">Scope</h2>
+<p>The multiclass atlas is finite-label and separate from the binary atlas. The embedding observations here are used only to transfer lower-bound examples into the multiclass type; they do not create implication edges between binary and multiclass nodes.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Marginal-Nonuniform Boosting Open - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/arguments/multiclass-marginal-boosting-open.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>multiclass-marginal-boosting-open</dd>
+<dt>title</dt>
+<dd>Multiclass Marginal-Nonuniform Boosting Open</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>ref_keys</dt>
+<dd>schapire1990, freund1995boosting, feldman2010distributionspecific, ghai2025agnosticboosting, dacunha2026agnosticboosting, benedek1991fixed, bendavid1995parameterization, hanneke2025marginalnonuniform</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a>, <a href="https://arxiv.org/abs/0909.2927">feldman2010distributionspecific</a>, <a href="https://proceedings.mlr.press/v267/ghai25a.html">ghai2025agnosticboosting</a>, <a href="https://arxiv.org/abs/2601.11265">dacunha2026agnosticboosting</a>, <a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a>, <a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a>, <a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-marginal-nonuniform-boosting-open">Multiclass Marginal-Nonuniform Boosting Open</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>, with evidence <code>unknown</code>.</p>
+<p>This note is the multiclass counterpart of the binary argument family. When it records a separation, the witness is usually obtained by embedding the binary witness into a finite multiclass label space. When it records a true implication, the proof uses only zero-one correctness and the majority-accuracy weak convention adopted by this multiclass atlas.</p>
+<h2 id="scope">Scope</h2>
+<p>The multiclass atlas is finite-label and separate from the binary atlas. The embedding observations here are used only to transfer lower-bound examples into the multiclass type; they do not create implication edges between binary and multiclass nodes.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></li>
+<li><a href="https://arxiv.org/abs/0909.2927">feldman2010distributionspecific</a></li>
+<li><a href="https://proceedings.mlr.press/v267/ghai25a.html">ghai2025agnosticboosting</a></li>
+<li><a href="https://arxiv.org/abs/2601.11265">dacunha2026agnosticboosting</a></li>
+<li><a href="https://doi.org/10.1016/0304-3975(91)90026-X">Benedek and Itai 1991</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1094">Ben-David et al. 1995</a></li>
+<li><a href="https://openreview.net/forum?id=aoVCFtox89">Hanneke et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

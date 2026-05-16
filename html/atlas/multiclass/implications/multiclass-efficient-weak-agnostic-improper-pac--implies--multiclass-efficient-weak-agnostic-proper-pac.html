@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Efficient Weak Agnostic Improper PAC Learning $\Rightarrow$ Multiclass Efficient Weak Agnostic Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/implications/multiclass-efficient-weak-agnostic-improper-pac--implies--multiclass-efficient-weak-agnostic-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>multiclass-efficient-weak-agnostic-improper-pac__implies__multiclass-efficient-weak-agnostic-proper-pac</dd>
+<dt>source</dt>
+<dd>multiclass-efficient-weak-agnostic-improper-pac</dd>
+<dt>target</dt>
+<dd>multiclass-efficient-weak-agnostic-proper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/multiclass-efficient-weak-agnostic-improper-pac.html">Multiclass Efficient Weak Agnostic Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/multiclass-efficient-weak-agnostic-proper-pac.html">Multiclass Efficient Weak Agnostic Proper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>false</dd>
+<dt>evidence</dt>
+<dd>conditional-counterexample</dd>
+<dt>result_origin</dt>
+<dd>unclear</dd>
+<dt>assumptions</dt>
+<dd>NP not subset RP</dd>
+<dt>witnesses</dt>
+<dd>multiclass-pcp-active-slice-lookup-class</dd>
+<dt>ref_keys</dt>
+<dd>bendavid2001, hastad2005query, karp1972</dd>
+<dt>refs</dt>
+<dd><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a>, <a href="https://theoryofcomputing.org/articles/v001a007/">hastad2005query</a>, <a href="https://doi.org/10.1007/978-1-4684-2001-2_9">karp1972</a></dd>
+<dt>summary</dt>
+<dd>False under NP not subset RP: the PCP active-slice lookup class is weak agnostic improperly learnable, but weak agnostic proper learning would decide an NP-complete language.</dd>
+<dt>family</dt>
+<dd>multiclass-pcp-active-slice-weak-proper-hardness</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;same&quot;,&quot;strength&quot;:&quot;same&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;improper-to-proper&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/multiclass-pcp-active-slice-weak-proper-hardness.html">PCP Active-Slice Weak Proper Hardness</a></dd>
+<dt>witness_note</dt>
+<dd><a href="../witnesses/multiclass-pcp-active-slice-lookup-class.html">PCP Active-Slice Lookup Class</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-efficient-weak-agnostic-improper-pac-learning-multiclass-efficient-weak-agnostic-proper-pac-learning">Multiclass Efficient Weak Agnostic Improper PAC Learning $\Rightarrow$ Multiclass Efficient Weak Agnostic Proper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>false</code>, with evidence <code>conditional-counterexample</code>.</p>
+<p>A binary separation witness embeds into the finite multiclass setting by fixing two labels and never using the others. Thus <a href="../witnesses/multiclass-pcp-active-slice-lookup-class.html">Pcp Active Slice Lookup Class</a> satisfies the source while failing the target under NP not subset RP.</p>
+<h2 id="axis-delta">Axis Delta</h2>
+<ul>
+<li><code>resource</code>: <code>same</code></li>
+<li><code>distribution</code>: <code>same</code></li>
+<li><code>strength</code>: <code>same</code></li>
+<li><code>realizability</code>: <code>same</code></li>
+<li><code>properness</code>: <code>improper-to-proper</code></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1007/3-540-44581-1_33">Ben-David et al. 2001</a></li>
+<li><a href="https://theoryofcomputing.org/articles/v001a007/">hastad2005query</a></li>
+<li><a href="https://doi.org/10.1007/978-1-4684-2001-2_9">karp1972</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

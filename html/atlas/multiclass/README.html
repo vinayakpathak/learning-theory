@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Classification Atlas - Learning Atlas</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-readme section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../README.html">Atlas README</a>
+      <a href="../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../dashboards/all-edges.html">All Edges</a>
+      <a href="../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/README.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>readme</dd>
+<dt>id</dt>
+<dd>multiclass-atlas-readme</dd>
+<dt>title</dt>
+<dd>Multiclass Classification Atlas</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>tags</dt>
+<dd>atlas/readme, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-classification-atlas">Multiclass Classification Atlas</h1>
+<p>This folder mirrors the binary PAC atlas for finite-label multiclass classification. The graph has its own definition and implication notes because a multiclass class has type $\mathcal C\subseteq\mathcal Y^{\mathcal X}$ rather than $\mathcal C\subseteq{0,1}^{\mathcal X}$.</p>
+<p>The axis registry generates the same 32 combinations as the binary atlas:</p>
+<ul>
+<li><code>resource</code>: <code>computationally-efficient -&gt; sample-efficient</code></li>
+<li><code>distribution</code>: <code>distribution-free -&gt; marginal-nonuniform</code></li>
+<li><code>strength</code>: <code>strong -&gt; weak</code></li>
+<li><code>realizability</code>: <code>agnostic -&gt; realizable</code></li>
+<li><code>properness</code>: <code>proper -&gt; improper</code></li>
+</ul>
+<p>The weak axis uses a majority-accuracy convention: a weak realizable multiclass learner has error at most $1/2-\gamma$. This is intentionally comparable with the binary atlas and should not be read as the only possible large-label weak-learning notion.</p>
+<p>Binary separation witnesses are embedded by using two labels in a larger finite alphabet and ignoring the rest. This transfers lower bounds into the multiclass type without adding any cross-domain implication edges.</p>
+
+    </article>
+  </main>
+</body>
+</html>

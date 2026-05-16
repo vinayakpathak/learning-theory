@@ -2,7 +2,7 @@
 type: dashboard
 id: open-edges-dashboard
 title: Open Edges Dashboard
-domain: binary-classification
+domain: learning-atlas
 filter_resource: samples
 filter_distribution: distribution-free
 filter_strength:
@@ -10,7 +10,7 @@ filter_realizability: agnostic
 filter_properness:
 tags:
   - atlas/dashboard
-  - learning/binary-classification
+  - learning/all-domains
 ---
 
 # Open Edges Dashboard
@@ -61,8 +61,8 @@ const filters = Object.fromEntries(
 );
 
 const defsById = new Map(
-  dv.pages('"atlas/definitions"')
-    .where(p => p.type === "definition" && p.domain === "binary-classification")
+  dv.pages('"atlas"')
+    .where(p => p.type === "definition")
     .array()
     .map(p => [p.id, p])
 );
@@ -77,8 +77,8 @@ const edgeMatches = edge => {
   );
 };
 
-const openEdges = dv.pages('"atlas/implications"')
-  .where(p => p.type === "implication" && p.domain === "binary-classification" && p.status === "open")
+const openEdges = dv.pages('"atlas"')
+  .where(p => p.type === "implication" && p.status === "open")
   .where(edgeMatches)
   .sort(p => `${p.family}-${p.source}-${p.target}`)
   .array();

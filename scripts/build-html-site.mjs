@@ -602,6 +602,10 @@ function renderBinaryDashboard(fromNote) {
   return `<div id="atlas-binary-dashboard" data-root="${escapeAttr(rootPrefix(fromNote.htmlPath))}"></div>`;
 }
 
+function renderMulticlassDashboard(fromNote) {
+  return `<div id="atlas-multiclass-dashboard" data-root="${escapeAttr(rootPrefix(fromNote.htmlPath))}"></div>`;
+}
+
 function renderBinaryDashboardBlock(fromNote, code) {
   if (code.includes('family === "monotone-relaxation"')) return renderImmediateRelaxations(fromNote);
   if (code.includes("argumentsById")) return renderImplicationFamilies(fromNote);
@@ -647,6 +651,7 @@ function pageChrome(note, contentHtml) {
   const homeHref = relativeHref(note.htmlPath, "index.html");
   const readme = resolveNote("README");
   const binary = resolveNote("dashboards/binary-classification");
+  const multiclass = resolveNote("multiclass/dashboards/multiclass-classification");
   const allEdges = resolveNote("dashboards/all-edges");
   const openEdges = resolveNote("dashboards/open-edges");
   const dashboardScripts = note.type === "dashboard"
@@ -677,6 +682,7 @@ function pageChrome(note, contentHtml) {
     <nav>
       ${readme ? noteLink(readme, "Atlas README", note) : ""}
       ${binary ? noteLink(binary, "Binary Dashboard", note) : ""}
+      ${multiclass ? noteLink(multiclass, "Multiclass Dashboard", note) : ""}
       ${allEdges ? noteLink(allEdges, "All Edges", note) : ""}
       ${openEdges ? noteLink(openEdges, "Open Edges", note) : ""}
     </nav>
@@ -710,6 +716,16 @@ function renderNotePage(note) {
     ].join("\n");
     return pageChrome(note, renderMarkdown(body, note));
   }
+  if (note.id === "multiclass-classification-dashboard") {
+    const body = [
+      `# ${note.title}`,
+      "",
+      "Use the controls below to explore finite-label multiclass notions and directed implication edges. The tables update immediately as filters change.",
+      "",
+      renderMulticlassDashboard(note)
+    ].join("\n");
+    return pageChrome(note, renderMarkdown(body, note));
+  }
   const body = replaceDataviewBlocks(note, note.body);
   return pageChrome(note, renderMarkdown(body, note));
 }
@@ -728,6 +744,7 @@ function dataForDashboard() {
       id: def.id,
       title: def.title,
       htmlPath: def._note.htmlPath,
+      domain: def.domain,
       resource: def.resource,
       distribution: def.distribution,
       strength: def.strength,
@@ -742,6 +759,7 @@ function dataForDashboard() {
       target: edge.target,
       sourceTitle: definitionsById.get(edge.source)?.title ?? edge.source,
       targetTitle: definitionsById.get(edge.target)?.title ?? edge.target,
+      domain: edge.domain,
       status: edge.status,
       evidence: edge.evidence,
       result_origin: edge.result_origin ?? "",
@@ -1128,17 +1146,10 @@ function dashboardJs() {
   const axisOptions = data.axisOptions;
   const statusOptions = [["", "Any"], ["open", "Open"], ["false", "False"], ["true", "True"]];
   const resultOriginOptions = [["", "Any"], ["known", "Known"], ["unclear", "Unclear"], ["new", "New"]];
-  const defsById = new Map(data.definitions.map(def => [def.id, def]));
-  const familyOptions = [["", "Any"], ...Array.from(new Set(data.edges.map(edge => edge.family).filter(Boolean))).sort().map(family => [family, family])];
+  const allDefsById = new Map(data.definitions.map(def => [def.id, def]));
   const normalize = value => String(value || "").toLowerCase();
   const textOf = value => Array.isArray(value) ? value.join(", ") : String(value || "");
   const blankAxes = () => Object.fromEntries(axisFields.map(axis => [axis, ""]));
-
-  const edgeRows = data.edges.map(edge => ({
-    edge,
-    source: defsById.get(edge.source),
-    target: defsById.get(edge.target)
-  }));
 
   const makeSelect = (options, value) => {
     const select = document.createElement("select");
@@ -1225,6 +1236,18 @@ function dashboardJs() {
   function initEdgeDashboard(root, config) {
     const fixedStatus = config.fixedStatus || "";
     const includeView = Boolean(config.includeView);
+    const domain = config.domain || "";
+    const scopedDefinitions = data.definitions.filter(def => !domain || def.domain === domain);
+    const defsById = domain
+      ? new Map(scopedDefinitions.map(def => [def.id, def]))
+      : allDefsById;
+    const scopedEdges = data.edges.filter(edge => !domain || edge.domain === domain);
+    const familyOptions = [["", "Any"], ...Array.from(new Set(scopedEdges.map(edge => edge.family).filter(Boolean))).sort().map(family => [family, family])];
+    const edgeRows = scopedEdges.map(edge => ({
+      edge,
+      source: defsById.get(edge.source),
+      target: defsById.get(edge.target)
+    }));
     const base = (root.dataset.root || ".").replace(/\\/$/, "");
     const hrefFor = htmlPath => base === "." ? htmlPath : base + "/" + htmlPath;
     const defaultState = () => ({
@@ -1450,7 +1473,7 @@ function dashboardJs() {
     };
     const filteredDefinitions = () => {
       const query = normalize(state.search.trim());
-      return data.definitions
+      return scopedDefinitions
         .filter(def => matchesAxisSet(def, state.both))
         .filter(def => matchesAxisSet(def, state.source))
         .filter(def => !query || normalize([
@@ -1580,6 +1603,13 @@ function dashboardJs() {
     {
       id: "atlas-binary-dashboard",
       storageKey: "learning-atlas/html/binary-dashboard/v2",
+      domain: "binary-classification",
+      includeView: true
+    },
+    {
+      id: "atlas-multiclass-dashboard",
+      storageKey: "learning-atlas/html/multiclass-dashboard/v1",
+      domain: "multiclass-classification",
       includeView: true
     }
   ];
@@ -1594,6 +1624,7 @@ function indexPage() {
   const fakeNote = { htmlPath: "index.html", title: "Learning Atlas HTML", fm: {} };
   const dashboardNotes = [
     resolveNote("dashboards/binary-classification"),
+    resolveNote("multiclass/dashboards/multiclass-classification"),
     resolveNote("dashboards/all-edges"),
     resolveNote("dashboards/open-edges")
   ].filter(Boolean);

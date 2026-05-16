@@ -6,17 +6,10 @@
   const axisOptions = data.axisOptions;
   const statusOptions = [["", "Any"], ["open", "Open"], ["false", "False"], ["true", "True"]];
   const resultOriginOptions = [["", "Any"], ["known", "Known"], ["unclear", "Unclear"], ["new", "New"]];
-  const defsById = new Map(data.definitions.map(def => [def.id, def]));
-  const familyOptions = [["", "Any"], ...Array.from(new Set(data.edges.map(edge => edge.family).filter(Boolean))).sort().map(family => [family, family])];
+  const allDefsById = new Map(data.definitions.map(def => [def.id, def]));
   const normalize = value => String(value || "").toLowerCase();
   const textOf = value => Array.isArray(value) ? value.join(", ") : String(value || "");
   const blankAxes = () => Object.fromEntries(axisFields.map(axis => [axis, ""]));
-
-  const edgeRows = data.edges.map(edge => ({
-    edge,
-    source: defsById.get(edge.source),
-    target: defsById.get(edge.target)
-  }));
 
   const makeSelect = (options, value) => {
     const select = document.createElement("select");
@@ -103,6 +96,18 @@
   function initEdgeDashboard(root, config) {
     const fixedStatus = config.fixedStatus || "";
     const includeView = Boolean(config.includeView);
+    const domain = config.domain || "";
+    const scopedDefinitions = data.definitions.filter(def => !domain || def.domain === domain);
+    const defsById = domain
+      ? new Map(scopedDefinitions.map(def => [def.id, def]))
+      : allDefsById;
+    const scopedEdges = data.edges.filter(edge => !domain || edge.domain === domain);
+    const familyOptions = [["", "Any"], ...Array.from(new Set(scopedEdges.map(edge => edge.family).filter(Boolean))).sort().map(family => [family, family])];
+    const edgeRows = scopedEdges.map(edge => ({
+      edge,
+      source: defsById.get(edge.source),
+      target: defsById.get(edge.target)
+    }));
     const base = (root.dataset.root || ".").replace(/\/$/, "");
     const hrefFor = htmlPath => base === "." ? htmlPath : base + "/" + htmlPath;
     const defaultState = () => ({
@@ -328,7 +333,7 @@
     };
     const filteredDefinitions = () => {
       const query = normalize(state.search.trim());
-      return data.definitions
+      return scopedDefinitions
         .filter(def => matchesAxisSet(def, state.both))
         .filter(def => matchesAxisSet(def, state.source))
         .filter(def => !query || normalize([
@@ -458,6 +463,13 @@
     {
       id: "atlas-binary-dashboard",
       storageKey: "learning-atlas/html/binary-dashboard/v2",
+      domain: "binary-classification",
+      includeView: true
+    },
+    {
+      id: "atlas-multiclass-dashboard",
+      storageKey: "learning-atlas/html/multiclass-dashboard/v1",
+      domain: "multiclass-classification",
       includeView: true
     }
   ];

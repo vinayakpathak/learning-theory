@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marginal Weak Agnostic Open - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-argument section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/arguments/multiclass-marginal-weak-agnostic-open.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>argument</dd>
+<dt>id</dt>
+<dd>multiclass-marginal-weak-agnostic-open</dd>
+<dt>title</dt>
+<dd>Marginal Weak Agnostic Open</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>open</dd>
+<dt>evidence</dt>
+<dd>unknown</dd>
+<dt>ref_keys</dt>
+<dd>tiegel2023</dd>
+<dt>refs</dt>
+<dd><a href="https://proceedings.mlr.press/v195/tiegel23a.html">tiegel2023</a></dd>
+<dt>tags</dt>
+<dd>atlas/argument, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="marginal-weak-agnostic-open">Marginal Weak Agnostic Open</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>open</code>, with evidence <code>unknown</code>.</p>
+<p>These edges were previously assigned to the halfspace agnostic hardness family. That target obstruction is real: a strong agnostic learner for the relevant multiclass embedded halfspaces would imply the corresponding binary learner ruled out by Tiegel's hardness theorem.</p>
+<p>The missing part is the source. The current multiclass low-noise robustification proof does not show that halfspaces satisfy the marginal-nonuniform weak agnostic nodes with a fixed additive $\beta&lt;1/2$. In binary, a constant fallback handles high-noise distributions because one of two constants has error at most $1/2$. With three or more labels, the best constant can have error $1-1/k$, so the same fallback can miss the majority weak threshold.</p>
+<p>A true edge would need a generic fixed-gap multiclass weak agnostic learner or a valid multiclass neutralizer. A false edge would need a witness satisfying the marginal weak agnostic source while failing the stronger agnostic target. The present atlas records neither.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://proceedings.mlr.press/v195/tiegel23a.html">tiegel2023</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

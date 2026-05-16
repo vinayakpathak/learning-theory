@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-definition section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/definitions/multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>definition</dd>
+<dt>id</dt>
+<dd>multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac</dd>
+<dt>title</dt>
+<dd>Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>realizability</dt>
+<dd>realizable</dd>
+<dt>properness</dt>
+<dd>proper</dd>
+<dt>strength</dt>
+<dd>weak</dd>
+<dt>resource</dt>
+<dd>sample-efficient</dd>
+<dt>distribution</dt>
+<dd>marginal-nonuniform</dd>
+<dt>loss</dt>
+<dd>zero-one</dd>
+<dt>output_constraint</dt>
+<dd>proper</dd>
+<dt>sample_complexity</dt>
+<dd>marginal-dependent-polynomial-weak</dd>
+<dt>runtime</dt>
+<dd>unrestricted</dd>
+<dt>characterization_status</dt>
+<dd>known</dd>
+<dt>characterization</dt>
+<dd>Finite-label multiclass sample learnability is characterized by the multiclass dimension theory; runtime is unrestricted.</dd>
+<dt>characterization_ref_keys</dt>
+<dd>valiant1984, daniely2014optimal, daniely2015multiclass, brukhim2022, cohen2025multiclass, schapire1990, freund1995boosting, mukherjee2013multiclass, brukhim2023boosting</dd>
+<dt>characterization_refs</dt>
+<dd><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a>, <a href="https://proceedings.mlr.press/v35/daniely14b.html">Daniely and Shalev-Shwartz 2014</a>, <a href="https://jmlr.org/papers/v16/daniely15a.html">Daniely et al. 2015</a>, <a href="https://doi.org/10.1109/FOCS54457.2022.00093">Brukhim et al. 2022</a>, <a href="https://arxiv.org/abs/2511.12659">Cohen et al. 2025</a>, <a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a>, <a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a>, <a href="https://jmlr.org/papers/v14/mukherjee13a.html">Mukherjee and Schapire 2013</a>, <a href="https://proceedings.mlr.press/v195/brukhim23a.html">Brukhim et al. 2023</a></dd>
+<dt>tags</dt>
+<dd>atlas/definition, learning/multiclass-classification</dd>
+<dt>label_space</dt>
+<dd>finite-multiclass</dd>
+<dt>label_count</dt>
+<dd>finite, at least 3</dd>
+<dt>weak_convention</dt>
+<dd>majority-accuracy</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-sample-efficient-marginal-nonuniform-weak-realizable-proper-pac-learning">Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</h1>
+<h2 id="definition">Definition</h2>
+<p>A multiclass class is a set $\mathcal C\subseteq \mathcal Y^{\mathcal X}$ with finite label space $\mathcal Y$ and $|\mathcal Y|\ge 3$. The finite label alphabet is part of the learning problem, so these nodes are kept separate from the binary-classification nodes even when a class uses only two labels.</p>
+<p>A learner receives i.i.d. labeled examples $(x,c(x))$, where $x \sim P$ and $c \in \mathcal C$. With probability at least $1-\delta$, it must output $h\in\mathcal C$ such that</p>
+<p>$$
+\operatorname{err}_P(h,c) \le \frac{1}{2}-\gamma.
+$$</p>
+<p>The weak axis deliberately uses the same majority-accuracy threshold as the binary atlas. It is stronger than merely beating uniform random guessing over $k$ labels, but it gives a clean comparison with the binary implication graph.</p>
+<p>Only the sample size must be polynomially bounded. Computation is unrestricted, so exhaustive search and nonconstructive learners are allowed.</p>
+<p>The learner is marginal-nonuniform: for each fixed instance marginal $P$, the polynomial bound may depend on $P$, while remaining uniform over targets or conditional label distributions with that marginal.</p>
+<h2 id="characterization-status">Characterization Status</h2>
+<p><code>known</code>: Finite-label multiclass sample learnability is characterized by the multiclass dimension theory; runtime is unrestricted.</p>
+<h2 id="boundary-examples">Boundary Examples</h2>
+<p>Binary separation classes embed into this finite multiclass setting by choosing two labels $a,b\in\mathcal Y$ and mapping $0$ to $a$ and $1$ to $b$. The extra labels are inert, and zero-one error is preserved. This gives multiclass versions of the computational and sample-to-computational boundary examples recorded in <a href="../witnesses/multiclass-binary-embedded-separations.html">Binary-Embedded Separations</a>.</p>
+<p>For sample-complexity boundaries, finite-label multiclass learning is governed by multiclass dimensions rather than plain VC dimension. The notes cite the Natarajan/graph-dimension and DS-dimension literature where those distinctions matter.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/1968.1972">Valiant 1984</a></li>
+<li><a href="https://proceedings.mlr.press/v35/daniely14b.html">Daniely and Shalev-Shwartz 2014</a></li>
+<li><a href="https://jmlr.org/papers/v16/daniely15a.html">Daniely et al. 2015</a></li>
+<li><a href="https://doi.org/10.1109/FOCS54457.2022.00093">Brukhim et al. 2022</a></li>
+<li><a href="https://arxiv.org/abs/2511.12659">Cohen et al. 2025</a></li>
+<li><a href="https://doi.org/10.1023/A:1022648800760">Schapire 1990</a></li>
+<li><a href="https://doi.org/10.1006/inco.1995.1136">Freund 1995</a></li>
+<li><a href="https://jmlr.org/papers/v14/mukherjee13a.html">Mukherjee and Schapire 2013</a></li>
+<li><a href="https://proceedings.mlr.press/v195/brukhim23a.html">Brukhim et al. 2023</a></li>
+</ul>
+<h2 id="outgoing-implications">Outgoing Implications</h2>
+<div class="table-wrap">
+<table class="atlas-table">
+<thead><tr><th>Target</th><th>Status</th><th>Evidence</th><th>Assumptions</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td><a href="multiclass-efficient-agnostic-improper-pac.html">Multiclass Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-agnostic-proper-pac.html">Multiclass Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-agnostic-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-agnostic-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-realizable-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-realizable-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-realizable-improper-pac.html">Multiclass Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-realizable-proper-pac.html">Multiclass Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-weak-agnostic-improper-pac.html">Multiclass Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-weak-agnostic-proper-pac.html">Multiclass Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-weak-realizable-improper-pac.html">Multiclass Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-efficient-weak-realizable-proper-pac.html">Multiclass Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>conditional-counterexample</td><td>standard cryptographic assumptions</td><td>Binary pseudorandom-function separations embed into multiclass classification by using two labels and ignoring the rest.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-agnostic-improper-pac.html">Multiclass Sample-Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-agnostic-proper-pac.html">Multiclass Sample-Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-agnostic-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-realizable-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-realizable-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (properness: proper-to-improper).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-realizable-improper-pac.html">Multiclass Sample-Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-realizable-proper-pac.html">Multiclass Sample-Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-agnostic-improper-pac.html">Multiclass Sample-Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-agnostic-proper-pac.html">Multiclass Sample-Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-realizable-improper-pac.html">Multiclass Sample-Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-realizable-proper-pac.html">Multiclass Sample-Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-false">false</span></td><td>counterexample</td><td></td><td>False: countable unrestricted multiclass labelings are weakly learnable for each fixed marginal, but slow tails block polynomial strong marginal rates and no-free-lunch blocks distribution-free weak learning.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="incoming-implications">Incoming Implications</h2>
+<div class="table-wrap">
+<table class="atlas-table">
+<thead><tr><th>Source</th><th>Status</th><th>Evidence</th><th>Assumptions</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td><a href="multiclass-efficient-agnostic-improper-pac.html">Multiclass Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-agnostic-proper-pac.html">Multiclass Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; distribution: distribution-free-to-marginal-nonuniform; strength: strong-to-weak; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-agnostic-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-agnostic-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; strength: strong-to-weak; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-realizable-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-realizable-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; strength: strong-to-weak).</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-marginal-nonuniform-weak-realizable-proper-pac.html">Multiclass Efficient Marginal-Nonuniform Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient).</td></tr>
+<tr><td><a href="multiclass-efficient-realizable-improper-pac.html">Multiclass Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-realizable-proper-pac.html">Multiclass Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; distribution: distribution-free-to-marginal-nonuniform; strength: strong-to-weak).</td></tr>
+<tr><td><a href="multiclass-efficient-weak-agnostic-improper-pac.html">Multiclass Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-weak-agnostic-proper-pac.html">Multiclass Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; distribution: distribution-free-to-marginal-nonuniform; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-efficient-weak-realizable-improper-pac.html">Multiclass Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-efficient-weak-realizable-proper-pac.html">Multiclass Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (resource: computationally-efficient-to-sample-efficient; distribution: distribution-free-to-marginal-nonuniform).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-agnostic-improper-pac.html">Multiclass Sample-Efficient Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-agnostic-proper-pac.html">Multiclass Sample-Efficient Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (distribution: distribution-free-to-marginal-nonuniform; strength: strong-to-weak; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-agnostic-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (strength: strong-to-weak; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-realizable-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-realizable-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (strength: strong-to-weak).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-weak-agnostic-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-weak-agnostic-proper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-marginal-nonuniform-weak-realizable-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-realizable-improper-pac.html">Multiclass Sample-Efficient Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-realizable-proper-pac.html">Multiclass Sample-Efficient Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (distribution: distribution-free-to-marginal-nonuniform; strength: strong-to-weak).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-agnostic-improper-pac.html">Multiclass Sample-Efficient Weak Agnostic Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-agnostic-proper-pac.html">Multiclass Sample-Efficient Weak Agnostic Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (distribution: distribution-free-to-marginal-nonuniform; realizability: agnostic-to-realizable).</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-realizable-improper-pac.html">Multiclass Sample-Efficient Weak Realizable Improper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>theorem</td><td></td><td>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</td></tr>
+<tr><td><a href="multiclass-sample-efficient-weak-realizable-proper-pac.html">Multiclass Sample-Efficient Weak Realizable Proper PAC Learning</a></td><td><span class="status-chip status-true">true</span></td><td>trivial</td><td></td><td>The target only relaxes requirements already met by the source (distribution: distribution-free-to-marginal-nonuniform).</td></tr>
+</tbody>
+</table>
+</div>
+
+    </article>
+  </main>
+</body>
+</html>

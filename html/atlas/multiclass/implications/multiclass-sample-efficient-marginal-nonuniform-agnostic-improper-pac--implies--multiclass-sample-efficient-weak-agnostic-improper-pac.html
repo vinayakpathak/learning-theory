@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Multiclass Sample-Efficient Weak Agnostic Improper PAC Learning - Learning Atlas</title>
+  <link rel="stylesheet" href="../../../assets/site.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="type-implication section-multiclass">
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">Learning Atlas HTML</a>
+    <nav>
+      <a href="../../README.html">Atlas README</a>
+      <a href="../../dashboards/binary-classification.html">Binary Dashboard</a>
+      <a href="../dashboards/multiclass-classification.html">Multiclass Dashboard</a>
+      <a href="../../dashboards/all-edges.html">All Edges</a>
+      <a href="../../dashboards/open-edges.html">Open Edges</a>
+    </nav>
+  </header>
+  <main class="page">
+    <p class="breadcrumb">atlas/multiclass/implications/multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac--implies--multiclass-sample-efficient-weak-agnostic-improper-pac.md</p>
+    <details class="metadata-panel">
+<summary>Frontmatter</summary>
+<dl><dt>type</dt>
+<dd>implication</dd>
+<dt>id</dt>
+<dd>multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac__implies__multiclass-sample-efficient-weak-agnostic-improper-pac</dd>
+<dt>source</dt>
+<dd>multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac</dd>
+<dt>target</dt>
+<dd>multiclass-sample-efficient-weak-agnostic-improper-pac</dd>
+<dt>source_note</dt>
+<dd><a href="../definitions/multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac.html">Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning</a></dd>
+<dt>target_note</dt>
+<dd><a href="../definitions/multiclass-sample-efficient-weak-agnostic-improper-pac.html">Multiclass Sample-Efficient Weak Agnostic Improper PAC Learning</a></dd>
+<dt>domain</dt>
+<dd>multiclass-classification</dd>
+<dt>model</dt>
+<dd>pac</dd>
+<dt>status</dt>
+<dd>true</dd>
+<dt>evidence</dt>
+<dd>theorem</dd>
+<dt>result_origin</dt>
+<dd>known</dd>
+<dt>assumptions</dt>
+<dd></dd>
+<dt>witnesses</dt>
+<dd></dd>
+<dt>ref_keys</dt>
+<dd>daniely2014optimal, daniely2015multiclass, brukhim2022, cohen2025multiclass</dd>
+<dt>refs</dt>
+<dd><a href="https://proceedings.mlr.press/v35/daniely14b.html">Daniely and Shalev-Shwartz 2014</a>, <a href="https://jmlr.org/papers/v16/daniely15a.html">Daniely et al. 2015</a>, <a href="https://doi.org/10.1109/FOCS54457.2022.00093">Brukhim et al. 2022</a>, <a href="https://arxiv.org/abs/2511.12659">Cohen et al. 2025</a></dd>
+<dt>summary</dt>
+<dd>At the finite-label multiclass sample-complexity level, runtime is ignored and standard multiclass learnability characterizations give the target guarantee.</dd>
+<dt>family</dt>
+<dd>multiclass-sample-complexity-equivalence</dd>
+<dt>axis_delta</dt>
+<dd><code>{&quot;resource&quot;:&quot;same&quot;,&quot;distribution&quot;:&quot;marginal-nonuniform-to-distribution-free&quot;,&quot;strength&quot;:&quot;strong-to-weak&quot;,&quot;realizability&quot;:&quot;same&quot;,&quot;properness&quot;:&quot;same&quot;}</code></dd>
+<dt>argument_note</dt>
+<dd><a href="../arguments/multiclass-sample-complexity-equivalence.html">Sample-Complexity Equivalence</a></dd>
+<dt>tags</dt>
+<dd>atlas/implication, learning/multiclass-classification</dd></dl>
+</details>
+    <article class="content">
+<h1 id="multiclass-sample-efficient-marginal-nonuniform-agnostic-improper-pac-learning-multiclass-sample-efficient-weak-agnostic-improper-pac-learning">Multiclass Sample-Efficient Marginal-Nonuniform Agnostic Improper PAC Learning $\Rightarrow$ Multiclass Sample-Efficient Weak Agnostic Improper PAC Learning</h1>
+<h2 id="verdict">Verdict</h2>
+<p><code>true</code>, with evidence <code>theorem</code>.</p>
+<p>Since runtime is unrestricted at the target, the implication is a sample-complexity statement. For finite multiclass labels, the Natarajan/graph-dimension theory, DS-dimension characterization, and recent agnostic sample-complexity bounds provide the standard finite-sample side of the argument.</p>
+<h2 id="axis-delta">Axis Delta</h2>
+<ul>
+<li><code>resource</code>: <code>same</code></li>
+<li><code>distribution</code>: <code>marginal-nonuniform-to-distribution-free</code></li>
+<li><code>strength</code>: <code>strong-to-weak</code></li>
+<li><code>realizability</code>: <code>same</code></li>
+<li><code>properness</code>: <code>same</code></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://proceedings.mlr.press/v35/daniely14b.html">Daniely and Shalev-Shwartz 2014</a></li>
+<li><a href="https://jmlr.org/papers/v16/daniely15a.html">Daniely et al. 2015</a></li>
+<li><a href="https://doi.org/10.1109/FOCS54457.2022.00093">Brukhim et al. 2022</a></li>
+<li><a href="https://arxiv.org/abs/2511.12659">Cohen et al. 2025</a></li>
+</ul>
+
+    </article>
+  </main>
+</body>
+</html>

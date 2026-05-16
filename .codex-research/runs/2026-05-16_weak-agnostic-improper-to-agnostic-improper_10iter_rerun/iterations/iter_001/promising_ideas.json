@@ -1,0 +1,101 @@
+{
+  "ideas": [
+    {
+      "id": "idea_01",
+      "risks": "A formal oracle may be too weak to say anything about represented classes, and the reduction model must be defined carefully so the lower bound does not rule out only a straw-man booster.",
+      "suggested_lenses": [
+        "black-box lower bound",
+        "SQ/oracle model",
+        "counterexample search"
+      ],
+      "summary": "Build an oracle model for reductions that access C only through the fixed-slack weak learner and examples from D. Use the medium-noise family Y=c*(X)N with correlation alpha below 1-2gamma to show that any polynomial number of adaptive weak queries can be answered by uninformative hypotheses unless the reduction constructs a query Q with OPT_C(Q)<gamma. Try to prove that producing such a Q requires prior correlation with c* or exponentially many samples/queries.",
+      "title": "Black-Box Barrier For Residual Forcing",
+      "why_promising": "This directly sharpens the solver's main obstruction into a precise theorem. Even a relativized or SQ lower bound would clarify why generic agnostic boosting cannot prove the atlas edge."
+    },
+    {
+      "id": "idea_02",
+      "risks": "The desired lemma may be false without extra structure; conditioning on observed residuals may amplify noise or select on labels in a way that destroys any low-noise comparator.",
+      "suggested_lenses": [
+        "proof strategy",
+        "conditional theorem",
+        "potential descent"
+      ],
+      "summary": "Investigate whether calibrated or randomized real-valued predictors F can generate observable slices on which a comparator c has effective noise below gamma whenever F has excess error. The explorer should formulate a precise slicing lemma: from err(F)>OPT+epsilon, produce polynomially many thresholds or reweightings Q_i based only on F(x), y, and validation samples such that some Q_i has OPT_C(Q_i)<gamma-kappa and gives descent.",
+      "title": "Calibration-Based Clean Slice Lemma",
+      "why_promising": "It attacks the exact missing primitive but uses the current predictor as structure, rather than random clean-subset search. If true, it would give a plausible positive route through boosting plus validation."
+    },
+    {
+      "id": "idea_03",
+      "risks": "Known agnostic boosting algorithms may already show the limitation, or their parameter blowups may be artifacts of analysis rather than real barriers.",
+      "suggested_lenses": [
+        "literature audit",
+        "parameter accounting",
+        "proof reconstruction"
+      ],
+      "summary": "Compare the fixed-slack source guarantee line-by-line against residual-free agnostic boosters and dense-model/hard-core style arguments. The task is to isolate exactly where an exponential dependence enters: weak sample size, capacity of generated distributions, number of clean witnesses, margin discretization, or a minimax support bound.",
+      "title": "Parameter Audit Of Fixed-Slack Boosters",
+      "why_promising": "The problem statement says existing boosters are semantically close but not representation-uniform polynomial. A precise audit could either uncover a missed polynomial implementation or certify the bottleneck as a reusable obstruction."
+    },
+    {
+      "id": "idea_04",
+      "risks": "Natural cryptographic classes often make even low-noise weak learning hard, while artificial handle constructions may accidentally make strong improper learning easy through validation or decoding handles.",
+      "suggested_lenses": [
+        "negative construction",
+        "cryptographic hardness",
+        "source guarantee verification"
+      ],
+      "summary": "Search for a represented class where distributions with OPT<gamma have an efficiently discoverable public certificate or handle enabling weak learning, but medium-noise agnostic learning encodes a hard problem such as LPN, planted CSP, or PRF prediction. The explorer should treat the source guarantee as the hard constraint: it must hold distribution-free for every low-OPT distribution, not only for a planted family.",
+      "title": "Low-Noise Easy, Medium-Noise Hard Classes",
+      "why_promising": "A separation, even conditional, would likely need exactly this asymmetry. The direction is independent of positive boosting and forces attention on the quantifier that killed previous templates."
+    },
+    {
+      "id": "idea_05",
+      "risks": "Compression or finite-cover assumptions may be too strong or may already imply agnostic learning by standard uniform convergence, making the result less informative for the original edge.",
+      "suggested_lenses": [
+        "conditional theorem",
+        "sample compression",
+        "hitting set"
+      ],
+      "summary": "Prove the edge under an additional structural assumption: polynomial-size sample compression, polynomial metric entropy under every empirical distribution, small dual dimension, or a polynomial menu of candidate low-noise restrictions. Show that the weak learner plus enumeration over the compressed menu can find a Q_i with OPT<gamma when excess error remains.",
+      "title": "Polynomial Clean-Witness Menus",
+      "why_promising": "The solver identified exhaustive clean-subset enumeration as the apparent exponential step. A structural condition that replaces it by a polynomial menu would give a clean conditional theorem and identify what general classes lack."
+    },
+    {
+      "id": "idea_06",
+      "risks": "The fixed additive slack may be inherently non-amplifiable: mixtures and relabelings can leave every query below the useful threshold, so the approach may collapse to the black-box barrier.",
+      "suggested_lenses": [
+        "self-improvement attempt",
+        "reduction design",
+        "failure mode analysis"
+      ],
+      "summary": "Try to amplify the weak learner itself before full agnostic boosting. Given only an OPT+beta learner, use label randomization, distribution mixing with synthetic labels, and validation to construct a learner with smaller additive slack beta' on a restricted family of query distributions. Determine whether any slack improvement is possible without already solving agnostic learning.",
+      "title": "Can Fixed Slack Be Self-Improved",
+      "why_promising": "If beta can be reduced even under useful conditions, standard agnostic boosting may become available. If not, a no-go result would explain why the fixed-slack assumption is qualitatively weaker than tunable weak agnostic learning."
+    },
+    {
+      "id": "idea_07",
+      "risks": "Surrogate optimization may require real-valued weak hypotheses with signed edge, while the source only returns binary hypotheses and may be silent in the medium-noise regime.",
+      "suggested_lenses": [
+        "convex duality",
+        "minimax",
+        "surrogate loss"
+      ],
+      "summary": "Formulate the target agnostic learner as minimizing linear loss over conv(C) or over randomized hypotheses, then inspect the dual separation oracle required by ellipsoid/multiplicative weights. Determine whether the fixed-slack learner supplies a valid approximate separation oracle after suitable shifting, clipping, or abstention, or prove the threshold gap prevents separation.",
+      "title": "Convex Dual Separation View",
+      "why_promising": "This reframes boosting as optimization and may expose a missing normalization trick. It also gives a crisp way to prove failure: identify a dual point needing separation at advantage below the fixed threshold."
+    },
+    {
+      "id": "idea_08",
+      "risks": "Finite toy examples may not scale to a represented-class theorem, and apparent separations may vanish once improper hypotheses are allowed.",
+      "suggested_lenses": [
+        "finite model experiment",
+        "counterexample search",
+        "quantifier debugging"
+      ],
+      "summary": "Analyze small finite domains and concept classes exhaustively. For a fixed beta, characterize all distributions D and all possible valid weak-learner response maps. Search for cases where every polynomial-style adaptive strategy remains unable to identify an OPT+epsilon hypothesis unless it finds a low-noise query. Use this to generate candidate oracle lower bounds or discover a hidden positive invariant.",
+      "title": "Exhaustive Finite-Domain Models",
+      "why_promising": "Small models can make the quantifiers concrete and reveal whether the obstruction is fundamental or an artifact of the medium-noise example. They are also good inputs for later formal black-box lower bounds."
+    }
+  ],
+  "solution_status": "unsolved"
+}
